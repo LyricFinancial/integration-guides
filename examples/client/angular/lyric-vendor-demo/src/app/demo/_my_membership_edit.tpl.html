@@ -11,6 +11,16 @@
   			</md-toolbar>
   			<br/>
 
+  			<div layout-gt-md="row" layout="column">
+			    <md-input-container flex>
+			      <label>Vendor Client Account Id</label>
+			      <input ng-model="clientData.vendorClientAccountId" name="vendorClientAccountId" required>
+			      <div class="error-messages" ng-if="interacted(registrationForm.vendorClientAccountId)" ng-messages="registrationForm.vendorClientAccountId.$error">
+			  			<div ng-messages-include="custom-messages"></div>
+      			</div>
+			    </md-input-container>
+			  </div>
+
 				<div layout-gt-md="row" layout="column">
 			    <md-input-container flex>
 			      <label>First Name</label>
