@@ -11,7 +11,6 @@ module.exports = function ( karma ) {
     files: [
       'vendor/angular/angular.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
-      'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
       'vendor/angular-ui-router/release/angular-ui-router.js',
       'vendor/angular-resource/angular-resource.js',
       'vendor/angular-base64/angular-base64.js',
@@ -22,8 +21,6 @@ module.exports = function ( karma ) {
       'vendor/angular-messages/angular-messages.js',
       'vendor/ng-file-upload/ng-file-upload.js',
       'vendor/ng-file-upload-shim/ng-file-upload-shim.js',
-      'vendor/lyric-snippet/dist/assets/lyric-snippet.js',
-      'vendor/lyric-snippet/dist/assets/templates.js',
       'build/templates-app.js',
       'build/templates-common.js',
       'vendor/angular-mocks/angular-mocks.js',

@@ -26,6 +26,16 @@ angular.module("demo/_my_membership_edit.tpl.html", []).run(["$templateCache", f
     "  			</md-toolbar>\n" +
     "  			<br/>\n" +
     "\n" +
+    "  			<div layout-gt-md=\"row\" layout=\"column\">\n" +
+    "			    <md-input-container flex>\n" +
+    "			      <label>Vendor Client Account Id</label>\n" +
+    "			      <input ng-model=\"clientData.vendorClientAccountId\" name=\"vendorClientAccountId\" required>\n" +
+    "			      <div class=\"error-messages\" ng-if=\"interacted(registrationForm.vendorClientAccountId)\" ng-messages=\"registrationForm.vendorClientAccountId.$error\">\n" +
+    "			  			<div ng-messages-include=\"custom-messages\"></div>\n" +
+    "      			</div>\n" +
+    "			    </md-input-container>\n" +
+    "			  </div>\n" +
+    "\n" +
     "				<div layout-gt-md=\"row\" layout=\"column\">\n" +
     "			    <md-input-container flex>\n" +
     "			      <label>First Name</label>\n" +
