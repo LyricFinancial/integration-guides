@@ -78,16 +78,13 @@ module.exports = {
       'vendor/ng-file-upload/ng-file-upload.js',
       'vendor/ng-file-upload-shim/ng-file-upload-shim.js',
 
-      'vendor/lyric-snippet/dist/assets/lyric-snippet.js',
-      'vendor/lyric-snippet/dist/assets/templates.js'
-
-      // 'vendor/lyric-snippet/dist/assets/lyric-snippet-0.1.0.min.js'
+      'vendor/lyric-snippet/dist/lyric-snippet-0.1.0.min.js'
     ],
     css: [
       'vendor/bootstrap/dist/css/bootstrap.css',
       'vendor/angular-material/angular-material.min.css',
 
-      'vendor/lyric-snippet/dist/assets/lyric-snippet-0.1.0.css'
+      'vendor/lyric-snippet/dist/lyric-snippet-0.1.0.css'
     ],
     assets: [
     ]
