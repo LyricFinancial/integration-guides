@@ -2,8 +2,8 @@ angular.module( 'lyricvendordemo', [
   'templates-app',
   'templates-common',
   'lyricvendordemo.demo',
+  'lyricvendordemo.demo-server',
   'ui.router',
-  'lyricvendordemo.services',
   'base64',
   'ngMaterial'
   'ngMessages'
@@ -15,12 +15,8 @@ angular.module( 'lyricvendordemo', [
   '$stateProvider'
   '$urlRouterProvider'
   '$httpProvider'
-  '$base64'
-  ($stateProvider, $urlRouterProvider, $httpProvider, $base64) ->
+  ($stateProvider, $urlRouterProvider, $httpProvider) ->
     $urlRouterProvider.otherwise( '/demo' )
-
-    auth = $base64.encode("ascap:WxjXgrzzGzrkPMv7hBFJ@PMkQX9e3e2N")
-    $httpProvider.defaults.headers.post["Authorization"] = "Basic " + auth
 ])
 
 .controller( 'AppCtrl', [
