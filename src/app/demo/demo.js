@@ -101,7 +101,7 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
             'clientData': $scope.clientData
           }
         }).then(function() {
-          return advanceRequestComplete(resp.headers.ACCESS_TOKEN);
+          return advanceRequestComplete(resp.headers().access_token);
         })["catch"](function() {
           return advanceRequestError();
         });
@@ -119,7 +119,7 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
         data: $scope.clientData
       };
       return $http(req).then(function(resp) {
-        return advanceRequestComplete(resp.access_token);
+        return advanceRequestComplete(resp.headers().access_token);
       })["catch"](function() {
         return advanceRequestError();
       });
