@@ -4,7 +4,7 @@ angular.module("demo-server/demo-server.tpl.html", []).run(["$templateCache", fu
   $templateCache.put("demo-server/demo-server.tpl.html",
     "<div id=\"content\">\n" +
     "	<md-content layout-padding>\n" +
-    "		<p class=\"info\">This demo mimics calling the vendor's server passing the vendorClientAccountId.  The client information is looked up on the server then passed to the Lyric registration API.  Click <a ui-sref=\"demo\">here</a> to go to the client demo.</p>\n" +
+    "		<p class=\"info\">This demo mimics calling the vendor's server passing the vendorClientAccountId.  The client information is looked up on the server then passed to the Lyric registration API.  Click <a ui-sref=\"demo\">&lt;here&gt;</a> to go to the client demo.</p>\n" +
     "		<h2>My Membership</h2>\n" +
     "		<div class=\"your-info\">\n" +
     "		  <span>Current Address: <a class=\"edit\" ui-sref=\"demo.edit\">Edit</a></span>\n" +
@@ -44,7 +44,7 @@ angular.module("demo/demo.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "<div id=\"content\">\n" +
     "	<md-content layout-padding>\n" +
-    "		<p class=\"info\">This demo mimics calling Lyric registration API directly.  Click <a ui-sref=\"demo-server\">here</a> to go to the server demo.</p>\n" +
+    "		<p class=\"info\">This demo mimics calling Lyric registration API directly (Not Recommended). Click <a ui-sref=\"demo-server\">&lt;here&gt;</a> to go to the server demo.</p>\n" +
     "\n" +
     "		<form name=\"registrationForm\" ng-submit=\"submit(registrationForm, dob, royaltyEarningsFile)\" novalidate>\n" +
     "\n" +
