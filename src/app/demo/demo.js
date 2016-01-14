@@ -9,20 +9,6 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
         }
       }
     });
-    $stateProvider.state('demo.view', {
-      views: {
-        'userInfo': {
-          templateUrl: 'demo/_my_membership.tpl.html'
-        }
-      }
-    });
-    $stateProvider.state('demo.edit', {
-      views: {
-        'userInfo': {
-          templateUrl: 'demo/_my_membership_edit.tpl.html'
-        }
-      }
-    });
     return {
       data: {
         pageTitle: 'Lyric Vendor Demo'
@@ -30,24 +16,26 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
     };
   }
 ]).controller('DemoCtrl', [
-  '$scope', '$uibModal', '$state', '_', '$filter', 'Client', function($scope, $uibModal, $state, _, $filter, Client) {
-    var year;
+  '$scope', '_', '$filter', '$http', '$base64', function($scope, _, $filter, $http, $base64) {
     $scope.clientData = {
       firstName: 'Paul',
       lastName: 'Williams',
       address1: '327 S 87 St',
-      email: 'test93@email.com',
+      email: 'test52@email.com',
       city: 'Omaha',
       state: 'NE',
       zipCode: '68123',
-      vendorClientAccountId: 'ascaptest1241',
-      ssn: '333-44-5593',
-      phone: '2075554493',
-      mobilePhone: '2075556693',
-      bankName: 'abc',
+      vendorClientAccountId: 'ascaptest1269',
+      ssn: '333-44-5547',
+      phone: '2075554448',
+      mobilePhone: '2075556648',
+      bankName: 'TD Bank',
       bankAccountNumber: '12345678',
       bankRoutingNumber: '211274450',
       bankAccountType: 'checking'
+    };
+    $scope.server = {
+      url: "https://lyric-demo-server.herokuapp.com"
     };
     $scope.royaltyEarnings = {
       earnings: [
@@ -69,9 +57,6 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
         }
       ]
     };
-    $scope.days = _.range(1, 32);
-    year = new Date().getFullYear();
-    $scope.years = _.range(year, year - 100, -1);
     $scope.postType = {
       type: "json"
     };
@@ -84,51 +69,12 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
         description: 'Checking'
       }
     ];
-    $scope.months = [
-      {
-        month: '01',
-        description: 'January'
-      }, {
-        month: '02',
-        description: 'February'
-      }, {
-        month: '03',
-        description: 'March'
-      }, {
-        month: '04',
-        description: 'April'
-      }, {
-        month: '05',
-        description: 'May'
-      }, {
-        month: '06',
-        description: 'June'
-      }, {
-        month: '07',
-        description: 'July'
-      }, {
-        month: '08',
-        description: 'August'
-      }, {
-        month: '09',
-        description: 'September'
-      }, {
-        month: '10',
-        description: 'October'
-      }, {
-        month: '11',
-        description: 'November'
-      }, {
-        month: '12',
-        description: 'December'
-      }
-    ];
     $scope.countries = ['United States', 'Canada'];
     $scope.submitted = false;
     $scope.interacted = function(field) {
       return $scope.submitted || field.$dirty;
     };
-    $scope.submit = function(registrationForm, dob, royaltyEarningsFile) {
+    $scope.submit = function(registrationForm, dob, royaltyEarningsFile, serverUrl) {
       $scope.submitted = true;
       if (!registrationForm.$valid) {
         return;
@@ -137,6 +83,7 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
       return confirm();
     };
     $scope.saveForm = function() {
+      var auth, req;
       if ($scope.postType.type === 'form') {
         Upload.upload({
           url: 'https://api.lyricfinancial.com/vendorAPI/v1/clients',
@@ -158,13 +105,23 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
         });
         return;
       }
-      return Client.save($scope.clientData).$promise.then(function(resp) {
-        return advanceRequestComplete(resp.headers.access_token);
+      auth = $base64.encode("ascap:WxjXgrzzGzrkPMv7hBFJ@PMkQX9e3e2N");
+      req = {
+        method: 'POST',
+        url: 'https://api.lyricfinancial.com/vendorAPI/v1/json/clients',
+        headers: {
+          'Content-Type': 'application/json;',
+          'vendorId': 'ascap',
+          'Authorization': "Basic " + auth
+        },
+        data: $scope.clientData
+      };
+      return $http(req).then(function(resp) {
+        return advanceRequestComplete(resp.access_token);
       })["catch"](function() {
         return advanceRequestError();
       });
     };
-    document.addEventListener('confirmationComplete', $scope.saveForm);
-    return $state.go('demo.edit');
+    return document.addEventListener('confirmationComplete', $scope.saveForm);
   }
 ]);
