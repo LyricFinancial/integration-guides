@@ -4,7 +4,13 @@ angular.module("demo-server/demo-server.tpl.html", []).run(["$templateCache", fu
   $templateCache.put("demo-server/demo-server.tpl.html",
     "<div id=\"content\">\n" +
     "	<md-content layout-padding>\n" +
-    "		<p class=\"info\">This demo mimics calling the vendor's server passing the vendorClientAccountId.  The client information is looked up on the server then passed to the Lyric registration API.  Click <a ui-sref=\"demo\">&lt;here&gt;</a> to go to the client demo.</p>\n" +
+    "		<md-toolbar>\n" +
+    "			<div class=\"md-toolbar-tools\">\n" +
+    "				<h3>Server Demo</h3>\n" +
+    "				<br/>\n" +
+    "  			<h5 class=\"md-flex\">This demo mimics calling the vendor's server passing the vendorClientAccountId.  The client information is looked up on the server then passed to the Lyric registration API.  <a ui-sref=\"demo\"> &lt;Client Demo&gt; </a></h5>\n" +
+    "			</div>\n" +
+    "		</md-toolbar>\n" +
     "		\n" +
     "\n" +
     "		<div layout-gt-md=\"row\" layout=\"column\" layout-padding>\n" +
@@ -21,7 +27,6 @@ angular.module("demo-server/demo-server.tpl.html", []).run(["$templateCache", fu
     "				  <p>{{clientData.firstName}} {{clientData.lastName}}<br>\n" +
     "				    {{clientData.address1}}<br>\n" +
     "				    {{clientData.city}}, {{clientData.state}} {{clientData.zip}}</p>\n" +
-    "				  <p> {{clientData.vendorClientAccountId}}\n" +
     "				</div>\n" +
     "				<br/>\n" +
     "			</div>\n" +
@@ -35,23 +40,52 @@ angular.module("demo-server/demo-server.tpl.html", []).run(["$templateCache", fu
     "				</md-toolbar>\n" +
     "				\n" +
     "		\n" +
-    "				<section layout=\"row\" layout-align=\"end center\" layout-padding>\n" +
-    "					<md-radio-group ng-model=\"postType.type\">\n" +
-    "				    <md-radio-button value=\"json\" class=\"md-primary\">JSON</md-radio-button>\n" +
-    "				    <md-radio-button value=\"form\" class=\"md-primary\">Form</md-radio-button>\n" +
-    "				    <md-radio-button value=\"base64Encoded\" class=\"md-primary\">Base64 Encoded</md-radio-button>\n" +
-    "				  </md-radio-group>\n" +
+    "				<section layout=\"row\" layout-align=\"center\" layout-padding>\n" +
     "					<md-button class=\"md-raised md-primary\" onclick=\"confirm()\">Get Advance</md-button>\n" +
     "				</section>\n" +
-    "				<div layout-gt-md=\"row\" layout=\"column\">\n" +
-    "				  <md-input-container flex>\n" +
-    "				    <label>Server Url</label>\n" +
-    "				    <input ng-model=\"server.url\" name=\"serverUrl\" required>\n" +
-    "				    <div class=\"error-messages\" ng-if=\"interacted(registrationForm.serverUrl)\" ng-messages=\"registrationForm.serverUrl.$error\">\n" +
-    "							<div ng-messages-include=\"custom-messages\"></div>\n" +
-    "						</div>\n" +
-    "				  </md-input-container>\n" +
-    "				</div>\n" +
+    "\n" +
+    "				<a ng-click=\"showChildren = !showChildren\" ng-init=\"showChildren = false\">Advanced Options</a>\n" +
+    "\n" +
+    "				<md-content ng-if=\"showChildren\">\n" +
+    "					<br/>\n" +
+    "			  	<div layout-gt-md=\"row\" layout=\"column\">\n" +
+    "					  <md-input-container flex>\n" +
+    "					    <label>Server Url</label>\n" +
+    "					    <input ng-model=\"server.url\" name=\"serverUrl\" required>\n" +
+    "					    <div class=\"error-messages\" ng-if=\"interacted(registrationForm.serverUrl)\" ng-messages=\"registrationForm.serverUrl.$error\">\n" +
+    "								<div ng-messages-include=\"custom-messages\"></div>\n" +
+    "							</div>\n" +
+    "					  </md-input-container>\n" +
+    "					</div>\n" +
+    "					<p>Content Type</p>\n" +
+    "					<div layout=\"column\" layout-padding>\n" +
+    "						<md-radio-group ng-model=\"options.contentType\">\n" +
+    "					    <md-radio-button value=\"application/json\" class=\"md-primary\">JSON</md-radio-button>\n" +
+    "\n" +
+    "					    <div layout=\"column\" layout-padding ng-if=\"options.contentType == 'application/json'\">\n" +
+    "					    	Royalty Earnings Content Type\n" +
+    "						    <md-radio-group ng-model=\"options.jsonRoyaltyEarningsContentType\">\n" +
+    "							    <md-radio-button value=\"text/csv\" class=\"md-primary\">CSV</md-radio-button>\n" +
+    "							    <md-radio-button value=\"application/protobuf\" class=\"md-primary\">Protobuf</md-radio-button>\n" +
+    "							    <md-radio-button value=\"application/zip\" class=\"md-primary\">Zip File</md-radio-button>\n" +
+    "							  </md-radio-group>\n" +
+    "							</div>\n" +
+    "\n" +
+    "					    <md-radio-button value=\"multipart/form-data\" class=\"md-primary\">Multipart Form</md-radio-button>\n" +
+    "\n" +
+    "					    <div layout=\"column\" layout-padding ng-if=\"options.contentType == 'multipart/form-data'\">\n" +
+    "					    	Royalty Earnings Content Type\n" +
+    "						    <md-radio-group ng-model=\"options.multipartRoyaltyEarningsContentType\">\n" +
+    "							    <md-radio-button value=\"text/csv\" class=\"md-primary\">CSV</md-radio-button>\n" +
+    "							    <md-radio-button value=\"application/protobuf\" class=\"md-primary\">Protobuf</md-radio-button>\n" +
+    "							    <md-radio-button value=\"application/zip\" class=\"md-primary\">Zip File</md-radio-button>\n" +
+    "							  </md-radio-group>\n" +
+    "							</div>\n" +
+    "					  </md-radio-group>\n" +
+    "					</div>\n" +
+    "				<md-content>\n" +
+    "\n" +
+    "				\n" +
     "				\n" +
     "			</div>\n" +
     "		</div>\n" +
@@ -68,7 +102,14 @@ angular.module("demo/demo.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "<div id=\"content\">\n" +
     "	<md-content layout-padding>\n" +
-    "		<p class=\"info\">This demo mimics calling Lyric registration API directly (Not Recommended). Click <a ui-sref=\"demo-server\">&lt;here&gt;</a> to go to the server demo.</p>\n" +
+    "		<!-- <p class=\"info\">This demo mimics calling Lyric registration API directly (Not Recommended). <a ui-sref=\"demo-server\">&lt;Server Demo&gt;</a></p> -->\n" +
+    "		<md-toolbar>\n" +
+    "			<div class=\"md-toolbar-tools\">\n" +
+    "				<h3>Client Demo</h3>\n" +
+    "				<br/>\n" +
+    "  			<h5 class=\"md-flex\">This demo mimics calling Lyric registration API directly (Not Recommended). Exposes vendorId, username and password. Really should be used for testing purposes only. <a ui-sref=\"demo-server\">  &lt;Server Demo&gt;  </a> </h5>\n" +
+    "			</div>\n" +
+    "		</md-toolbar>\n" +
     "\n" +
     "		<form name=\"registrationForm\" ng-submit=\"submit(registrationForm, dob, royaltyEarningsFile)\" novalidate>\n" +
     "\n" +
@@ -278,14 +319,57 @@ angular.module("demo/demo.tpl.html", []).run(["$templateCache", function($templa
     "					<input type=\"file\" ngf-select ng-model=\"royaltyEarningsFile\" name=\"file\" ngf-pattern=\"'text/csv'\" ngf-accept=\"'text/csv'\" ngf-max-size=\"2MB\" ngf-model-invalid=\"errorFiles\">\n" +
     "\n" +
     "					<section layout=\"row\" layout-align=\"end center\" layout-padding>\n" +
-    "						<md-radio-group ng-model=\"postType.type\">\n" +
-    "				      <md-radio-button value=\"json\" class=\"md-primary\">JSON</md-radio-button>\n" +
-    "				      <md-radio-button value=\"form\" class=\"md-primary\">Form</md-radio-button>\n" +
-    "				      <md-radio-button value=\"base64Encoded\" class=\"md-primary\">Base64 Encoded</md-radio-button>\n" +
-    "				    </md-radio-group>\n" +
     "	        	<md-button type=\"submit\" class=\"md-raised md-primary\">Get Advance</md-button>\n" +
     "	        	<!-- <md-button class=\"md-raised md-primary\" onclick=\"getAdvance()\">Get Advance</md-button> -->\n" +
     "	      	</section>\n" +
+    "\n" +
+    "	      	<a ng-click=\"showChildren = !showChildren\" ng-init=\"showChildren = false\">Advanced Options</a>\n" +
+    "\n" +
+    "					<md-content ng-if=\"showChildren\">\n" +
+    "						<br/>\n" +
+    "				  	<div layout-gt-md=\"row\" layout=\"column\">\n" +
+    "						  <md-input-container flex>\n" +
+    "						    <label>API Url</label>\n" +
+    "						    <input ng-model=\"api.url\" name=\"apiUrl\" required>\n" +
+    "						    <div class=\"error-messages\" ng-if=\"interacted(registrationForm.apiUrl)\" ng-messages=\"registrationForm.apiUrl.$error\">\n" +
+    "									<div ng-messages-include=\"custom-messages\"></div>\n" +
+    "								</div>\n" +
+    "						  </md-input-container>\n" +
+    "						</div>\n" +
+    "						<div layout-gt-md=\"row\" layout=\"column\">\n" +
+    "							<md-input-container flex>\n" +
+    "						    <label>Vendor Id</label>\n" +
+    "						    <input ng-model=\"api.vendorId\" name=\"vendorId\" required>\n" +
+    "						    <div class=\"error-messages\" ng-if=\"interacted(registrationForm.vendorId)\" ng-messages=\"registrationForm.vendorId.$error\">\n" +
+    "									<div ng-messages-include=\"custom-messages\"></div>\n" +
+    "								</div>\n" +
+    "						  </md-input-container>\n" +
+    "						  <md-input-container flex>\n" +
+    "						    <label>Username</label>\n" +
+    "						    <input ng-model=\"api.username\" name=\"username\" required>\n" +
+    "						    <div class=\"error-messages\" ng-if=\"interacted(registrationForm.username)\" ng-messages=\"registrationForm.username.$error\">\n" +
+    "									<div ng-messages-include=\"custom-messages\"></div>\n" +
+    "								</div>\n" +
+    "						  </md-input-container>\n" +
+    "						</div>\n" +
+    "						<div layout-gt-md=\"row\" layout=\"column\">\n" +
+    "						  <md-input-container flex>\n" +
+    "						    <label>Password</label>\n" +
+    "						    <input ng-model=\"api.password\" name=\"password\" required>\n" +
+    "						    <div class=\"error-messages\" ng-if=\"interacted(registrationForm.password)\" ng-messages=\"registrationForm.password.$error\">\n" +
+    "									<div ng-messages-include=\"custom-messages\"></div>\n" +
+    "								</div>\n" +
+    "						  </md-input-container>\n" +
+    "						</div>\n" +
+    "						<p>Content Type</p>\n" +
+    "						<div layout-gt-md=\"row\" layout=\"column\" layout-padding>\n" +
+    "							<md-radio-group ng-model=\"api.contentType\">\n" +
+    "						    <md-radio-button value=\"application/json\" class=\"md-primary\">JSON</md-radio-button>\n" +
+    "						    <md-radio-button ng-disabled=\"true\" value=\"multipart/form-data\" class=\"md-primary\">Multipart Form</md-radio-button>\n" +
+    "						  </md-radio-group>\n" +
+    "						</div>\n" +
+    "					<md-content>\n" +
+    "\n" +
     "				</div>\n" +
     "			</div>\n" +
     "		</form>\n" +

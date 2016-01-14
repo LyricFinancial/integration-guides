@@ -6747,16 +6747,6 @@ button.close {
 .error-messages.ng-active {
   color: red;
 }
-.info {
-  border: 2px;
-  background-color: #3f51b5;
-  padding: 5px;
-  color: white;
-  margin: 10px;
-}
-.info a {
-  color: white;
-}
 /**
  * Typography
  */

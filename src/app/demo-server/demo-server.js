@@ -23,43 +23,25 @@ angular.module('lyricvendordemo.demo-server', ['ui.router', 'ui.bootstrap', 'ngF
       address1: '327 S 87 St',
       city: 'Omaha',
       state: 'NE',
-      zipCode: '68123',
-      vendorClientAccountId: 'ascaptest1269'
+      zipCode: '68123'
     };
     $scope.server = {
-      url: "https://lyric-demo-server.herokuapp.com"
+      url: "https://lyric-demo-server.herokuapp.com/clients/ascaptest123/advance"
     };
-    $scope.royaltyEarnings = {
-      earnings: [
-        {
-          source: '',
-          nameOnAccount: '',
-          accountNumber: '',
-          estimatedRoyalties: ''
-        }, {
-          source: '',
-          nameOnAccount: '',
-          accountNumber: '',
-          estimatedRoyalties: ''
-        }, {
-          source: '',
-          nameOnAccount: '',
-          accountNumber: '',
-          estimatedRoyalties: ''
-        }
-      ]
-    };
-    $scope.postType = {
-      type: "json"
+    $scope.options = {
+      contentType: "application/json",
+      jsonRoyaltyEarningsContentType: "text/csv",
+      multipartRoyaltyEarningsContentType: "text/csv"
     };
     $scope.requestAdvance = function() {
       var req;
       req = {
         method: 'POST',
-        url: $scope.server.url + '/clients/' + $scope.clientData.vendorClientAccountId + '/advance',
+        url: $scope.server.url,
         headers: {
           'Content-Type': "application/json;"
-        }
+        },
+        data: $scope.options
       };
       return $http(req).then(function(resp) {
         return advanceRequestComplete(resp.access_token);
