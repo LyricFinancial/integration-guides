@@ -53,7 +53,7 @@ angular.module( 'lyricvendordemo.demo-server', [
 
       $http(req)
       .then (resp) ->
-        advanceRequestComplete(resp.access_token)
+        advanceRequestComplete(resp.data.access_token)
       .catch ->
         advanceRequestError()
 
