@@ -112,7 +112,7 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
         method: 'POST',
         url: $scope.api.url,
         headers: {
-          'Content-Type': 'application/json;',
+          'Content-Type': 'application/json',
           'vendorId': $scope.api.vendorId,
           'Authorization': "Basic " + auth
         },
