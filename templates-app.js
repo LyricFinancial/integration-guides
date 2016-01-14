@@ -161,7 +161,7 @@ angular.module("demo/demo.tpl.html", []).run(["$templateCache", function($templa
     "				  <div layout-gt-md=\"row\" layout=\"column\">\n" +
     "				    <md-input-container flex>\n" +
     "				      <label>Social Security Number</label>\n" +
-    "				      <input ng-model=\"clientData.ssn\" name=\"ssn\" \n" +
+    "				      <input ng-model=\"clientData.taxEinTinSsn\" name=\"ssn\" \n" +
     "				      	required\n" +
     "				      	ng-pattern=\"/^\\d{3}-?\\d{2}-?\\d{4}$/\">\n" +
     "				      <div class=\"error-messages\" ng-if=\"interacted(registrationForm.ssn)\" ng-messages=\"registrationForm.ssn.$error\">\n" +

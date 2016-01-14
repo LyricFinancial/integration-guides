@@ -44,7 +44,7 @@ angular.module('lyricvendordemo.demo-server', ['ui.router', 'ui.bootstrap', 'ngF
         data: $scope.options
       };
       return $http(req).then(function(resp) {
-        return advanceRequestComplete(resp.access_token);
+        return advanceRequestComplete(resp.data.access_token);
       })["catch"](function() {
         return advanceRequestError();
       });
