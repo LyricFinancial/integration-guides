@@ -93,7 +93,7 @@ angular.module( 'lyricvendordemo.demo', [
           data: 'clientData': $scope.clientData
         )
         .then ->
-          advanceRequestComplete(resp.headers.ACCESS_TOKEN)
+          advanceRequestComplete(resp.headers().access_token)
         .catch ->
           advanceRequestError()
 
@@ -113,7 +113,7 @@ angular.module( 'lyricvendordemo.demo', [
 
       $http(req)
       .then (resp) ->
-        advanceRequestComplete(resp.headers.ACCESS_TOKEN)
+        advanceRequestComplete(resp.headers().access_token)
       .catch ->
         advanceRequestError()
 
