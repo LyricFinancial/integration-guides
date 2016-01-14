@@ -5,32 +5,56 @@ angular.module("demo-server/demo-server.tpl.html", []).run(["$templateCache", fu
     "<div id=\"content\">\n" +
     "	<md-content layout-padding>\n" +
     "		<p class=\"info\">This demo mimics calling the vendor's server passing the vendorClientAccountId.  The client information is looked up on the server then passed to the Lyric registration API.  Click <a ui-sref=\"demo\">&lt;here&gt;</a> to go to the client demo.</p>\n" +
-    "		<h2>My Membership</h2>\n" +
-    "		<div class=\"your-info\">\n" +
-    "		  <span>Current Address: <a class=\"edit\" ui-sref=\"demo.edit\">Edit</a></span>\n" +
-    "		  <p>{{clientData.firstName}} {{clientData.lastName}}<br>\n" +
-    "		    {{clientData.address1}}<br>\n" +
-    "		    {{clientData.city}}, {{clientData.state}} {{clientData.zip}}</p>\n" +
-    "		  <p> {{clientData.vendorClientAccountId}}\n" +
-    "		</div>\n" +
-    "		<br/>\n" +
-    "		<div layout-gt-md=\"row\" layout=\"column\">\n" +
-    "		  <md-input-container flex>\n" +
-    "		    <label>Server Url</label>\n" +
-    "		    <input ng-model=\"server.url\" name=\"serverUrl\" required>\n" +
-    "		    <div class=\"error-messages\" ng-if=\"interacted(registrationForm.serverUrl)\" ng-messages=\"registrationForm.serverUrl.$error\">\n" +
-    "					<div ng-messages-include=\"custom-messages\"></div>\n" +
+    "		\n" +
+    "\n" +
+    "		<div layout-gt-md=\"row\" layout=\"column\" layout-padding>\n" +
+    "\n" +
+    "			<div flex>\n" +
+    "				<md-toolbar>\n" +
+    "					<div class=\"md-toolbar-tools\">\n" +
+    "		  			<h3 class=\"md-flex\">My Membership</h3>\n" +
+    "					</div>\n" +
+    "				</md-toolbar>\n" +
+    "				<br/>\n" +
+    "				<div class=\"your-info\">\n" +
+    "				  <span>Current Address: <a class=\"edit\" ui-sref=\"demo.edit\">Edit</a></span>\n" +
+    "				  <p>{{clientData.firstName}} {{clientData.lastName}}<br>\n" +
+    "				    {{clientData.address1}}<br>\n" +
+    "				    {{clientData.city}}, {{clientData.state}} {{clientData.zip}}</p>\n" +
+    "				  <p> {{clientData.vendorClientAccountId}}\n" +
     "				</div>\n" +
-    "		  </md-input-container>\n" +
+    "				<br/>\n" +
+    "			</div>\n" +
+    "\n" +
+    "\n" +
+    "			<div flex>\n" +
+    "				<md-toolbar>\n" +
+    "					<div class=\"md-toolbar-tools\">\n" +
+    "		  			<h3 class=\"md-flex\">My Royalties</h3>\n" +
+    "					</div>\n" +
+    "				</md-toolbar>\n" +
+    "				\n" +
+    "		\n" +
+    "				<section layout=\"row\" layout-align=\"end center\" layout-padding>\n" +
+    "					<md-radio-group ng-model=\"postType.type\">\n" +
+    "				    <md-radio-button value=\"json\" class=\"md-primary\">JSON</md-radio-button>\n" +
+    "				    <md-radio-button value=\"form\" class=\"md-primary\">Form</md-radio-button>\n" +
+    "				    <md-radio-button value=\"base64Encoded\" class=\"md-primary\">Base64 Encoded</md-radio-button>\n" +
+    "				  </md-radio-group>\n" +
+    "					<md-button class=\"md-raised md-primary\" onclick=\"confirm()\">Get Advance</md-button>\n" +
+    "				</section>\n" +
+    "				<div layout-gt-md=\"row\" layout=\"column\">\n" +
+    "				  <md-input-container flex>\n" +
+    "				    <label>Server Url</label>\n" +
+    "				    <input ng-model=\"server.url\" name=\"serverUrl\" required>\n" +
+    "				    <div class=\"error-messages\" ng-if=\"interacted(registrationForm.serverUrl)\" ng-messages=\"registrationForm.serverUrl.$error\">\n" +
+    "							<div ng-messages-include=\"custom-messages\"></div>\n" +
+    "						</div>\n" +
+    "				  </md-input-container>\n" +
+    "				</div>\n" +
+    "				\n" +
+    "			</div>\n" +
     "		</div>\n" +
-    "		<section layout=\"row\" layout-align=\"end center\" layout-padding>\n" +
-    "			<md-radio-group ng-model=\"postType.type\">\n" +
-    "		    <md-radio-button value=\"json\" class=\"md-primary\">JSON</md-radio-button>\n" +
-    "		    <md-radio-button value=\"form\" class=\"md-primary\">Form</md-radio-button>\n" +
-    "		    <md-radio-button value=\"base64Encoded\" class=\"md-primary\">Base64 Encoded</md-radio-button>\n" +
-    "		  </md-radio-group>\n" +
-    "			<md-button class=\"md-raised md-primary\" onclick=\"confirm()\">Get Advance</md-button>\n" +
-    "		</section>\n" +
     "	</md-content>\n" +
     "</div>");
 }]);
