@@ -44,15 +44,19 @@ angular.module( 'lyricvendordemo.demo', [
       bankAccountType: 'checking'
     }
 
-    $scope.server = { url:"https://lyric-demo-server.herokuapp.com"}
+    $scope.api = {
+      url: 'https://api.lyricfinancial.com/vendorAPI/v1/json/clients',
+      vendorId: 'ascap',
+      username: 'ascap',
+      password: 'WxjXgrzzGzrkPMv7hBFJ@PMkQX9e3e2N',
+      contentType: 'application/json'
+    }
 
     $scope.royaltyEarnings = {earnings: [
       { source: '', nameOnAccount: '', accountNumber: '', estimatedRoyalties: ''},
       { source: '', nameOnAccount: '', accountNumber: '', estimatedRoyalties: ''},
       { source: '', nameOnAccount: '', accountNumber: '', estimatedRoyalties: ''}
     ]}
-
-    $scope.postType = {type: "json"}
 
     $scope.accountTypes = [{code: 'savings', description: 'Savings'},
                            {code: 'checking', description: 'Checking'}]
@@ -77,7 +81,7 @@ angular.module( 'lyricvendordemo.demo', [
 
     $scope.saveForm = ->
  
-      if $scope.postType.type == 'form'
+      if $scope.api.contentType == 'multipart/form-data'
         Upload.upload(
           url: 'https://api.lyricfinancial.com/vendorAPI/v1/clients'
           file: $scope.royaltyEarningsFile
@@ -94,14 +98,14 @@ angular.module( 'lyricvendordemo.demo', [
 
         return
 
-      auth = $base64.encode("ascap:WxjXgrzzGzrkPMv7hBFJ@PMkQX9e3e2N")
+      auth = $base64.encode($scope.api.username + ":" + $scope.api.password)
 
       req =
         method: 'POST'
-        url: 'https://api.lyricfinancial.com/vendorAPI/v1/json/clients'
+        url: $scope.api.url
         headers: {
           'Content-Type': 'application/json;'
-          'vendorId': 'ascap'
+          'vendorId': $scope.api.vendorId
           'Authorization': "Basic " + auth
         }
         data: $scope.clientData

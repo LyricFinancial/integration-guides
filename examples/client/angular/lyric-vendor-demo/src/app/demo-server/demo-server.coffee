@@ -32,43 +32,24 @@ angular.module( 'lyricvendordemo.demo-server', [
       address1: '327 S 87 St',
       city: 'Omaha',
       state: 'NE',
-      zipCode: '68123',
-      vendorClientAccountId: 'ascaptest1269'
+      zipCode: '68123'
     }
 
-    $scope.server = { url:"https://lyric-demo-server.herokuapp.com"}
+    $scope.server = { url:"https://lyric-demo-server.herokuapp.com/clients/ascaptest123/advance"}
 
-    $scope.royaltyEarnings = {earnings: [
-      { source: '', nameOnAccount: '', accountNumber: '', estimatedRoyalties: ''},
-      { source: '', nameOnAccount: '', accountNumber: '', estimatedRoyalties: ''},
-      { source: '', nameOnAccount: '', accountNumber: '', estimatedRoyalties: ''}
-    ]}
-
-    $scope.postType = {type: "json"}
+    $scope.options = {
+      contentType: "application/json"
+      jsonRoyaltyEarningsContentType: "text/csv"
+      multipartRoyaltyEarningsContentType: "text/csv"
+    }
 
     $scope.requestAdvance = ->
- 
-      # if $scope.postType.type == 'form'
-      #   Upload.upload(
-      #     url: 'https://api.lyricfinancial.com/vendorAPI/v1/clients'
-      #     file: $scope.royaltyEarningsFile
-      #     method: 'POST'
-      #     headers: 'content-type': 'multipart/form-data', 'vendorId':'ascap'
-      #     fileName: 'doc.jpg'
-      #     fileFormDataName: 'myFile'
-      #     data: 'clientData': $scope.clientData
-      #   )
-      #   .then ->
-      #     advanceRequestComplete(resp.headers.ACCESS_TOKEN)
-      #   .catch ->
-      #     advanceRequestError()
-
-      #   return
 
       req =
         method: 'POST'
-        url: $scope.server.url + '/clients/' + $scope.clientData.vendorClientAccountId + '/advance'
+        url: $scope.server.url
         headers: 'Content-Type': "application/json;"
+        data: $scope.options
 
       $http(req)
       .then (resp) ->
