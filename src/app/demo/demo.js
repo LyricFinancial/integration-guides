@@ -124,6 +124,9 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
         return advanceRequestError();
       });
     };
-    return document.addEventListener('confirmationComplete', $scope.saveForm);
+    document.addEventListener('confirmationComplete', $scope.saveForm);
+    return $scope.$on('$destroy', function() {
+      return document.removeEventListener('confirmationComplete', $scope.saveForm);
+    });
   }
 ]);

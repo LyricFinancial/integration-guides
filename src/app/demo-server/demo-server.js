@@ -49,6 +49,9 @@ angular.module('lyricvendordemo.demo-server', ['ui.router', 'ui.bootstrap', 'ngF
         return advanceRequestError();
       });
     };
-    return document.addEventListener('confirmationComplete', $scope.requestAdvance);
+    document.addEventListener('confirmationComplete', $scope.requestAdvance);
+    return $scope.$on('$destroy', function() {
+      return document.removeEventListener('confirmationComplete', $scope.requestAdvance);
+    });
   }
 ]);
