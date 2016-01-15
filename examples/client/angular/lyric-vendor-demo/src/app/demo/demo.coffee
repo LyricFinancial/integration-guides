@@ -118,5 +118,8 @@ angular.module( 'lyricvendordemo.demo', [
         advanceRequestError()
 
     document.addEventListener 'confirmationComplete', $scope.saveForm
+
+    $scope.$on '$destroy', ->
+      document.removeEventListener 'confirmationComplete', $scope.saveForm
 ])
 

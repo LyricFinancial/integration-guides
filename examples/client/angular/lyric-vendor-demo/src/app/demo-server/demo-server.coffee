@@ -58,5 +58,8 @@ angular.module( 'lyricvendordemo.demo-server', [
         advanceRequestError()
 
     document.addEventListener 'confirmationComplete', $scope.requestAdvance
+
+    $scope.$on '$destroy', ->
+      document.removeEventListener 'confirmationComplete', $scope.requestAdvance
 ])
 
