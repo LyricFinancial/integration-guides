@@ -16,31 +16,33 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
     };
   }
 ]).controller('DemoCtrl', [
-  '$scope', '_', '$filter', '$http', '$base64', function($scope, _, $filter, $http, $base64) {
+  '$scope', '_', '$filter', '$http', '$base64', 'Upload', function($scope, _, $filter, $http, $base64, Upload) {
     $scope.clientData = {
       firstName: 'Paul',
       lastName: 'Williams',
       address1: '327 S 87 St',
-      email: 'test52@email.com',
+      email: 'test131ai@email.com',
       city: 'Omaha',
       state: 'NE',
       zipCode: '68123',
-      vendorClientAccountId: 'ascaptest1269',
-      taxEinTinSsn: '333-44-5547',
+      vendorClientAccountId: 'ascaptest1314ai',
+      taxEinTinSsn: '322-14-1396',
       tinType: 'ssn',
-      phone: '2075554448',
-      mobilePhone: '2075556648',
+      phone: '207-515-1696',
+      mobilePhone: '207-515-2997',
       bankName: 'TD Bank',
       bankAccountNumber: '12345678',
       bankRoutingNumber: '211274450',
-      bankAccountType: 'checking'
+      bankAccountType: 'checking',
+      gender: 'male'
     };
     $scope.api = {
-      url: 'https://api.lyricfinancial.com/vendorAPI/v1/json/clients',
+      url: 'http://server.dev:8082/clients/:vendorId/advance',
       vendorId: 'ascap',
       username: 'ascap',
       password: 'WxjXgrzzGzrkPMv7hBFJ@PMkQX9e3e2N',
-      contentType: 'application/json'
+      contentType: 'application/json',
+      royaltyEarningsContentType: 'text/csv'
     };
     $scope.royaltyEarnings = {
       earnings: [
@@ -76,52 +78,56 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
     $scope.interacted = function(field) {
       return $scope.submitted || field.$dirty;
     };
-    $scope.submit = function(registrationForm, dob, royaltyEarningsFile, serverUrl) {
+    $scope.submit = function(registrationForm, royaltyEarningsFile) {
       $scope.submitted = true;
       if (!registrationForm.$valid) {
         return;
       }
-      $scope.clientData.dob = $filter('date')(dob, 'yyyy-MM-dd');
+      $scope.api.url = $scope.api.url.replace(':vendorId', $scope.clientData.vendorClientAccountId);
+      $scope.clientData.dob = $filter('date')(registrationForm.dob.$viewValue, 'yyyy-MM-dd');
+      if (registrationForm.royaltyEarningsFile != null) {
+        $scope.royaltyEarningsFile = registrationForm.royaltyEarningsFile.$viewValue;
+      }
       return confirm();
     };
     $scope.saveForm = function() {
-      var auth, req;
+      var auth, req, request;
+      auth = $base64.encode($scope.api.username + ":" + $scope.api.password);
       if ($scope.api.contentType === 'multipart/form-data') {
-        Upload.upload({
-          url: 'https://api.lyricfinancial.com/vendorAPI/v1/clients',
-          file: $scope.royaltyEarningsFile,
+        request = Upload.upload({
+          url: $scope.api.url,
           method: 'POST',
           headers: {
-            'content-type': 'multipart/form-data',
-            'vendorId': 'ascap'
+            'vendorId': 'ascap',
+            'Authorization': "Basic " + auth
           },
-          fileName: 'doc.jpg',
-          fileFormDataName: 'myFile',
+          fileName: 'royalties.csv',
+          fileFormDataName: 'royaltyEarnings',
           data: {
-            'clientData': $scope.clientData
+            'royaltyEarnings': $scope.royaltyEarningsFile,
+            'clientData': JSON.stringify($scope.clientData)
           }
-        }).then(function() {
-          return advanceRequestComplete(resp.headers().access_token);
-        })["catch"](function() {
-          return advanceRequestError();
         });
-        return;
+      } else {
+        if ($scope.api.royaltyEarningsContentType === 'text/csv') {
+          $scope.clientData.royaltyEarnings = $base64.encode($scope.api.csvData);
+        }
+        req = {
+          method: 'POST',
+          url: $scope.api.url,
+          headers: {
+            'content-type': 'application/json',
+            'vendorId': $scope.api.vendorId,
+            'Authorization': "Basic " + auth
+          },
+          data: $scope.clientData
+        };
+        request = $http(req);
       }
-      auth = $base64.encode($scope.api.username + ":" + $scope.api.password);
-      req = {
-        method: 'POST',
-        url: $scope.api.url,
-        headers: {
-          'Content-Type': 'application/json',
-          'vendorId': $scope.api.vendorId,
-          'Authorization': "Basic " + auth
-        },
-        data: $scope.clientData
-      };
-      return $http(req).then(function(resp) {
+      return request.then(function(resp) {
         return advanceRequestComplete(resp.headers().access_token);
-      })["catch"](function() {
-        return advanceRequestError();
+      })["catch"](function(error) {
+        return advanceRequestError(error);
       });
     };
     document.addEventListener('confirmationComplete', $scope.saveForm);

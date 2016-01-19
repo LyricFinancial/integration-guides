@@ -39,12 +39,12 @@ angular.module('lyricvendordemo.demo-server', ['ui.router', 'ui.bootstrap', 'ngF
         method: 'POST',
         url: $scope.server.url,
         headers: {
-          'Content-Type': "application/json;"
+          'Content-Type': "application/json"
         },
         data: $scope.options
       };
       return $http(req).then(function(resp) {
-        return advanceRequestComplete(resp.data.access_token);
+        return advanceRequestComplete(resp.headers().access_token);
       })["catch"](function() {
         return advanceRequestError();
       });
