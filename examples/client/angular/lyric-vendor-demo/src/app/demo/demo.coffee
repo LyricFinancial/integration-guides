@@ -24,33 +24,38 @@ angular.module( 'lyricvendordemo.demo', [
   '$filter'
   '$http'
   '$base64'
-  ($scope, _, $filter, $http, $base64) ->
+  'Upload'
+  ($scope, _, $filter, $http, $base64, Upload) ->
 
     $scope.clientData = {
       firstName: 'Paul',
       lastName: 'Williams',
       address1: '327 S 87 St',
-      email: 'test52@email.com'
+      email: 'test131ai@email.com'
       city: 'Omaha',
       state: 'NE',
       zipCode: '68123',
-      vendorClientAccountId: 'ascaptest1269',
-      taxEinTinSsn: '333-44-5547',
+      vendorClientAccountId: 'ascaptest1314ai',
+      taxEinTinSsn: '322-14-1396',
       tinType: 'ssn',
-      phone: '2075554448',
-      mobilePhone: '2075556648',
+      phone: '207-515-1696',
+      mobilePhone: '207-515-2997',
       bankName: 'TD Bank',
       bankAccountNumber: '12345678',
       bankRoutingNumber: '211274450',
-      bankAccountType: 'checking'
+      bankAccountType: 'checking',
+      gender: 'male'
     }
 
     $scope.api = {
-      url: 'https://api.lyricfinancial.com/vendorAPI/v1/json/clients',
+      # url: 'https://api.lyricfinancial.com/vendorAPI/v1/json/clients',
+      # url: 'https://lyric-demo-server.herokuapp.com/clients/:vendorId/advance'
+      url: 'http://server.dev:8082/clients/:vendorId/advance'
       vendorId: 'ascap',
       username: 'ascap',
       password: 'WxjXgrzzGzrkPMv7hBFJ@PMkQX9e3e2N',
       contentType: 'application/json'
+      royaltyEarningsContentType: 'text/csv'
     }
 
     $scope.royaltyEarnings = {earnings: [
@@ -70,52 +75,61 @@ angular.module( 'lyricvendordemo.demo', [
     $scope.interacted = (field) ->
       $scope.submitted || field.$dirty
 
-    $scope.submit = (registrationForm, dob, royaltyEarningsFile, serverUrl)->
+    $scope.submit = (registrationForm, royaltyEarningsFile)->
 
       $scope.submitted = true
       if !registrationForm.$valid
         return
 
-      $scope.clientData.dob = $filter('date')(dob, 'yyyy-MM-dd')
+      $scope.api.url = $scope.api.url.replace ':vendorId', $scope.clientData.vendorClientAccountId
+      $scope.clientData.dob = $filter('date')(registrationForm.dob.$viewValue, 'yyyy-MM-dd')
 
+      if registrationForm.royaltyEarningsFile?
+        $scope.royaltyEarningsFile = registrationForm.royaltyEarningsFile.$viewValue
       confirm()
 
     $scope.saveForm = ->
- 
-      if $scope.api.contentType == 'multipart/form-data'
-        Upload.upload(
-          url: 'https://api.lyricfinancial.com/vendorAPI/v1/clients'
-          file: $scope.royaltyEarningsFile
-          method: 'POST'
-          headers: 'content-type': 'multipart/form-data', 'vendorId':'ascap'
-          fileName: 'doc.jpg'
-          fileFormDataName: 'myFile'
-          data: 'clientData': $scope.clientData
-        )
-        .then ->
-          advanceRequestComplete(resp.headers().access_token)
-        .catch ->
-          advanceRequestError()
-
-        return
 
       auth = $base64.encode($scope.api.username + ":" + $scope.api.password)
+ 
+      if $scope.api.contentType == 'multipart/form-data'
+        request = Upload.upload(
+          url: $scope.api.url
+          method: 'POST'
+          headers: {
+            # 'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryjaK20tBROpxBAbBT'
+            'vendorId':'ascap'
+            'Authorization': "Basic " + auth
+          }
+          fileName: 'royalties.csv'
+          fileFormDataName: 'royaltyEarnings'
+          data: {
+            'royaltyEarnings': $scope.royaltyEarningsFile
+            'clientData': JSON.stringify($scope.clientData)
+          }
+        )
 
-      req =
-        method: 'POST'
-        url: $scope.api.url
-        headers: {
-          'Content-Type': 'application/json'
-          'vendorId': $scope.api.vendorId
-          'Authorization': "Basic " + auth
-        }
-        data: $scope.clientData
+      else
+        if $scope.api.royaltyEarningsContentType == 'text/csv'
+          $scope.clientData.royaltyEarnings = $base64.encode($scope.api.csvData)
 
-      $http(req)
+        req =
+          method: 'POST'
+          url: $scope.api.url
+          headers: {
+            'content-type': 'application/json'
+            'vendorId': $scope.api.vendorId
+            'Authorization': "Basic " + auth
+          }
+          data: $scope.clientData
+
+        request = $http(req)
+
+      request
       .then (resp) ->
         advanceRequestComplete(resp.headers().access_token)
-      .catch ->
-        advanceRequestError()
+      .catch (error) ->
+        advanceRequestError(error)
 
     document.addEventListener 'confirmationComplete', $scope.saveForm
 

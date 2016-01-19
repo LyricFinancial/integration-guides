@@ -23,6 +23,5 @@ angular.module( 'lyricvendordemo', [
   '$scope'
   '$location'
   ($scope, $location) ->
-
-
+    
 ])

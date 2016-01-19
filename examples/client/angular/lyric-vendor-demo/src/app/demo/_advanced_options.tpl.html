@@ -1,0 +1,40 @@
+<a ng-click="showChildren = !showChildren" ng-init="showChildren = false">Advanced Options</a>
+
+<md-content ng-if="showChildren">
+	<br/>
+	<div layout-gt-md="row" layout="column">
+	  <md-input-container flex>
+	    <label>API Url</label>
+	    <input ng-model="api.url" name="apiUrl" required>
+	    <div class="error-messages" ng-if="interacted(registrationForm.apiUrl)" ng-messages="registrationForm.apiUrl.$error">
+				<div ng-messages-include="custom-messages"></div>
+			</div>
+	  </md-input-container>
+	</div>
+	<div layout-gt-md="row" layout="column">
+		<md-input-container flex>
+	    <label>Vendor Id</label>
+	    <input ng-model="api.vendorId" name="vendorId" required>
+	    <div class="error-messages" ng-if="interacted(registrationForm.vendorId)" ng-messages="registrationForm.vendorId.$error">
+				<div ng-messages-include="custom-messages"></div>
+			</div>
+	  </md-input-container>
+	  <md-input-container flex>
+	    <label>Username</label>
+	    <input ng-model="api.username" name="username" required>
+	    <div class="error-messages" ng-if="interacted(registrationForm.username)" ng-messages="registrationForm.username.$error">
+				<div ng-messages-include="custom-messages"></div>
+			</div>
+	  </md-input-container>
+	</div>
+	<div layout-gt-md="row" layout="column">
+	  <md-input-container flex>
+	    <label>Password</label>
+	    <input ng-model="api.password" name="password" required>
+	    <div class="error-messages" ng-if="interacted(registrationForm.password)" ng-messages="registrationForm.password.$error">
+				<div ng-messages-include="custom-messages"></div>
+			</div>
+	  </md-input-container>
+	</div>
+	
+<md-content>

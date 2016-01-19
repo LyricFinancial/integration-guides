@@ -1,0 +1,127 @@
+<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h3 class="md-flex">Personal Information</h3>
+	</div>
+</md-toolbar>
+<br/>
+
+<div layout-gt-md="row" layout="column">
+  <md-input-container flex>
+    <label>Vendor Client Account Id</label>
+    <input ng-model="clientData.vendorClientAccountId" name="vendorClientAccountId" required>
+    <div class="error-messages" ng-if="interacted(registrationForm.vendorClientAccountId)" ng-messages="registrationForm.vendorClientAccountId.$error">
+			<div ng-messages-include="custom-messages"></div>
+		</div>
+  </md-input-container>
+</div>
+
+<div layout-gt-md="row" layout="column">
+  <md-input-container flex>
+    <label>First Name</label>
+    <input ng-model="clientData.firstName" name="firstName" required>
+    <div class="error-messages" ng-if="interacted(registrationForm.firstName)" ng-messages="registrationForm.firstName.$error">
+			<div ng-messages-include="custom-messages"></div>
+		</div>
+  </md-input-container>
+  <md-input-container flex>
+    <label>Last Name</label>
+    <input ng-model="clientData.lastName" name="lastName" required>
+    <div class="error-messages" ng-if="interacted(registrationForm.lastName)" ng-messages="registrationForm.lastName.$error">
+			<div ng-messages-include="custom-messages"></div>
+		</div>
+  </md-input-container>
+</div>
+<div layout-gt-md="row" layout="column">
+  <md-input-container flex>
+    <label>Email</label>
+    <input type="email" ng-model="clientData.email" name="email" required>
+    <div class="error-messages" ng-if="interacted(registrationForm.email)" ng-messages="registrationForm.email.$error">
+			<div ng-messages-include="custom-messages"></div>
+		</div>
+  </md-input-container>
+</div>
+<div layout-gt-md="row" layout="column">
+  <md-input-container flex>
+    <label>Social Security Number</label>
+    <input ng-model="clientData.taxEinTinSsn" name="ssn" 
+    	required
+    	ng-pattern="/^\d{3}-?\d{2}-?\d{4}$/">
+    <div class="error-messages" ng-if="interacted(registrationForm.ssn)" ng-messages="registrationForm.ssn.$error">
+    	<div ng-message="pattern">SSN must be in the following format: XXX-XX-XXXX</div>
+			<div ng-messages-include="custom-messages"></div>
+		</div>
+  </md-input-container>
+  <div flex>
+		<md-datepicker ng-model="dob" md-placeholder="Date of Birth" name="dob" required></md-datepicker>
+		<div class="error-messages" ng-if="interacted(registrationForm.dob)" ng-messages="registrationForm.dob.$error">
+			<div ng-message="valid">Invalid date</div>
+			<div ng-messages-include="custom-messages"></div>
+		</div>
+	</div>
+</div>
+
+<div layout-gt-md="row" layout="column">
+  <md-input-container flex>
+    <label>Primary Phone</label>
+    <input ng-model="clientData.phone" name="phone" required>
+    <div class="error-messages" ng-if="interacted(registrationForm.phone)" ng-messages="registrationForm.phone.$error">
+			<div ng-messages-include="custom-messages"></div>
+		</div>
+  </md-input-container>
+  <md-input-container flex>
+    <label>Mobile Phone</label>
+    <input ng-model="clientData.mobilePhone" name="mobilePhone" required>
+    <div class="error-messages" ng-if="interacted(registrationForm.mobilePhone)" ng-messages="registrationForm.mobilePhone.$error">
+			<div ng-messages-include="custom-messages"></div>
+		</div>
+  </md-input-container>
+</div>
+
+<md-subheader class="md-primary">Address</md-subheader>
+<div layout-gt-md="row" layout="column">
+  <md-input-container flex>
+    <label>Street Address</label>
+    <input ng-model="clientData.address1" name="address1" required>
+    <div class="error-messages" ng-if="interacted(registrationForm.address1)" ng-messages="registrationForm.address1.$error">
+			<div ng-messages-include="custom-messages"></div>
+		</div>
+  </md-input-container>
+</div>
+<div layout-gt-md="row" layout="column">
+  <md-input-container flex>
+    <label>Street Address Line 2</label>
+    <input ng-model="clientData.address2">
+  </md-input-container>
+</div>
+<div layout-gt-md="row" layout="column">
+  <md-input-container flex>
+    <label>City</label>
+    <input ng-model="clientData.city" name="city" required>
+    <div class="error-messages" ng-if="interacted(registrationForm.city)" ng-messages="registrationForm.city.$error">
+			<div ng-messages-include="custom-messages"></div>
+		</div>
+  </md-input-container>
+  <md-input-container flex>
+    <label>State/Province</label>
+    <input ng-model="clientData.state" name="state" required>
+    <div class="error-messages" ng-if="interacted(registrationForm.state)" ng-messages="registrationForm.state.$error">
+			<div ng-messages-include="custom-messages"></div>
+		</div>
+  </md-input-container>
+</div>
+<div layout-gt-md="row" layout="column">
+  <md-input-container flex>
+    <label>Postal/Zip Code</label>
+    <input ng-model="clientData.zipCode" name="zipCode" required>
+    <div class="error-messages" ng-if="interacted(registrationForm.zipCode)" ng-messages="registrationForm.zipCode.$error">
+			<div ng-messages-include="custom-messages"></div>
+		</div>
+  </md-input-container>
+
+  <md-input-container flex>
+    <md-select ng-model="clientData.country" placeholder="Country">
+	    <md-option ng-value="country" ng-repeat="country in countries">{{ country }}</md-option>
+	  </md-select>
+  </md-input-container>
+
+</div>

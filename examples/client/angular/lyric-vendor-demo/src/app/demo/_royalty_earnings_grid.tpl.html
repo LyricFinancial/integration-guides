@@ -1,0 +1,18 @@
+<div layout-gt-md="row" layout="column" ng-repeat="royaltyEarning in royaltyEarnings.earnings">
+  <md-input-container flex>
+    <label>Royalty Source</label>
+    <input ng-model="royaltyEarning.source">
+  </md-input-container>
+  <md-input-container flex>
+    <label>Name on Account</label>
+    <input ng-model="royaltyEarning.nameOnAccount">
+  </md-input-container>
+  <md-input-container flex>
+    <label>Account Number</label>
+    <input ng-model="royaltyEarning.accountNumber">
+  </md-input-container>
+  <md-input-container flex>
+    <label>Estimated Annual Royalties</label>
+    <input ng-model="royaltyEarning.estimatedRoyalties">
+  </md-input-container>
+</div>

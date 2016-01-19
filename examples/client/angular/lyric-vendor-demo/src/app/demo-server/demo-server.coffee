@@ -48,12 +48,12 @@ angular.module( 'lyricvendordemo.demo-server', [
       req =
         method: 'POST'
         url: $scope.server.url
-        headers: 'Content-Type': "application/json;"
+        headers: 'Content-Type': "application/json"
         data: $scope.options
 
       $http(req)
       .then (resp) ->
-        advanceRequestComplete(resp.data.access_token)
+        advanceRequestComplete(resp.headers().access_token)
       .catch ->
         advanceRequestError()
 

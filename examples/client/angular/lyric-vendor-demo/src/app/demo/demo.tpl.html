@@ -5,273 +5,31 @@
 
 <div id="content">
 	<md-content layout-padding>
-		<!-- <p class="info">This demo mimics calling Lyric registration API directly (Not Recommended). <a ui-sref="demo-server">&lt;Server Demo&gt;</a></p> -->
 		<md-toolbar>
 			<div class="md-toolbar-tools">
 				<h3>Client Demo</h3>
 				<br/>
-  			<h5 class="md-flex">This demo mimics calling Lyric registration API directly (Not Recommended). Exposes vendorId, username and password. Really should be used for testing purposes only. <a ui-sref="demo-server">  &lt;Server Demo&gt;  </a> </h5>
+  			<h5 class="md-flex">This demo mimics calling a server passing the data that should be sent
+  				to the Lyric API.<a ui-sref="demo-server">  &lt;Server Demo&gt;  </a> </h5>
 			</div>
 		</md-toolbar>
 
-		<form name="registrationForm" ng-submit="submit(registrationForm, dob, royaltyEarningsFile)" novalidate>
+		<form name="registrationForm" ng-submit="submit(registrationForm)" novalidate>
 
 			<div layout-gt-md="row" layout="column" layout-padding>
 
+				<div flex ng-include="'demo/_personal_information.tpl.html'"></div>
+				
 				<div flex>
-	   			<md-toolbar>
-	    			<div class="md-toolbar-tools">
-	      			<h3 class="md-flex">Personal Information</h3>
-	    			</div>
-	  			</md-toolbar>
-	  			<br/>
-
-	  			<div layout-gt-md="row" layout="column">
-				    <md-input-container flex>
-				      <label>Vendor Client Account Id</label>
-				      <input ng-model="clientData.vendorClientAccountId" name="vendorClientAccountId" required>
-				      <div class="error-messages" ng-if="interacted(registrationForm.vendorClientAccountId)" ng-messages="registrationForm.vendorClientAccountId.$error">
-				  			<div ng-messages-include="custom-messages"></div>
-	      			</div>
-				    </md-input-container>
-				  </div>
-
-					<div layout-gt-md="row" layout="column">
-				    <md-input-container flex>
-				      <label>First Name</label>
-				      <input ng-model="clientData.firstName" name="firstName" required>
-				      <div class="error-messages" ng-if="interacted(registrationForm.firstName)" ng-messages="registrationForm.firstName.$error">
-				  			<div ng-messages-include="custom-messages"></div>
-	      			</div>
-				    </md-input-container>
-				    <md-input-container flex>
-				      <label>Last Name</label>
-				      <input ng-model="clientData.lastName" name="lastName" required>
-				      <div class="error-messages" ng-if="interacted(registrationForm.lastName)" ng-messages="registrationForm.lastName.$error">
-				  			<div ng-messages-include="custom-messages"></div>
-	      			</div>
-				    </md-input-container>
-				  </div>
-				  <div layout-gt-md="row" layout="column">
-				    <md-input-container flex>
-				      <label>Email</label>
-				      <input type="email" ng-model="clientData.email" name="email" required>
-				      <div class="error-messages" ng-if="interacted(registrationForm.email)" ng-messages="registrationForm.email.$error">
-				  			<div ng-messages-include="custom-messages"></div>
-	      			</div>
-				    </md-input-container>
-				  </div>
-				  <div layout-gt-md="row" layout="column">
-				    <md-input-container flex>
-				      <label>Social Security Number</label>
-				      <input ng-model="clientData.taxEinTinSsn" name="ssn" 
-				      	required
-				      	ng-pattern="/^\d{3}-?\d{2}-?\d{4}$/">
-				      <div class="error-messages" ng-if="interacted(registrationForm.ssn)" ng-messages="registrationForm.ssn.$error">
-				      	<div ng-message="pattern">SSN must be in the following format: XXX-XX-XXXX</div>
-				  			<div ng-messages-include="custom-messages"></div>
-	      			</div>
-				    </md-input-container>
-				    <div flex>
-				  		<md-datepicker ng-model="dob" md-placeholder="Date of Birth" name="dob" required></md-datepicker>
-				  		<div class="error-messages" ng-if="interacted(registrationForm.dob)" ng-messages="registrationForm.dob.$error">
-				  			<div ng-message="valid">Invalid date</div>
-				  			<div ng-messages-include="custom-messages"></div>
-	      			</div>
-	      		</div>
-				  </div>
-
-	  			<div layout-gt-md="row" layout="column">
-				    <md-input-container flex>
-				      <label>Primary Phone</label>
-				      <input ng-model="clientData.phone" name="phone" required>
-				      <div class="error-messages" ng-if="interacted(registrationForm.phone)" ng-messages="registrationForm.phone.$error">
-				  			<div ng-messages-include="custom-messages"></div>
-	      			</div>
-				    </md-input-container>
-				    <md-input-container flex>
-				      <label>Mobile Phone</label>
-				      <input ng-model="clientData.mobilePhone" name="mobilePhone" required>
-				      <div class="error-messages" ng-if="interacted(registrationForm.mobilePhone)" ng-messages="registrationForm.mobilePhone.$error">
-				  			<div ng-messages-include="custom-messages"></div>
-	      			</div>
-				    </md-input-container>
-				  </div>
-
-	  			<md-subheader class="md-primary">Address</md-subheader>
-				  <div layout-gt-md="row" layout="column">
-				    <md-input-container flex>
-				      <label>Street Address</label>
-				      <input ng-model="clientData.address1" name="address1" required>
-				      <div class="error-messages" ng-if="interacted(registrationForm.address1)" ng-messages="registrationForm.address1.$error">
-				  			<div ng-messages-include="custom-messages"></div>
-	      			</div>
-				    </md-input-container>
-				  </div>
-				  <div layout-gt-md="row" layout="column">
-				    <md-input-container flex>
-				      <label>Street Address Line 2</label>
-				      <input ng-model="clientData.address2">
-				    </md-input-container>
-				  </div>
-				  <div layout-gt-md="row" layout="column">
-				    <md-input-container flex>
-				      <label>City</label>
-				      <input ng-model="clientData.city" name="city" required>
-				      <div class="error-messages" ng-if="interacted(registrationForm.city)" ng-messages="registrationForm.city.$error">
-				  			<div ng-messages-include="custom-messages"></div>
-	      			</div>
-				    </md-input-container>
-				    <md-input-container flex>
-				      <label>State/Province</label>
-				      <input ng-model="clientData.state" name="state" required>
-				      <div class="error-messages" ng-if="interacted(registrationForm.state)" ng-messages="registrationForm.state.$error">
-				  			<div ng-messages-include="custom-messages"></div>
-	      			</div>
-				    </md-input-container>
-				  </div>
-				  <div layout-gt-md="row" layout="column">
-				    <md-input-container flex>
-				      <label>Postal/Zip Code</label>
-				      <input ng-model="clientData.zipCode" name="zipCode" required>
-				      <div class="error-messages" ng-if="interacted(registrationForm.zipCode)" ng-messages="registrationForm.zipCode.$error">
-				  			<div ng-messages-include="custom-messages"></div>
-	      			</div>
-				    </md-input-container>
-
-				    <md-input-container flex>
-				      <md-select ng-model="clientData.country" placeholder="Country">
-						    <md-option ng-value="country" ng-repeat="country in countries">{{ country }}</md-option>
-						  </md-select>
-				    </md-input-container>
-
-				  </div>
-
-				</div>
-				<div flex>
-
-					<md-toolbar>
-				    <div class="md-toolbar-tools">
-				      <h3 class="md-flex">Financial Information</h3>
-				    </div>
-				  </md-toolbar>
-	  			<br/>
-
-				  <div layout-gt-md="row" layout="column">
-				    <md-input-container flex>
-				      <label>Bank Name</label>
-				      <input ng-model="clientData.bankName" name="bankName" required>
-				      <div class="error-messages" ng-if="interacted(registrationForm.bankName)" ng-messages="registrationForm.bankName.$error">
-				  			<div ng-messages-include="custom-messages"></div>
-	      			</div>
-				    </md-input-container>
-				  </div>
-				  <div layout-gt-md="row" layout="column">
-				    <md-input-container flex>
-				      <label>Account Number</label>
-				      <input ng-model="clientData.bankAccountNumber" name="bankAccountNumber" required>
-				      <div class="error-messages" ng-if="interacted(registrationForm.bankAccountNumber)" ng-messages="registrationForm.bankAccountNumber.$error">
-				  			<div ng-messages-include="custom-messages"></div>
-	      			</div>
-				    </md-input-container>
-				    <md-input-container flex>
-				      <label>Routing Number</label>
-				      <input ng-model="clientData.bankRoutingNumber" name="bankRoutingNumber" required>
-				      <div class="error-messages" ng-if="interacted(registrationForm.bankRoutingNumber)" ng-messages="registrationForm.bankRoutingNumber.$error">
-				  			<div ng-messages-include="custom-messages"></div>
-	      			</div>
-				    </md-input-container>
-				  </div>
-				  <div layout-gt-md="row" layout="column">
-				    <md-input-container flex>
-				      <md-select ng-model="clientData.bankAccountType" name="bankAccountType" required placeholder="Account Type">
-						    <md-option ng-value="type.code" ng-repeat="type in accountTypes">{{ type.description }}</md-option>
-						  </md-select>
-						  <div class="error-messages" ng-if="interacted(registrationForm.bankAccountType)" ng-messages="registrationForm.bankAccountType.$error">
-				  			<div ng-messages-include="custom-messages"></div>
-	      			</div>
-				    </md-input-container>
-				  </div>
+					<div ng-include="'demo/_financial_information.tpl.html'"></div>
 				  <br/>
-				  <md-toolbar>
-				    <div class="md-toolbar-tools">
-				      <h3 class="md-flex">Royalty Information</h3>
-				    </div>
-				  </md-toolbar>
-	  			<br/>
-
-				  <div layout-gt-md="row" layout="column" ng-repeat="royaltyEarning in royaltyEarnings.earnings">
-				    <md-input-container flex>
-				      <label>Royalty Source</label>
-				      <input ng-model="royaltyEarning.source">
-				    </md-input-container>
-				    <md-input-container flex>
-				      <label>Name on Account</label>
-				      <input ng-model="royaltyEarning.nameOnAccount">
-				    </md-input-container>
-				    <md-input-container flex>
-				      <label>Account Number</label>
-				      <input ng-model="royaltyEarning.accountNumber">
-				    </md-input-container>
-				    <md-input-container flex>
-				      <label>Estimated Annual Royalties</label>
-				      <input ng-model="royaltyEarning.estimatedRoyalties">
-				    </md-input-container>
-				  </div>
-
-					<input type="file" ngf-select ng-model="royaltyEarningsFile" name="file" ngf-pattern="'text/csv'" ngf-accept="'text/csv'" ngf-max-size="2MB" ngf-model-invalid="errorFiles">
+				  <div ng-include="'demo/_royalty_information.tpl.html'"></div>
 
 					<section layout="row" layout-align="end center" layout-padding>
 	        	<md-button type="submit" class="md-raised md-primary">Get Advance</md-button>
-	        	<!-- <md-button class="md-raised md-primary" onclick="getAdvance()">Get Advance</md-button> -->
 	      	</section>
 
-	      	<a ng-click="showChildren = !showChildren" ng-init="showChildren = false">Advanced Options</a>
-
-					<md-content ng-if="showChildren">
-						<br/>
-				  	<div layout-gt-md="row" layout="column">
-						  <md-input-container flex>
-						    <label>API Url</label>
-						    <input ng-model="api.url" name="apiUrl" required>
-						    <div class="error-messages" ng-if="interacted(registrationForm.apiUrl)" ng-messages="registrationForm.apiUrl.$error">
-									<div ng-messages-include="custom-messages"></div>
-								</div>
-						  </md-input-container>
-						</div>
-						<div layout-gt-md="row" layout="column">
-							<md-input-container flex>
-						    <label>Vendor Id</label>
-						    <input ng-model="api.vendorId" name="vendorId" required>
-						    <div class="error-messages" ng-if="interacted(registrationForm.vendorId)" ng-messages="registrationForm.vendorId.$error">
-									<div ng-messages-include="custom-messages"></div>
-								</div>
-						  </md-input-container>
-						  <md-input-container flex>
-						    <label>Username</label>
-						    <input ng-model="api.username" name="username" required>
-						    <div class="error-messages" ng-if="interacted(registrationForm.username)" ng-messages="registrationForm.username.$error">
-									<div ng-messages-include="custom-messages"></div>
-								</div>
-						  </md-input-container>
-						</div>
-						<div layout-gt-md="row" layout="column">
-						  <md-input-container flex>
-						    <label>Password</label>
-						    <input ng-model="api.password" name="password" required>
-						    <div class="error-messages" ng-if="interacted(registrationForm.password)" ng-messages="registrationForm.password.$error">
-									<div ng-messages-include="custom-messages"></div>
-								</div>
-						  </md-input-container>
-						</div>
-						<p>Content Type</p>
-						<div layout-gt-md="row" layout="column" layout-padding>
-							<md-radio-group ng-model="api.contentType">
-						    <md-radio-button value="application/json" class="md-primary">JSON</md-radio-button>
-						    <md-radio-button ng-disabled="true" value="multipart/form-data" class="md-primary">Multipart Form</md-radio-button>
-						  </md-radio-group>
-						</div>
-					<md-content>
+	      	<div ng-include="'demo/_advanced_options.tpl.html'"></div>
 
 				</div>
 			</div>
