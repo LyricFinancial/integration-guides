@@ -62,6 +62,7 @@ module.exports = {
    */
   vendor_files: {
     js: [
+      'vendor/lyric-snippet/dist/lyric-snippet-0.1.0.min.js',
       'vendor/angular/angular.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
       'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
@@ -76,9 +77,7 @@ module.exports = {
       'vendor/angular-messages/angular-messages.js',
 
       'vendor/ng-file-upload/ng-file-upload.js',
-      'vendor/ng-file-upload-shim/ng-file-upload-shim.js',
-
-      'vendor/lyric-snippet/dist/lyric-snippet-0.1.0.min.js'
+      'vendor/ng-file-upload-shim/ng-file-upload-shim.js'
     ],
     css: [
       'vendor/bootstrap/dist/css/bootstrap.css',

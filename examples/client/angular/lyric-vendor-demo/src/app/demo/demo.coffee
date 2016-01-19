@@ -27,6 +27,9 @@ angular.module( 'lyricvendordemo.demo', [
   'Upload'
   ($scope, _, $filter, $http, $base64, Upload) ->
 
+    angular.element(document).ready ->
+      document.getElementById('terms-container').innerHTML = "Custom Terms & Conditions"
+
     $scope.clientData = {
       firstName: 'Paul',
       lastName: 'Williams',

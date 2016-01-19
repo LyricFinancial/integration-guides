@@ -26,6 +26,9 @@ angular.module( 'lyricvendordemo.demo-server', [
   '$http'
   ($scope, $state, _, $filter, $http) ->
 
+    angular.element(document).ready ->
+      document.getElementById('terms-container').innerHTML = "Custom Terms & Conditions"
+
     $scope.clientData = {
       firstName: 'Paul',
       lastName: 'Williams',
