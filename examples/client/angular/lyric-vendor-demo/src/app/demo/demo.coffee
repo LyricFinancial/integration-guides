@@ -54,11 +54,12 @@ angular.module( 'lyricvendordemo.demo', [
       # url: 'https://api.lyricfinancial.com/vendorAPI/v1/json/clients',
       # url: 'https://lyric-demo-server.herokuapp.com/clients/:vendorId/advance'
       url: 'http://server.dev:8082/clients/:vendorId/advance'
-      vendorId: 'ascap',
-      username: 'ascap',
-      password: 'WxjXgrzzGzrkPMv7hBFJ@PMkQX9e3e2N',
+      vendorId: 'ascap'
+      username: 'ascap'
+      password: 'WxjXgrzzGzrkPMv7hBFJ@PMkQX9e3e2N'
       contentType: 'application/json'
       royaltyEarningsContentType: 'text/csv'
+      ssnRequired: true
     }
 
     $scope.royaltyEarnings = {earnings: [
