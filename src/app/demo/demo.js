@@ -17,6 +17,9 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
   }
 ]).controller('DemoCtrl', [
   '$scope', '_', '$filter', '$http', '$base64', 'Upload', function($scope, _, $filter, $http, $base64, Upload) {
+    angular.element(document).ready(function() {
+      return document.getElementById('terms-container').innerHTML = "Custom Terms & Conditions";
+    });
     $scope.clientData = {
       firstName: 'Paul',
       lastName: 'Williams',
@@ -37,12 +40,13 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
       gender: 'male'
     };
     $scope.api = {
-      url: 'http://server.dev:8082/clients/:vendorId/advance',
+      url: 'https://lyric-demo-server.herokuapp.com/clients/:vendorId/advance',
       vendorId: 'ascap',
       username: 'ascap',
       password: 'WxjXgrzzGzrkPMv7hBFJ@PMkQX9e3e2N',
       contentType: 'application/json',
-      royaltyEarningsContentType: 'text/csv'
+      royaltyEarningsContentType: 'text/csv',
+      ssnRequired: true
     };
     $scope.royaltyEarnings = {
       earnings: [
@@ -97,10 +101,6 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
         request = Upload.upload({
           url: $scope.api.url,
           method: 'POST',
-          headers: {
-            'vendorId': 'ascap',
-            'Authorization': "Basic " + auth
-          },
           fileName: 'royalties.csv',
           fileFormDataName: 'royaltyEarnings',
           data: {
@@ -116,9 +116,7 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
           method: 'POST',
           url: $scope.api.url,
           headers: {
-            'content-type': 'application/json',
-            'vendorId': $scope.api.vendorId,
-            'Authorization': "Basic " + auth
+            'content-type': 'application/json'
           },
           data: $scope.clientData
         };

@@ -64,22 +64,26 @@ angular.module("demo-server/demo-server.tpl.html", []).run(["$templateCache", fu
     "\n" +
     "					    <div layout=\"column\" layout-padding ng-if=\"options.contentType == 'application/json'\">\n" +
     "					    	Royalty Earnings Content Type\n" +
-    "						    <md-radio-group ng-model=\"options.jsonRoyaltyEarningsContentType\">\n" +
+    "					    	<md-radio-group ng-model=\"options.royaltyEarningsContentType\">\n" +
     "							    <md-radio-button value=\"text/csv\" class=\"md-primary\">CSV</md-radio-button>\n" +
-    "							    <md-radio-button value=\"application/protobuf\" class=\"md-primary\">Protobuf</md-radio-button>\n" +
-    "							    <md-radio-button value=\"application/zip\" class=\"md-primary\">Zip File</md-radio-button>\n" +
+    "							    <md-radio-button ng-disabled=true value=\"application/protobuf\" class=\"md-primary\">Protobuf</md-radio-button>\n" +
     "							  </md-radio-group>\n" +
     "							</div>\n" +
     "\n" +
-    "					    <md-radio-button value=\"multipart/form-data\" class=\"md-primary\">Multipart Form</md-radio-button>\n" +
+    "					    <md-radio-button value=\"multipart/form-data\" ng-disabled=true class=\"md-primary\">Multipart Form</md-radio-button>\n" +
     "\n" +
     "					    <div layout=\"column\" layout-padding ng-if=\"options.contentType == 'multipart/form-data'\">\n" +
     "					    	Royalty Earnings Content Type\n" +
-    "						    <md-radio-group ng-model=\"options.multipartRoyaltyEarningsContentType\">\n" +
+    "					    	<md-radio-group ng-model=\"options.royaltyEarningsContentType\">\n" +
     "							    <md-radio-button value=\"text/csv\" class=\"md-primary\">CSV</md-radio-button>\n" +
-    "							    <md-radio-button value=\"application/protobuf\" class=\"md-primary\">Protobuf</md-radio-button>\n" +
     "							    <md-radio-button value=\"application/zip\" class=\"md-primary\">Zip File</md-radio-button>\n" +
     "							  </md-radio-group>\n" +
+    "							</div>\n" +
+    "							<div layout-gt-md=\"row\" layout=\"column\">\n" +
+    "							  <md-input-container flex>\n" +
+    "							    <label>File Name</label>\n" +
+    "							    <input ng-model=\"options.filename\">\n" +
+    "							  </md-input-container>\n" +
     "							</div>\n" +
     "					  </md-radio-group>\n" +
     "					</div>\n" +
@@ -131,6 +135,18 @@ angular.module("demo/_advanced_options.tpl.html", []).run(["$templateCache", fun
     "	    <div class=\"error-messages\" ng-if=\"interacted(registrationForm.password)\" ng-messages=\"registrationForm.password.$error\">\n" +
     "				<div ng-messages-include=\"custom-messages\"></div>\n" +
     "			</div>\n" +
+    "	  </md-input-container>\n" +
+    "	</div>\n" +
+    "	<div layout-gt-md=\"row\" layout=\"column\">\n" +
+    "	  <md-input-container flex>\n" +
+    "	    <md-checkbox\n" +
+    "          ng-model=\"api.ssnRequired\"\n" +
+    "          aria-label=\"SSN Required\"\n" +
+    "          ng-true-value=true\n" +
+    "          ng-false-value=false\n" +
+    "          class=\"md-warn md-align-top-left\" flex>\n" +
+    "        SSN Required  <br/>\n" +
+    "      </md-checkbox>\n" +
     "	  </md-input-container>\n" +
     "	</div>\n" +
     "	\n" +
@@ -231,7 +247,7 @@ angular.module("demo/_personal_information.tpl.html", []).run(["$templateCache",
     "  <md-input-container flex>\n" +
     "    <label>Social Security Number</label>\n" +
     "    <input ng-model=\"clientData.taxEinTinSsn\" name=\"ssn\" \n" +
-    "    	required\n" +
+    "    	ng-required=\"api.ssnRequired\"\n" +
     "    	ng-pattern=\"/^\\d{3}-?\\d{2}-?\\d{4}$/\">\n" +
     "    <div class=\"error-messages\" ng-if=\"interacted(registrationForm.ssn)\" ng-messages=\"registrationForm.ssn.$error\">\n" +
     "    	<div ng-message=\"pattern\">SSN must be in the following format: XXX-XX-XXXX</div>\n" +

@@ -17,6 +17,9 @@ angular.module('lyricvendordemo.demo-server', ['ui.router', 'ui.bootstrap', 'ngF
   }
 ]).controller('DemoServerCtrl', [
   '$scope', '$state', '_', '$filter', '$http', function($scope, $state, _, $filter, $http) {
+    angular.element(document).ready(function() {
+      return document.getElementById('terms-container').innerHTML = "Custom Terms & Conditions";
+    });
     $scope.clientData = {
       firstName: 'Paul',
       lastName: 'Williams',
@@ -30,8 +33,8 @@ angular.module('lyricvendordemo.demo-server', ['ui.router', 'ui.bootstrap', 'ngF
     };
     $scope.options = {
       contentType: "application/json",
-      jsonRoyaltyEarningsContentType: "text/csv",
-      multipartRoyaltyEarningsContentType: "text/csv"
+      royaltyEarningsContentType: "text/csv",
+      filename: ""
     };
     $scope.requestAdvance = function() {
       var req;
@@ -41,12 +44,14 @@ angular.module('lyricvendordemo.demo-server', ['ui.router', 'ui.bootstrap', 'ngF
         headers: {
           'Content-Type': "application/json"
         },
-        data: $scope.options
+        data: {
+          options: $scope.options
+        }
       };
       return $http(req).then(function(resp) {
         return advanceRequestComplete(resp.headers().access_token);
-      })["catch"](function() {
-        return advanceRequestError();
+      })["catch"](function(error) {
+        return advanceRequestError(error);
       });
     };
     document.addEventListener('confirmationComplete', $scope.requestAdvance);
