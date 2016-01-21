@@ -42,8 +42,8 @@ angular.module( 'lyricvendordemo.demo-server', [
 
     $scope.options = {
       contentType: "application/json"
-      jsonRoyaltyEarningsContentType: "text/csv"
-      multipartRoyaltyEarningsContentType: "text/csv"
+      royaltyEarningsContentType: "text/csv"
+      filename: ""
     }
 
     $scope.requestAdvance = ->
@@ -52,13 +52,13 @@ angular.module( 'lyricvendordemo.demo-server', [
         method: 'POST'
         url: $scope.server.url
         headers: 'Content-Type': "application/json"
-        data: $scope.options
+        data: {options: $scope.options}
 
       $http(req)
       .then (resp) ->
         advanceRequestComplete(resp.headers().access_token)
-      .catch ->
-        advanceRequestError()
+      .catch (error)->
+        advanceRequestError(error)
 
     document.addEventListener 'confirmationComplete', $scope.requestAdvance
 

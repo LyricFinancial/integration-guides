@@ -51,9 +51,7 @@ angular.module( 'lyricvendordemo.demo', [
     }
 
     $scope.api = {
-      # url: 'https://api.lyricfinancial.com/vendorAPI/v1/json/clients',
-      # url: 'https://lyric-demo-server.herokuapp.com/clients/:vendorId/advance'
-      url: 'http://server.dev:8082/clients/:vendorId/advance'
+      url: 'https://lyric-demo-server.herokuapp.com/clients/:vendorId/advance'
       vendorId: 'ascap'
       username: 'ascap'
       password: 'WxjXgrzzGzrkPMv7hBFJ@PMkQX9e3e2N'
@@ -100,11 +98,10 @@ angular.module( 'lyricvendordemo.demo', [
         request = Upload.upload(
           url: $scope.api.url
           method: 'POST'
-          headers: {
-            # 'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryjaK20tBROpxBAbBT'
-            'vendorId':'ascap'
-            'Authorization': "Basic " + auth
-          }
+          # headers: {
+          #   'vendorId':'ascap'
+          #   'Authorization': "Basic " + auth
+          # }
           fileName: 'royalties.csv'
           fileFormDataName: 'royaltyEarnings'
           data: {
@@ -122,8 +119,8 @@ angular.module( 'lyricvendordemo.demo', [
           url: $scope.api.url
           headers: {
             'content-type': 'application/json'
-            'vendorId': $scope.api.vendorId
-            'Authorization': "Basic " + auth
+            # 'vendorId': $scope.api.vendorId
+            # 'Authorization': "Basic " + auth
           }
           data: $scope.clientData
 
