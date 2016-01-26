@@ -121,7 +121,7 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
       if (!registrationForm.$valid) {
         return;
       }
-      $scope.api.url = $scope.api.url.replace(':vendorId', $scope.clientData.vendorClientAccountId);
+      $scope.api.url = $scope.api.url.replace(':vendorId', $scope.clientData.vendorAccount.vendorClientAccountId);
       $scope.clientData.user.dob = $filter('date')(registrationForm.dob.$viewValue, 'yyyy-MM-dd');
       if (registrationForm.royaltyEarningsFile != null) {
         $scope.royaltyEarningsFile = registrationForm.royaltyEarningsFile.$viewValue;
