@@ -108,6 +108,12 @@ angular.module("demo-server/demo-server.tpl.html", []).run(["$templateCache", fu
     "					</div>\n" +
     "				</md-toolbar>\n" +
     "				<br/>\n" +
+    "				<div layout-gt-md=\"row\" layout=\"column\">\n" +
+    "				  <md-input-container flex>\n" +
+    "				    <label>Vendor Client Account Id</label>\n" +
+    "				    <input ng-model=\"server.vendorClientAccountId\" name=\"vendorClientAccountId\" required>\n" +
+    "				  </md-input-container>\n" +
+    "				</div>\n" +
     "				<div class=\"your-info\">\n" +
     "				  <span>Current Address: <a class=\"edit\" ui-sref=\"demo.edit\">Edit</a></span>\n" +
     "				  <p>{{clientData.firstName}} {{clientData.lastName}}<br>\n" +
