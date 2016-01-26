@@ -38,7 +38,10 @@ angular.module( 'lyricvendordemo.demo-server', [
       zipCode: '68123'
     }
 
-    $scope.server = { url:"https://lyric-demo-server.herokuapp.com/clients/ascaptest123/advance_server"}
+    $scope.server = {
+      url:"https://lyric-demo-server.herokuapp.com/clients/:vendorClntAcctId/advance_server",
+      vendorClientAccountId: ''
+    }
 
     $scope.options = {
       contentType: "application/json"
@@ -48,10 +51,12 @@ angular.module( 'lyricvendordemo.demo-server', [
 
     $scope.requestAdvance = ->
 
-      url = $scope.server.url
+      url = $scope.server.url.replace ':vendorClntAcctId', $scope.server.vendorClientAccountId
+
       if $scope.server.username? && $scope.server.password? && $scope.server.vendorId?
         url = url + '?username=' + $scope.server.username + '&password=' + $scope.server.password + '&vendorId=' + $scope.server.vendorId
- 
+      
+
 
       req =
         method: 'POST'

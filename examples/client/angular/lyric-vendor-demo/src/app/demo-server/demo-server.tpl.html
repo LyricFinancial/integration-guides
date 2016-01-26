@@ -18,6 +18,12 @@
 					</div>
 				</md-toolbar>
 				<br/>
+				<div layout-gt-md="row" layout="column">
+				  <md-input-container flex>
+				    <label>Vendor Client Account Id</label>
+				    <input ng-model="server.vendorClientAccountId" name="vendorClientAccountId" required>
+				  </md-input-container>
+				</div>
 				<div class="your-info">
 				  <span>Current Address: <a class="edit" ui-sref="demo.edit">Edit</a></span>
 				  <p>{{clientData.firstName}} {{clientData.lastName}}<br>

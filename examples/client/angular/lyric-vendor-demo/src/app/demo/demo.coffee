@@ -62,7 +62,7 @@ angular.module( 'lyricvendordemo.demo', [
     }
 
     $scope.api = {
-      url: 'https://lyric-demo-server.herokuapp.com/clients/:vendorId/advance_client'
+      url: 'https://lyric-demo-server.herokuapp.com/clients/:vendorClntAcctId/advance_client'
       contentType: 'application/json'
       royaltyEarningsContentType: 'text/csv'
       ssnRequired: true
@@ -100,7 +100,6 @@ angular.module( 'lyricvendordemo.demo', [
       if !registrationForm.$valid
         return
 
-      $scope.api.url = $scope.api.url.replace ':vendorId', $scope.clientData.vendorAccount.vendorClientAccountId
       $scope.clientData.user.dob = $filter('date')(registrationForm.dob.$viewValue, 'yyyy-MM-dd')
 
       if registrationForm.royaltyEarningsFile?
@@ -109,7 +108,7 @@ angular.module( 'lyricvendordemo.demo', [
 
     $scope.saveForm = ->
 
-      url = $scope.api.url
+      url = $scope.api.url.replace ':vendorClntAcctId', $scope.clientData.vendorAccount.vendorClientAccountId
       if $scope.api.username? && $scope.api.password? && $scope.api.vendorId?
         url = url + '?username=' + $scope.api.username + '&password=' + $scope.api.password + '&vendorId=' + $scope.api.vendorId
  
