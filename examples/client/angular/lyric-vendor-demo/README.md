@@ -4,7 +4,9 @@ This site is an angular example of creating a client to interface with the Lyric
 
 ## /demo-server (Recommended)
 
-This route mimics a vendor site.  It displays basic information for a client and shows the "Get Advance" button.  The serverUrl that it calls defaults to the [Lyric Demo Integration Server](https://github.com/LyricFinancial/lyric-snippet) but can be changed to the vendor's server url (or another deployment of the Demo Integration Server).  It expects a jsonObject as the response that includes accessToken.  This token then needs to be passed back to the Lyric Snippet in the advanceRequestComplete() function.
+This route mimics a vendor site.  It displays basic information for a client and shows the "Get Advance" button.  The serverUrl that it calls defaults to the [Lyric Demo Integration Server](https://github.com/LyricFinancial/demo-integration-server) but can be changed to the vendor's server url (or another deployment of the Demo Integration Server).  It expects the accessToken to be returned as a header.  This token then needs to be passed back to the Lyric Snippet in the advanceRequestComplete() function.
+
+	This demo calls the **/clients/:id/advance_server** endpoint.
 
 ### Content Type
 
@@ -16,6 +18,8 @@ If the json content type is chosen, then the server will construct the data for 
 ## /demo
 
 This route calls a server, passing the data that should be sent to the Lyric API.  
+	
+	This demo calls the **/clients/:id/advance_client** endpoint.
 
 ### Content Type
 

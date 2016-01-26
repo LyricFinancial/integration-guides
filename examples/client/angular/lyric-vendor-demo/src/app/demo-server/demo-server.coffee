@@ -38,7 +38,7 @@ angular.module( 'lyricvendordemo.demo-server', [
       zipCode: '68123'
     }
 
-    $scope.server = { url:"https://lyric-demo-server.herokuapp.com/clients/ascaptest123/advance"}
+    $scope.server = { url:"https://lyric-demo-server.herokuapp.com/clients/ascaptest123/advance_server"}
 
     $scope.options = {
       contentType: "application/json"
@@ -48,9 +48,14 @@ angular.module( 'lyricvendordemo.demo-server', [
 
     $scope.requestAdvance = ->
 
+      url = $scope.server.url
+      if $scope.server.username? && $scope.server.password? && $scope.server.vendorId?
+        url = url + '?username=' + $scope.server.username + '&password=' + $scope.server.password + '&vendorId=' + $scope.server.vendorId
+ 
+
       req =
         method: 'POST'
-        url: $scope.server.url
+        url: url
         headers: 'Content-Type': "application/json"
         data: {options: $scope.options}
 

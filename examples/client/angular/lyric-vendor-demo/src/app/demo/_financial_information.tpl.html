@@ -8,7 +8,7 @@
 <div layout-gt-md="row" layout="column">
   <md-input-container flex>
     <label>Bank Name</label>
-    <input ng-model="clientData.bankName" name="bankName" required>
+    <input ng-model="clientData.bankInfo.bankName" name="bankName" required>
     <div class="error-messages" ng-if="interacted(registrationForm.bankName)" ng-messages="registrationForm.bankName.$error">
 			<div ng-messages-include="custom-messages"></div>
 		</div>
@@ -17,14 +17,14 @@
 <div layout-gt-md="row" layout="column">
   <md-input-container flex>
     <label>Account Number</label>
-    <input ng-model="clientData.bankAccountNumber" name="bankAccountNumber" required>
+    <input ng-model="clientData.bankInfo.bankAccountNumber" name="bankAccountNumber" required>
     <div class="error-messages" ng-if="interacted(registrationForm.bankAccountNumber)" ng-messages="registrationForm.bankAccountNumber.$error">
 			<div ng-messages-include="custom-messages"></div>
 		</div>
   </md-input-container>
   <md-input-container flex>
     <label>Routing Number</label>
-    <input ng-model="clientData.bankRoutingNumber" name="bankRoutingNumber" required>
+    <input ng-model="clientData.bankInfo.bankRoutingNumber" name="bankRoutingNumber" required>
     <div class="error-messages" ng-if="interacted(registrationForm.bankRoutingNumber)" ng-messages="registrationForm.bankRoutingNumber.$error">
 			<div ng-messages-include="custom-messages"></div>
 		</div>
@@ -32,7 +32,7 @@
 </div>
 <div layout-gt-md="row" layout="column">
   <md-input-container flex>
-    <md-select ng-model="clientData.bankAccountType" name="bankAccountType" required placeholder="Account Type">
+    <md-select ng-model="clientData.bankInfo.bankAccountType" name="bankAccountType" required placeholder="Account Type">
 	    <md-option ng-value="type.code" ng-repeat="type in accountTypes">{{ type.description }}</md-option>
 	  </md-select>
 	  <div class="error-messages" ng-if="interacted(registrationForm.bankAccountType)" ng-messages="registrationForm.bankAccountType.$error">

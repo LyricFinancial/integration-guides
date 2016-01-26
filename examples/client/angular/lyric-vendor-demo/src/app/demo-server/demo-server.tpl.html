@@ -29,64 +29,14 @@
 
 
 			<div flex>
-				<md-toolbar>
-					<div class="md-toolbar-tools">
-		  			<h3 class="md-flex">My Royalties</h3>
-					</div>
-				</md-toolbar>
 				
+				<div ng-include="'demo-server/_royalty_earnings.tpl.html'"></div>
 		
 				<section layout="row" layout-align="center" layout-padding>
 					<md-button class="md-raised md-primary" onclick="confirm()">Get Advance</md-button>
 				</section>
 
-				<a ng-click="showChildren = !showChildren" ng-init="showChildren = false">Advanced Options</a>
-
-				<md-content ng-if="showChildren">
-					<br/>
-			  	<div layout-gt-md="row" layout="column">
-					  <md-input-container flex>
-					    <label>Server Url</label>
-					    <input ng-model="server.url" name="serverUrl" required>
-					    <div class="error-messages" ng-if="interacted(registrationForm.serverUrl)" ng-messages="registrationForm.serverUrl.$error">
-								<div ng-messages-include="custom-messages"></div>
-							</div>
-					  </md-input-container>
-					</div>
-					<p>Content Type</p>
-					<div layout="column" layout-padding>
-						<md-radio-group ng-model="options.contentType">
-					    <md-radio-button value="application/json" class="md-primary">JSON</md-radio-button>
-
-					    <div layout="column" layout-padding ng-if="options.contentType == 'application/json'">
-					    	Royalty Earnings Content Type
-					    	<md-radio-group ng-model="options.royaltyEarningsContentType">
-							    <md-radio-button value="text/csv" class="md-primary">CSV</md-radio-button>
-							    <md-radio-button ng-disabled=true value="application/protobuf" class="md-primary">Protobuf</md-radio-button>
-							  </md-radio-group>
-							</div>
-
-					    <md-radio-button value="multipart/form-data" ng-disabled=true class="md-primary">Multipart Form</md-radio-button>
-
-					    <div layout="column" layout-padding ng-if="options.contentType == 'multipart/form-data'">
-					    	Royalty Earnings Content Type
-					    	<md-radio-group ng-model="options.royaltyEarningsContentType">
-							    <md-radio-button value="text/csv" class="md-primary">CSV</md-radio-button>
-							    <md-radio-button value="application/zip" class="md-primary">Zip File</md-radio-button>
-							  </md-radio-group>
-							</div>
-							<div layout-gt-md="row" layout="column">
-							  <md-input-container flex>
-							    <label>File Name</label>
-							    <input ng-model="options.filename">
-							  </md-input-container>
-							</div>
-					  </md-radio-group>
-					</div>
-				<md-content>
-
-				
-				
+				<div ng-include="'demo-server/_advanced_options.tpl.html'"></div>
 			</div>
 		</div>
 	</md-content>

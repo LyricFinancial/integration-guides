@@ -1,0 +1,32 @@
+<a ng-click="showChildren = !showChildren" ng-init="showChildren = false">Advanced Options</a>
+
+<md-content ng-if="showChildren">
+	<br/>
+	<div layout-gt-md="row" layout="column">
+	  <md-input-container flex>
+	    <label>Server Url</label>
+	    <input ng-model="server.url" name="serverUrl" required>
+	    <div class="error-messages" ng-if="interacted(registrationForm.serverUrl)" ng-messages="registrationForm.serverUrl.$error">
+				<div ng-messages-include="custom-messages"></div>
+			</div>
+	  </md-input-container>
+	</div>
+
+	<div layout-gt-md="row" layout="column">
+		<md-input-container flex>
+	    <label>Vendor Id</label>
+	    <input ng-model="server.vendorId" name="vendorId">
+	  </md-input-container>
+	  <md-input-container flex>
+	    <label>Username</label>
+	    <input ng-model="server.username" name="username">
+	  </md-input-container>
+	</div>
+	<div layout-gt-md="row" layout="column">
+	  <md-input-container flex>
+	    <label>Password</label>
+	    <input ng-model="server.password" name="password">
+	  </md-input-container>
+	</div>
+	
+<md-content>
