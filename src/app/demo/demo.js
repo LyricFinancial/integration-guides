@@ -21,34 +21,67 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
       return document.getElementById('terms-container').innerHTML = "Custom Terms & Conditions";
     });
     $scope.clientData = {
-      firstName: 'Paul',
-      lastName: 'Williams',
-      address1: '327 S 87 St',
-      email: 'myuser23@email.com',
-      city: 'Omaha',
-      state: 'NE',
-      zipCode: '68123',
-      vendorClientAccountId: 'myuser23VendorClientId',
-      taxEinTinSsn: '777-44-1111',
-      tinType: 'ssn',
-      memberBusinessType: 'individual',
-      phone: '207-555-8122',
-      mobilePhone: '207-555-9122',
-      bankName: 'TD Bank',
-      bankAccountNumber: '12345678',
-      bankRoutingNumber: '211274450',
-      bankAccountType: 'checking',
-      gender: 'male'
+      user: {
+        firstName: 'Paul',
+        lastName: 'Williams',
+        address1: '327 S 87 St',
+        email: '',
+        city: 'Omaha',
+        state: 'NE',
+        zipCode: '68123',
+        phone: '',
+        mobilePhone: '',
+        gender: 'male',
+        maritalStatus: 'single'
+      },
+      vendorAccount: {
+        vendorClientAccountId: ''
+      },
+      taxInfo: {
+        taxEinTinSsn: '',
+        tinType: 'ssn',
+        memberBusinessType: 'individual'
+      },
+      bankInfo: {
+        bankName: 'TD Bank',
+        bankAccountNumber: '12345678',
+        bankRoutingNumber: '211274450',
+        bankAccountType: 'checking'
+      }
     };
     $scope.api = {
-      url: 'https://lyric-demo-server.herokuapp.com/clients/:vendorId/advance',
-      vendorId: 'ascap',
-      username: 'ascap',
-      password: 'WxjXgrzzGzrkPMv7hBFJ@PMkQX9e3e2N',
+      url: 'https://lyric-demo-server.herokuapp.com/clients/:vendorId/advance_client',
       contentType: 'application/json',
       royaltyEarningsContentType: 'text/csv',
       ssnRequired: true
     };
+    $scope.genders = [
+      {
+        code: 'male',
+        description: 'Male'
+      }, {
+        code: 'female',
+        description: 'Female'
+      }
+    ];
+    $scope.maritalStatuses = [
+      {
+        code: 'single',
+        description: 'Single'
+      }, {
+        code: 'married',
+        description: 'Married'
+      }, {
+        code: 'separated',
+        description: 'Separated'
+      }, {
+        code: 'divorced',
+        description: 'Divorced'
+      }, {
+        code: 'widowed',
+        description: 'Widowed'
+      }
+    ];
     $scope.royaltyEarnings = {
       earnings: [
         {
@@ -89,18 +122,24 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
         return;
       }
       $scope.api.url = $scope.api.url.replace(':vendorId', $scope.clientData.vendorClientAccountId);
-      $scope.clientData.dob = $filter('date')(registrationForm.dob.$viewValue, 'yyyy-MM-dd');
+      $scope.clientData.user.dob = $filter('date')(registrationForm.dob.$viewValue, 'yyyy-MM-dd');
       if (registrationForm.royaltyEarningsFile != null) {
         $scope.royaltyEarningsFile = registrationForm.royaltyEarningsFile.$viewValue;
       }
       return confirm();
     };
     $scope.saveForm = function() {
-      var auth, req, request;
-      auth = $base64.encode($scope.api.username + ":" + $scope.api.password);
+      var req, request, url;
+      url = $scope.api.url;
+      if (($scope.api.username != null) && ($scope.api.password != null) && ($scope.api.vendorId != null)) {
+        url = url + '?username=' + $scope.api.username + '&password=' + $scope.api.password + '&vendorId=' + $scope.api.vendorId;
+      }
+      if ($scope.api.ssnRequired === false && $scope.isBlank($scope.clientData.taxInfo.taxEinTinSsn)) {
+        delete $scope.clientData.taxInfo;
+      }
       if ($scope.api.contentType === 'multipart/form-data') {
         request = Upload.upload({
-          url: $scope.api.url,
+          url: url,
           method: 'POST',
           fileName: 'royalties.csv',
           fileFormDataName: 'royaltyEarnings',
@@ -110,12 +149,9 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
           }
         });
       } else {
-        if ($scope.api.royaltyEarningsContentType === 'text/csv') {
-          $scope.clientData.royaltyEarnings = $base64.encode($scope.api.csvData);
-        }
         req = {
           method: 'POST',
-          url: $scope.api.url,
+          url: url,
           headers: {
             'content-type': 'application/json'
           },
@@ -130,8 +166,11 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
       });
     };
     document.addEventListener('confirmationComplete', $scope.saveForm);
-    return $scope.$on('$destroy', function() {
+    $scope.$on('$destroy', function() {
       return document.removeEventListener('confirmationComplete', $scope.saveForm);
     });
+    return $scope.isBlank = function(str) {
+      return !str || /^\s*$/.test(str);
+    };
   }
 ]);

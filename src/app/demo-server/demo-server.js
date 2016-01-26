@@ -29,7 +29,7 @@ angular.module('lyricvendordemo.demo-server', ['ui.router', 'ui.bootstrap', 'ngF
       zipCode: '68123'
     };
     $scope.server = {
-      url: "https://lyric-demo-server.herokuapp.com/clients/ascaptest123/advance"
+      url: "https://lyric-demo-server.herokuapp.com/clients/ascaptest123/advance_server"
     };
     $scope.options = {
       contentType: "application/json",
@@ -37,10 +37,14 @@ angular.module('lyricvendordemo.demo-server', ['ui.router', 'ui.bootstrap', 'ngF
       filename: ""
     };
     $scope.requestAdvance = function() {
-      var req;
+      var req, url;
+      url = $scope.server.url;
+      if (($scope.server.username != null) && ($scope.server.password != null) && ($scope.server.vendorId != null)) {
+        url = url + '?username=' + $scope.server.username + '&password=' + $scope.server.password + '&vendorId=' + $scope.server.vendorId;
+      }
       req = {
         method: 'POST',
-        url: $scope.server.url,
+        url: url,
         headers: {
           'Content-Type': "application/json"
         },
