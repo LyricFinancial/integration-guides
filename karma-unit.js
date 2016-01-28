@@ -9,7 +9,7 @@ module.exports = function ( karma ) {
      * This is the list of file patterns to load into the browser during testing.
      */
     files: [
-      'vendor/lyric-snippet/dist/lyric-snippet-0.1.0.min.js',
+      'vendor/lyric-snippet/dist/lyric-snippet.min.js',
       'vendor/angular/angular.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
       'vendor/angular-ui-router/release/angular-ui-router.js',

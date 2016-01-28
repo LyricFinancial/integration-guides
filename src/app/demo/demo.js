@@ -17,9 +17,7 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
   }
 ]).controller('DemoCtrl', [
   '$scope', '_', '$filter', '$http', '$base64', 'Upload', function($scope, _, $filter, $http, $base64, Upload) {
-    angular.element(document).ready(function() {
-      return document.getElementById('terms-container').innerHTML = "Custom Terms & Conditions";
-    });
+    $scope.lyric = new LyricSnippet("Custom Terms & Conditions");
     $scope.clientData = {
       user: {
         firstName: 'Paul',
@@ -125,7 +123,7 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
       if (registrationForm.royaltyEarningsFile != null) {
         $scope.royaltyEarningsFile = registrationForm.royaltyEarningsFile.$viewValue;
       }
-      return confirm();
+      return $scope.lyric.confirm();
     };
     $scope.saveForm = function() {
       var req, request, url;
@@ -159,9 +157,9 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
         request = $http(req);
       }
       return request.then(function(resp) {
-        return advanceRequestComplete(resp.headers().access_token);
+        return $scope.lyric.advanceRequestComplete(resp.headers().access_token);
       })["catch"](function(error) {
-        return advanceRequestError(error);
+        return $scope.lyric.advanceRequestError(error);
       });
     };
     document.addEventListener('confirmationComplete', $scope.saveForm);

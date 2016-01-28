@@ -17,9 +17,7 @@ angular.module('lyricvendordemo.demo-server', ['ui.router', 'ui.bootstrap', 'ngF
   }
 ]).controller('DemoServerCtrl', [
   '$scope', '$state', '_', '$filter', '$http', function($scope, $state, _, $filter, $http) {
-    angular.element(document).ready(function() {
-      return document.getElementById('terms-container').innerHTML = "Custom Terms & Conditions";
-    });
+    $scope.lyric = new LyricSnippet("Custom Terms & Conditions");
     $scope.clientData = {
       firstName: 'Paul',
       lastName: 'Williams',
@@ -54,9 +52,9 @@ angular.module('lyricvendordemo.demo-server', ['ui.router', 'ui.bootstrap', 'ngF
         }
       };
       return $http(req).then(function(resp) {
-        return advanceRequestComplete(resp.headers().access_token);
+        return $scope.lyric.advanceRequestComplete(resp.headers().access_token);
       })["catch"](function(error) {
-        return advanceRequestError(error);
+        return $scope.lyric.advanceRequestError(error);
       });
     };
     document.addEventListener('confirmationComplete', $scope.requestAdvance);

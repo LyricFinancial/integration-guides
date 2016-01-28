@@ -129,7 +129,7 @@ angular.module("demo-server/demo-server.tpl.html", []).run(["$templateCache", fu
     "				<div ng-include=\"'demo-server/_royalty_earnings.tpl.html'\"></div>\n" +
     "		\n" +
     "				<section layout=\"row\" layout-align=\"center\" layout-padding>\n" +
-    "					<md-button class=\"md-raised md-primary\" onclick=\"confirm()\">Get Advance</md-button>\n" +
+    "					<md-button class=\"md-raised md-primary\" ng-click=\"lyric.confirm()\">Get Advance</md-button>\n" +
     "				</section>\n" +
     "\n" +
     "				<div ng-include=\"'demo-server/_advanced_options.tpl.html'\"></div>\n" +
