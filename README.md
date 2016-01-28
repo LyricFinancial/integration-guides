@@ -18,7 +18,7 @@ If necessary, before you make the registration call to the server, make an API c
 ### 3) Add an API to your server to make the Lyric Registration API call
 Lyric will provide you with a vendorId and a username and password to be used to authenticate with the vendor APIs.  These pieces of information should be kept securely on your server, so you will need to create a new API call that will then turn around and call the Lyric Registration API.  Use our [Demo Integration Server](https://github.com/LyricFinancial/demo-integration-server) to guide you in this process.  It demonstrates passing json as well as multipart form-data.  
 
-	The vendorClientAccountId is the unique key for the user in your system.  We will use this key to determine uniqueness.
+	  The vendorClientAccountId is the unique key for the user in your system.  We will use this key to determine uniqueness.
 
 ### 4) Save the memberToken that gets returned
 A successful response from the Lyric Registration API will return an ACCESS_TOKEN in the header as well as a memberToken in the body.  The ACCESS_TOKEN needs to be returned in the response of your new API call.  The memberToken should be saved with your user record and used for any subsequent calls to the Lyric vendor APIs.

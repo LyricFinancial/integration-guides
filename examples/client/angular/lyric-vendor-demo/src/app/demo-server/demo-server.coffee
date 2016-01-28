@@ -25,9 +25,8 @@ angular.module( 'lyricvendordemo.demo-server', [
   '$filter'
   '$http'
   ($scope, $state, _, $filter, $http) ->
+    $scope.lyric = new LyricSnippet("Custom Terms & Conditions")
 
-    angular.element(document).ready ->
-      document.getElementById('terms-container').innerHTML = "Custom Terms & Conditions"
 
     $scope.clientData = {
       firstName: 'Paul',
@@ -66,9 +65,9 @@ angular.module( 'lyricvendordemo.demo-server', [
 
       $http(req)
       .then (resp) ->
-        advanceRequestComplete(resp.headers().access_token)
+        $scope.lyric.advanceRequestComplete(resp.headers().access_token)
       .catch (error)->
-        advanceRequestError(error)
+        $scope.lyric.advanceRequestError(error)
 
     document.addEventListener 'confirmationComplete', $scope.requestAdvance
 

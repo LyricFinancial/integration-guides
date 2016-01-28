@@ -1,7 +1,7 @@
 dev:
   image: divshot/superstatic
   volumes:
-   - /Users/amadden/Documents/Lyric/integration-guides/examples/client/angular/lyric-vendor-demo/build:/data
+   - ./build:/data
   ports:
    - "8081:80"
   command: ["--host", "0.0.0.0"]

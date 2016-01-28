@@ -27,8 +27,7 @@ angular.module( 'lyricvendordemo.demo', [
   'Upload'
   ($scope, _, $filter, $http, $base64, Upload) ->
 
-    angular.element(document).ready ->
-      document.getElementById('terms-container').innerHTML = "Custom Terms & Conditions"
+    $scope.lyric = new LyricSnippet("Custom Terms & Conditions")
 
     $scope.clientData = {
       user: {
@@ -104,7 +103,7 @@ angular.module( 'lyricvendordemo.demo', [
 
       if registrationForm.royaltyEarningsFile?
         $scope.royaltyEarningsFile = registrationForm.royaltyEarningsFile.$viewValue
-      confirm()
+      $scope.lyric.confirm()
 
     $scope.saveForm = ->
 
@@ -143,9 +142,9 @@ angular.module( 'lyricvendordemo.demo', [
 
       request
       .then (resp) ->
-        advanceRequestComplete(resp.headers().access_token)
+        $scope.lyric.advanceRequestComplete(resp.headers().access_token)
       .catch (error) ->
-        advanceRequestError(error)
+        $scope.lyric.advanceRequestError(error)
 
     document.addEventListener 'confirmationComplete', $scope.saveForm
 

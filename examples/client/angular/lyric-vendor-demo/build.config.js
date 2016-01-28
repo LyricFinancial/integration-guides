@@ -62,7 +62,7 @@ module.exports = {
    */
   vendor_files: {
     js: [
-      'vendor/lyric-snippet/dist/lyric-snippet-0.1.0.min.js',
+      'vendor/lyric-snippet/dist/lyric-snippet.min.js',
       'vendor/angular/angular.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
       'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
@@ -83,7 +83,7 @@ module.exports = {
       'vendor/bootstrap/dist/css/bootstrap.css',
       'vendor/angular-material/angular-material.min.css',
 
-      'vendor/lyric-snippet/dist/lyric-snippet-0.1.0.css'
+      'vendor/lyric-snippet/dist/lyric-snippet.css'
     ],
     assets: [
     ]
