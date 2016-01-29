@@ -25,14 +25,17 @@
 				  <br/>
 				  <div ng-include="'demo/_royalty_information.tpl.html'"></div>
 
-					<section layout="row" layout-align="end center" layout-padding>
-	        	<md-button type="submit" class="md-raised md-primary">Get Advance</md-button>
-	      	</section>
-
-	      	<div ng-include="'demo/_advanced_options.tpl.html'"></div>
-
+					
+				  <div ng-include="'demo/_advanced_options.tpl.html'"  ></div>
 				</div>
+
 			</div>
+			<div ng-if="api.royaltyEarningsContentType == 'application/protobuf' && api.contentType == 'application/json'" ng-include="'demo/_royalty_earnings_grid.tpl.html'"></div>
+			<section layout="row" layout-align="end center" layout-padding>
+      	<md-button type="submit" class="md-raised md-primary">Get Advance</md-button>
+    	</section>
+
+    	
 		</form>
 	</md-content>
 </div>

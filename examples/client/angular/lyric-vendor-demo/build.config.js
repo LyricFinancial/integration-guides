@@ -77,12 +77,13 @@ module.exports = {
       'vendor/angular-messages/angular-messages.js',
 
       'vendor/ng-file-upload/ng-file-upload.js',
-      'vendor/ng-file-upload-shim/ng-file-upload-shim.js'
+      'vendor/ng-file-upload-shim/ng-file-upload-shim.js',
+
+      'vendor/json-editor/dist/jsoneditor.js',
+      'vendor/angular-json-editor/dist/angular-json-editor.js'
     ],
     css: [
-      'vendor/bootstrap/dist/css/bootstrap.css',
       'vendor/angular-material/angular-material.min.css',
-
       'vendor/lyric-snippet/dist/lyric-snippet.css'
     ],
     assets: [

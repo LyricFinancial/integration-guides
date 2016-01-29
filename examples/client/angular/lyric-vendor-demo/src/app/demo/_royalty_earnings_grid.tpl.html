@@ -1,4 +1,4 @@
-<div layout-gt-md="row" layout="column" ng-repeat="royaltyEarning in royaltyEarnings.earnings">
+<!-- <div layout-gt-md="row" layout="column" ng-repeat="royaltyEarning in royaltyEarnings.earnings">
   <md-input-container flex>
     <label>Royalty Source</label>
     <input ng-model="royaltyEarning.source">
@@ -15,4 +15,5 @@
     <label>Estimated Annual Royalties</label>
     <input ng-model="royaltyEarning.estimatedRoyalties">
   </md-input-container>
-</div>
+</div> -->
+<json-editor schema="mySchema" startval="myStartVal" on-change="onChange($editorValue)"></json-editor>

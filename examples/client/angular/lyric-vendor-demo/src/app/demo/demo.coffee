@@ -2,6 +2,7 @@ angular.module( 'lyricvendordemo.demo', [
   'ui.router'
   'ui.bootstrap'
   'ngFileUpload'
+  'angular-json-editor'
 ])
 
 .config([
@@ -61,7 +62,8 @@ angular.module( 'lyricvendordemo.demo', [
     }
 
     $scope.api = {
-      url: 'https://lyric-demo-server.herokuapp.com/clients/:vendorClntAcctId/advance_client'
+      #url: 'https://lyric-demo-server.herokuapp.com/clients/:vendorClntAcctId/advance_client'
+      url: 'http://demo.dev:8082/clients/:vendorClntAcctId/advance_client'
       contentType: 'application/json'
       royaltyEarningsContentType: 'text/csv'
       ssnRequired: true
@@ -76,11 +78,7 @@ angular.module( 'lyricvendordemo.demo', [
                               {code: 'divorced', description: 'Divorced'},
                               {code: 'widowed', description: 'Widowed'}]
 
-    $scope.royaltyEarnings = {earnings: [
-      { source: '', nameOnAccount: '', accountNumber: '', estimatedRoyalties: ''},
-      { source: '', nameOnAccount: '', accountNumber: '', estimatedRoyalties: ''},
-      { source: '', nameOnAccount: '', accountNumber: '', estimatedRoyalties: ''}
-    ]}
+    
 
     $scope.accountTypes = [{code: 'savings', description: 'Savings'},
                            {code: 'checking', description: 'Checking'}]
@@ -111,7 +109,7 @@ angular.module( 'lyricvendordemo.demo', [
       if $scope.api.username? && $scope.api.password? && $scope.api.vendorId?
         url = url + '?username=' + $scope.api.username + '&password=' + $scope.api.password + '&vendorId=' + $scope.api.vendorId
  
-      if $scope.api.ssnRequired == false && $scope.isBlank($scope.clientData.taxInfo.taxEinTinSsn)
+      if $scope.api.ssnRequired == false && $scope.clientData.taxInfo? && $scope.isBlank($scope.clientData.taxInfo.taxEinTinSsn)
         delete $scope.clientData.taxInfo
 
       if $scope.api.contentType == 'multipart/form-data'
@@ -153,5 +151,24 @@ angular.module( 'lyricvendordemo.demo', [
 
     $scope.isBlank = (str) ->
       return (!str || /^\s*$/.test(str))
+
+    #$scope.myStartVal = age: 20, name: 'Amy Madden'
+    $scope.myStartVal = {royaltyEarnings: [
+      {
+        source: '',
+        accountNumber: '',
+        nameOnAccount: '',
+        year: '',
+        quarter: '',
+        string1: '',
+        distributionDate: '',
+        estimatedRoyalties: ''
+      }
+    ]}
+
+    $scope.onChange = (data) ->
+      $scope.royaltyEarnings = data
+
+    $scope.mySchema = $http.get('assets/royaltyEarningsSchema.json')
 ])
 

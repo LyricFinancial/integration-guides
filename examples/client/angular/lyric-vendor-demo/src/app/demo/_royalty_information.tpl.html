@@ -15,7 +15,7 @@
     		Royalty Earnings Content Type
 		    <md-radio-group ng-model="api.royaltyEarningsContentType">
 			    <md-radio-button value="text/csv" class="md-primary">CSV</md-radio-button>
-			    <md-radio-button ng-disabled=true value="application/protobuf" class="md-primary">Protobuf</md-radio-button>
+			    <md-radio-button value="application/protobuf" ng-disabled=true class="md-primary">Protobuf</md-radio-button>
 			  </md-radio-group>
 			</div>
 		</div>
@@ -30,7 +30,5 @@
   <label>CSV Data</label>
   <textarea ng-model="api.csvData" columns="1" md-maxlength="1000" rows="15"></textarea>
 </md-input-container>
-
-<div ng-if="api.royaltyEarningsContentType == 'application/protobuf' && api.contentType == 'application/json'" ng-include="'demo/_royalty_earnings_grid.tpl.html'"></div>
 
 <input type="file" ngf-select ng-if="api.contentType == 'multipart/form-data'" ng-model="royaltyEarningsFile" name="royaltyEarningsFile" ngf-pattern="'text/csv'" ngf-accept="'text/csv'" ngf-max-size="2MB" ngf-model-invalid="errorFiles">
