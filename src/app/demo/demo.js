@@ -48,7 +48,7 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
       }
     };
     $scope.api = {
-      url: 'http://demo.dev:8082/clients/:vendorClntAcctId/advance_client',
+      url: 'https://lyric-demo-server.herokuapp.com/clients/:vendorClntAcctId/advance_client',
       contentType: 'application/json',
       royaltyEarningsContentType: 'text/csv',
       ssnRequired: true
