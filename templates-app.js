@@ -383,7 +383,7 @@ angular.module("demo/_personal_information.tpl.html", []).run(["$templateCache",
 
 angular.module("demo/_royalty_earnings_grid.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("demo/_royalty_earnings_grid.tpl.html",
-    "<div layout-gt-md=\"row\" layout=\"column\" ng-repeat=\"royaltyEarning in royaltyEarnings.earnings\">\n" +
+    "<!-- <div layout-gt-md=\"row\" layout=\"column\" ng-repeat=\"royaltyEarning in royaltyEarnings.earnings\">\n" +
     "  <md-input-container flex>\n" +
     "    <label>Royalty Source</label>\n" +
     "    <input ng-model=\"royaltyEarning.source\">\n" +
@@ -400,7 +400,8 @@ angular.module("demo/_royalty_earnings_grid.tpl.html", []).run(["$templateCache"
     "    <label>Estimated Annual Royalties</label>\n" +
     "    <input ng-model=\"royaltyEarning.estimatedRoyalties\">\n" +
     "  </md-input-container>\n" +
-    "</div>");
+    "</div> -->\n" +
+    "<json-editor schema=\"mySchema\" startval=\"myStartVal\" on-change=\"onChange($editorValue)\"></json-editor>");
 }]);
 
 angular.module("demo/_royalty_information.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -422,7 +423,7 @@ angular.module("demo/_royalty_information.tpl.html", []).run(["$templateCache", 
     "    		Royalty Earnings Content Type\n" +
     "		    <md-radio-group ng-model=\"api.royaltyEarningsContentType\">\n" +
     "			    <md-radio-button value=\"text/csv\" class=\"md-primary\">CSV</md-radio-button>\n" +
-    "			    <md-radio-button ng-disabled=true value=\"application/protobuf\" class=\"md-primary\">Protobuf</md-radio-button>\n" +
+    "			    <md-radio-button value=\"application/protobuf\" ng-disabled=true class=\"md-primary\">Protobuf</md-radio-button>\n" +
     "			  </md-radio-group>\n" +
     "			</div>\n" +
     "		</div>\n" +
@@ -437,8 +438,6 @@ angular.module("demo/_royalty_information.tpl.html", []).run(["$templateCache", 
     "  <label>CSV Data</label>\n" +
     "  <textarea ng-model=\"api.csvData\" columns=\"1\" md-maxlength=\"1000\" rows=\"15\"></textarea>\n" +
     "</md-input-container>\n" +
-    "\n" +
-    "<div ng-if=\"api.royaltyEarningsContentType == 'application/protobuf' && api.contentType == 'application/json'\" ng-include=\"'demo/_royalty_earnings_grid.tpl.html'\"></div>\n" +
     "\n" +
     "<input type=\"file\" ngf-select ng-if=\"api.contentType == 'multipart/form-data'\" ng-model=\"royaltyEarningsFile\" name=\"royaltyEarningsFile\" ngf-pattern=\"'text/csv'\" ngf-accept=\"'text/csv'\" ngf-max-size=\"2MB\" ngf-model-invalid=\"errorFiles\">");
 }]);
@@ -472,14 +471,17 @@ angular.module("demo/demo.tpl.html", []).run(["$templateCache", function($templa
     "				  <br/>\n" +
     "				  <div ng-include=\"'demo/_royalty_information.tpl.html'\"></div>\n" +
     "\n" +
-    "					<section layout=\"row\" layout-align=\"end center\" layout-padding>\n" +
-    "	        	<md-button type=\"submit\" class=\"md-raised md-primary\">Get Advance</md-button>\n" +
-    "	      	</section>\n" +
-    "\n" +
-    "	      	<div ng-include=\"'demo/_advanced_options.tpl.html'\"></div>\n" +
-    "\n" +
+    "					\n" +
+    "				  <div ng-include=\"'demo/_advanced_options.tpl.html'\"  ></div>\n" +
     "				</div>\n" +
+    "\n" +
     "			</div>\n" +
+    "			<div ng-if=\"api.royaltyEarningsContentType == 'application/protobuf' && api.contentType == 'application/json'\" ng-include=\"'demo/_royalty_earnings_grid.tpl.html'\"></div>\n" +
+    "			<section layout=\"row\" layout-align=\"end center\" layout-padding>\n" +
+    "      	<md-button type=\"submit\" class=\"md-raised md-primary\">Get Advance</md-button>\n" +
+    "    	</section>\n" +
+    "\n" +
+    "    	\n" +
     "		</form>\n" +
     "	</md-content>\n" +
     "</div>");

@@ -22,6 +22,8 @@ module.exports = function ( karma ) {
       'vendor/angular-messages/angular-messages.js',
       'vendor/ng-file-upload/ng-file-upload.js',
       'vendor/ng-file-upload-shim/ng-file-upload-shim.js',
+      'vendor/json-editor/dist/jsoneditor.js',
+      'vendor/angular-json-editor/dist/angular-json-editor.js',
       'build/templates-app.js',
       'build/templates-common.js',
       'vendor/angular-mocks/angular-mocks.js',

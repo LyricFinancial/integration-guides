@@ -1,4 +1,4 @@
-angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUpload']).config([
+angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUpload', 'angular-json-editor']).config([
   '$stateProvider', function($stateProvider) {
     $stateProvider.state('demo', {
       url: '/demo',
@@ -48,7 +48,7 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
       }
     };
     $scope.api = {
-      url: 'https://lyric-demo-server.herokuapp.com/clients/:vendorClntAcctId/advance_client',
+      url: 'http://demo.dev:8082/clients/:vendorClntAcctId/advance_client',
       contentType: 'application/json',
       royaltyEarningsContentType: 'text/csv',
       ssnRequired: true
@@ -80,26 +80,6 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
         description: 'Widowed'
       }
     ];
-    $scope.royaltyEarnings = {
-      earnings: [
-        {
-          source: '',
-          nameOnAccount: '',
-          accountNumber: '',
-          estimatedRoyalties: ''
-        }, {
-          source: '',
-          nameOnAccount: '',
-          accountNumber: '',
-          estimatedRoyalties: ''
-        }, {
-          source: '',
-          nameOnAccount: '',
-          accountNumber: '',
-          estimatedRoyalties: ''
-        }
-      ]
-    };
     $scope.accountTypes = [
       {
         code: 'savings',
@@ -131,7 +111,7 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
       if (($scope.api.username != null) && ($scope.api.password != null) && ($scope.api.vendorId != null)) {
         url = url + '?username=' + $scope.api.username + '&password=' + $scope.api.password + '&vendorId=' + $scope.api.vendorId;
       }
-      if ($scope.api.ssnRequired === false && $scope.isBlank($scope.clientData.taxInfo.taxEinTinSsn)) {
+      if ($scope.api.ssnRequired === false && ($scope.clientData.taxInfo != null) && $scope.isBlank($scope.clientData.taxInfo.taxEinTinSsn)) {
         delete $scope.clientData.taxInfo;
       }
       if ($scope.api.contentType === 'multipart/form-data') {
@@ -166,8 +146,26 @@ angular.module('lyricvendordemo.demo', ['ui.router', 'ui.bootstrap', 'ngFileUplo
     $scope.$on('$destroy', function() {
       return document.removeEventListener('confirmationComplete', $scope.saveForm);
     });
-    return $scope.isBlank = function(str) {
+    $scope.isBlank = function(str) {
       return !str || /^\s*$/.test(str);
     };
+    $scope.myStartVal = {
+      royaltyEarnings: [
+        {
+          source: '',
+          accountNumber: '',
+          nameOnAccount: '',
+          year: '',
+          quarter: '',
+          string1: '',
+          distributionDate: '',
+          estimatedRoyalties: ''
+        }
+      ]
+    };
+    $scope.onChange = function(data) {
+      return $scope.royaltyEarnings = data;
+    };
+    return $scope.mySchema = $http.get('assets/royaltyEarningsSchema.json');
   }
 ]);

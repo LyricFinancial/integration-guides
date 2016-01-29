@@ -1,0 +1,50 @@
+{
+  "title": "Royalties",
+  "type": "object",
+  "properties": {
+    "royaltyEarnings": {
+      "type": "array",
+      "format": "table",
+      "title": "Earnings",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "title": "Earning",
+        "properties": {
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "accountNumber": {
+            "type": "string",
+            "title": "Account Number"
+          },
+          "nameOnAccount": {
+            "type": "string",
+            "title": "Name on Account"
+          },
+          "year": {
+            "type": "string",
+            "title": "Earnings Year"
+          },
+          "quarter": {
+            "type": "string",
+            "title": "Earnings Quarter"
+          },
+          "string1": {
+            "type": "string",
+            "title": ""
+          },
+          "distributionDate": {
+            "type": "string",
+            "title": "Distribution Date"
+          },
+          "estimatedRoyalties": {
+            "type": "string",
+            "title": "Estimated Royalties"
+          }
+        }
+      }
+    }
+  }
+}
