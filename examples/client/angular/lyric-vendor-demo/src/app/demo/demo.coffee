@@ -62,8 +62,8 @@ angular.module( 'lyricvendordemo.demo', [
     }
 
     $scope.api = {
-      #url: 'https://lyric-demo-server.herokuapp.com/clients/:vendorClntAcctId/advance_client'
-      url: 'http://demo.dev:8082/clients/:vendorClntAcctId/advance_client'
+      url: 'https://lyric-demo-server.herokuapp.com/clients/:vendorClntAcctId/advance_client'
+      #url: 'http://demo.dev:8082/clients/:vendorClntAcctId/advance_client'
       contentType: 'application/json'
       royaltyEarningsContentType: 'text/csv'
       ssnRequired: true
