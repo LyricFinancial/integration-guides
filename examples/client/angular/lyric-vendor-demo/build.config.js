@@ -80,7 +80,8 @@ module.exports = {
       'vendor/ng-file-upload-shim/ng-file-upload-shim.js',
 
       'vendor/json-editor/dist/jsoneditor.js',
-      'vendor/angular-json-editor/dist/angular-json-editor.js'
+      'vendor/angular-json-editor/dist/angular-json-editor.js',
+      'vendor/angular-sanitize/angular-sanitize.js'
     ],
     css: [
       'vendor/angular-material/angular-material.min.css',

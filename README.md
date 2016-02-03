@@ -23,7 +23,10 @@ Lyric will provide you with a vendorId and a username and password to be used to
 ### 4) Save the memberToken that gets returned
 A successful response from the Lyric Registration API will return an ACCESS_TOKEN in the header as well as a memberToken in the body.  The ACCESS_TOKEN needs to be returned in the response of your new API call.  The memberToken should be saved with your user record and used for any subsequent calls to the Lyric vendor APIs.
 
+### 5) Add Lyric Widget to your client portal
+Once an advance has been made, you can add the Lyric Widget to your website so that clients can see their Advance Amount, Amount Repaid, Amount Remaining and Available Balance.  Follow the directions in the [Lyric Snippet](https://github.com/LyricFinancial/lyric-snippet#widget) to see how to add it to your page.  Use our [Lyric Widget Demo](https://github.com/LyricFinancial/integration-guides/tree/master/examples/client/angular/lyric-vendor-demo#lyric-widget-demo) as a reference.
+
 
 ## Demo Pages
 
-You can find the demo [here](http://lyricfinancial.github.io/integration-guides/#/demo-server)
+You can find the demo [here](http://lyricfinancial.github.io/integration-guides/#/demo-server) and the lyric widget demo [here](http://lyricfinancial.github.io/integration-guides/#/lyric-widget).

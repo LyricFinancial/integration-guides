@@ -1,0 +1,39 @@
+<div id="content">
+	<md-content layout-padding>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h3>Lyric Widget Demo</h3>
+				<br/>
+  			<h5 class="md-flex">This demo mimics the home page of a client's account.  It uses the
+  			Lyric Widget to display the status of their Advances.  <a ui-sref="demo"> &lt;Client Demo&gt; </a> <a ui-sref="demo-server"> &lt;Server Demo&gt; </a></h5>
+			</div>
+		</md-toolbar>
+		
+
+		<div layout-gt-md="row" layout="column" layout-padding>
+
+			<div flex>
+				<md-toolbar>
+					<div class="md-toolbar-tools">
+		  			<h3 class="md-flex">My Membership</h3>
+					</div>
+				</md-toolbar>
+				<br/>
+
+				<div class="your-info">
+				  <span>Current Address: <a class="edit" ui-sref="demo.edit">Edit</a></span>
+				  <p>{{clientData.firstName}} {{clientData.lastName}}<br>
+				    {{clientData.address1}}<br>
+				    {{clientData.city}}, {{clientData.state}} {{clientData.zip}}</p>
+				</div>
+				
+				<br/>
+			</div>
+
+			<div flex>
+				<div ng-bind-html="lyricWidget"></div>
+			</div>
+
+		</div>
+	</md-content>
+</div>

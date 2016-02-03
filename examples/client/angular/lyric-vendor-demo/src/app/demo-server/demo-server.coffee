@@ -13,8 +13,20 @@ angular.module( 'lyricvendordemo.demo-server', [
         "main":
           controller: 'DemoServerCtrl',
           templateUrl: 'demo-server/demo-server.tpl.html'
-    data:{ pageTitle: 'Lyric Vendor Demo' }
+      resolve:
+        clientData: [
+          () ->
+            return {
+              firstName: 'Paul',
+              lastName: 'Williams',
+              address1: '327 S 87 St',
+              city: 'Omaha',
+              state: 'NE',
+              zipCode: '68123'
+            }
+        ]
 
+    data:{ pageTitle: 'Lyric Vendor Demo' }
 ])
 
 
@@ -24,18 +36,11 @@ angular.module( 'lyricvendordemo.demo-server', [
   '_'
   '$filter'
   '$http'
-  ($scope, $state, _, $filter, $http) ->
+  'clientData'
+  ($scope, $state, _, $filter, $http, clientData) ->
     $scope.lyric = new LyricSnippet("Custom Terms & Conditions")
 
-
-    $scope.clientData = {
-      firstName: 'Paul',
-      lastName: 'Williams',
-      address1: '327 S 87 St',
-      city: 'Omaha',
-      state: 'NE',
-      zipCode: '68123'
-    }
+    $scope.clientData = clientData
 
     $scope.server = {
       url:"https://lyric-demo-server.herokuapp.com/clients/:vendorClntAcctId/advance_server",
@@ -54,8 +59,6 @@ angular.module( 'lyricvendordemo.demo-server', [
 
       if $scope.server.username? && $scope.server.password? && $scope.server.vendorId?
         url = url + '?username=' + $scope.server.username + '&password=' + $scope.server.password + '&vendorId=' + $scope.server.vendorId
-      
-
 
       req =
         method: 'POST'

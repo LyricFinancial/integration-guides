@@ -3,6 +3,7 @@ angular.module( 'lyricvendordemo', [
   'templates-common',
   'lyricvendordemo.demo',
   'lyricvendordemo.demo-server',
+  'lyricvendordemo.lyric-widget',
   'ui.router',
   'base64',
   'ngMaterial'
