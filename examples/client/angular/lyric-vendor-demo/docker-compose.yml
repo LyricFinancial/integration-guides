@@ -4,4 +4,6 @@ dev:
    - ./build:/data
   ports:
    - "8081:80"
+  environment:
+      DEMO_SERVER_URL: http://demo.dev:8082
   command: ["--host", "0.0.0.0"]

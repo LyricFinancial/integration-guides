@@ -26,7 +26,8 @@ angular.module( 'lyricvendordemo.demo', [
   '$http'
   '$base64'
   'Upload'
-  ($scope, _, $filter, $http, $base64, Upload) ->
+  'ENV'
+  ($scope, _, $filter, $http, $base64, Upload, ENV) ->
 
     $scope.lyric = new LyricSnippet("Custom Terms & Conditions")
 
@@ -62,8 +63,7 @@ angular.module( 'lyricvendordemo.demo', [
     }
 
     $scope.api = {
-      url: 'https://lyric-demo-server.herokuapp.com/clients/:vendorClntAcctId/advance_client'
-      #url: 'http://demo.dev:8082/clients/:vendorClntAcctId/advance_client'
+      url: ENV.DEMO_SERVER_URL + "/clients/:vendorClntAcctId/advance_client"
       contentType: 'application/json'
       royaltyEarningsContentType: 'text/csv'
       ssnRequired: true

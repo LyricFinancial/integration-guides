@@ -1,4 +1,5 @@
 angular.module( 'lyricvendordemo', [
+  'config'
   'templates-app',
   'templates-common',
   'lyricvendordemo.demo',

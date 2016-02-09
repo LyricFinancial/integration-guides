@@ -37,13 +37,14 @@ angular.module( 'lyricvendordemo.demo-server', [
   '$filter'
   '$http'
   'clientData'
-  ($scope, $state, _, $filter, $http, clientData) ->
+  'ENV'
+  ($scope, $state, _, $filter, $http, clientData, ENV) ->
     $scope.lyric = new LyricSnippet("Custom Terms & Conditions")
 
     $scope.clientData = clientData
 
     $scope.server = {
-      url:"https://lyric-demo-server.herokuapp.com/clients/:vendorClntAcctId/advance_server",
+      url: ENV.DEMO_SERVER_URL + "/clients/:vendorClntAcctId/advance_server",
       vendorClientAccountId: ''
     }
 

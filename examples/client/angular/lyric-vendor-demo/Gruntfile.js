@@ -18,6 +18,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-ng-annotate');
   grunt.loadNpmTasks('grunt-html2js');
+  grunt.loadNpmTasks('grunt-ng-constant');
 
   /**
    * Load in our build configuration file.
@@ -58,6 +59,46 @@ module.exports = function ( grunt ) {
       options: {
         dest: 'CHANGELOG.md',
         template: 'changelog.tpl'
+      }
+    },
+
+    ngconstant: {
+      // Options for all targets
+      options: {
+        space: '  ',
+        wrap: '{%= __ngModule %}',
+        name: 'config'
+      },
+      // Environment targets
+      local: {
+        options: {
+          dest: 'src/app/config.js'
+        },
+        constants: {
+          ENV: {
+            DEMO_SERVER_URL: 'http://demo.dev:8082'
+          }
+        }
+      },
+      development: {
+        options: {
+          dest: 'src/app/config.js'
+        },
+        constants: {
+          ENV: {
+            DEMO_SERVER_URL: 'https://lyric-demo-dev-server.herokuapp.com'
+          }
+        }
+      },
+      demo: {
+        options: {
+          dest: 'src/app/config.js'
+        },
+        constants: {
+          ENV: {
+            DEMO_SERVER_URL: 'https://lyric-demo-server.herokuapp.com'
+          }
+        }
       }
     },
 
@@ -562,18 +603,21 @@ module.exports = function ( grunt ) {
    * before watching for changes.
    */
   grunt.renameTask( 'watch', 'delta' );
-  grunt.registerTask( 'watch', [ 'build', 'karma:unit', 'delta' ] );
+  grunt.registerTask( 'watch', [ 'clean', 'ngconstant:local', 'build', 'karma:unit', 'delta' ] );
 
   /**
    * The default task is to build and compile.
    */
-  grunt.registerTask( 'default', [ 'build', 'compile' ] );
+  grunt.registerTask( 'default', [ 'clean', 'ngconstant:demo', 'build', 'compile' ] );
+
+  grunt.registerTask( 'demo', [ 'clean', 'ngconstant:demo', 'build', 'compile' ] );
+  grunt.registerTask( 'dev', [ 'clean', 'ngconstant:development', 'build', 'compile' ] );
 
   /**
    * The `build` task gets your app ready to run for development and testing.
    */
   grunt.registerTask( 'build', [
-    'clean', 'html2js', 'jshint', 'coffeelint', 'coffee', 'less:build',
+    'html2js', 'jshint', 'coffeelint', 'coffee', 'less:build',
     'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_vendorcss', 'index:build', 'karmaconfig',
     'karma:continuous' 
