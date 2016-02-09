@@ -1,4 +1,4 @@
-# Lyric Integration Guides
+# Lyric Integration Guides 
 
 * [API Reference](https://api.lyricfinancial.com/docs/vendor-api/)
 * [Lyric Snippet](https://github.com/LyricFinancial/lyric-snippet)
