@@ -6,9 +6,10 @@ angular.module( 'lyricvendordemo.lyric-widget', [
 
 .config([
   '$stateProvider'
-  ($stateProvider) ->
+  'ENV'
+  ($stateProvider, ENV) ->
     $stateProvider.state 'lyric-widget',
-      url: '/lyric-widget',
+      url: '/lyric-widget?:memberToken',
       views:
         "main":
           controller: 'LyricWidgetCtrl',
@@ -17,33 +18,38 @@ angular.module( 'lyricvendordemo.lyric-widget', [
         clientData: [
           () ->
             return {
+              id: 'a'
               firstName: 'Paul',
               lastName: 'Williams',
               address1: '327 S 87 St',
               city: 'Omaha',
               state: 'NE',
-              zipCode: '68123'
+              zipCode: '68123',
+              memberToken: 'abcdefg'
             }
         ]
         lyricWidget: [
           'clientData'
           '$http'
-          (clientData, $http) ->
+          '$stateParams'
+          (clientData, $http, $stateParams) ->
+            memberToken = $stateParams.memberToken
 
+            if !memberToken?
+              return new LyricWidget(null, null)
             req =
               method: 'GET'
-              #url: 'http://demo.dev:8082/clients/' + client.vendorClientAccountId + '/advanceToken'
-              url: 'http://demo.dev:8082/clients/a/advanceToken'
+              url: ENV.DEMO_SERVER_URL + '/token?memberToken=' + memberToken
               headers: 'Content-Type': "application/json"
 
             $http(req)
             .then (resp) ->
-              widget = new LyricWidget()
+              widget = new LyricWidget(memberToken, null)
               widget.loadData(resp.headers().token)
               .then ->
                 return widget
             .catch (error)->
-              return new LyricWidget()
+              return new LyricWidget(memberToken, null)
 
             
         ]

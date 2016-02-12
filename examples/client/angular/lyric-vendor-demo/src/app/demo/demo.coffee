@@ -29,7 +29,7 @@ angular.module( 'lyricvendordemo.demo', [
   'ENV'
   ($scope, _, $filter, $http, $base64, Upload, ENV) ->
 
-    $scope.lyric = new LyricSnippet("Custom Terms & Conditions")
+    $scope.lyric = new LyricSnippet("Custom Terms & Conditions", ENV.VATM_URL)
 
     $scope.clientData = {
       user: {

@@ -76,7 +76,9 @@ module.exports = function ( grunt ) {
         },
         constants: {
           ENV: {
-            DEMO_SERVER_URL: 'http://demo.dev:8082'
+            DEMO_SERVER_URL: 'http://demo.dev:8082',
+            VATM_URL: 'https://demoservices.lyricfinancial.com',
+            ADVANCE_URL: 'http://demo.dev:8082/clients/a/advanceStatus'
           }
         }
       },
@@ -86,7 +88,9 @@ module.exports = function ( grunt ) {
         },
         constants: {
           ENV: {
-            DEMO_SERVER_URL: 'https://lyric-demo-dev-server.herokuapp.com'
+            DEMO_SERVER_URL: 'https://lyric-demo-dev-server.herokuapp.com',
+            VATM_URL: 'https://services.lyricfinancial.com',
+            ADVANCE_URL: null
           }
         }
       },
@@ -96,7 +100,21 @@ module.exports = function ( grunt ) {
         },
         constants: {
           ENV: {
-            DEMO_SERVER_URL: 'https://lyric-demo-server.herokuapp.com'
+            DEMO_SERVER_URL: 'https://lyric-demo-server.herokuapp.com',
+            VATM_URL: 'https://demoservices.lyricfinancial.com',
+            ADVANCE_URL: null
+          }
+        }
+      },
+      prod: {
+        options: {
+          dest: 'src/app/config.js'
+        },
+        constants: {
+          ENV: {
+            DEMO_SERVER_URL: 'https://lyric-demo-server.herokuapp.com',
+            VATM_URL: 'https://services.lyricfinancial.com',
+            ADVANCE_URL: null
           }
         }
       }
