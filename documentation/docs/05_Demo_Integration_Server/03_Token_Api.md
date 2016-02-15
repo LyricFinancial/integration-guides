@@ -1,0 +1,2 @@
+## Token API
+This API demonstrates how the vendor will need to generate a token that will authenticate with the Lyric system.  It can be used when calling loadData on the LyricWidget to view the advanceStatus.  The token needs to be signed with the vendor's private key and include the memberToken as the subject and the vendorId as a claim.  For demonstration purposes this API takes the memberToken as a parameter, but it could also take the vendor's unique id for the user and use that to look up the memberToken.

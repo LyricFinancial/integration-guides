@@ -89,7 +89,7 @@ module.exports = function ( grunt ) {
         constants: {
           ENV: {
             DEMO_SERVER_URL: 'https://lyric-demo-dev-server.herokuapp.com',
-            VATM_URL: 'https://services.lyricfinancial.com',
+            VATM_URL: 'https://integrationservices.lyricfinancial.com',
             ADVANCE_URL: null
           }
         }
@@ -113,7 +113,7 @@ module.exports = function ( grunt ) {
         constants: {
           ENV: {
             DEMO_SERVER_URL: 'https://lyric-demo-server.herokuapp.com',
-            VATM_URL: 'https://services.lyricfinancial.com',
+            VATM_URL: 'https://integrationservices.lyricfinancial.com',
             ADVANCE_URL: null
           }
         }
