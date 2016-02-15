@@ -19,8 +19,8 @@
         "date_modified": true,
         "float": true,
         "links": {
-            "Vendor API": "https://integrationservices.lyricfinancial.com/docs/vendor-api/",
-            "Assignment API": "https://lyric-demo-server.herokuapp.com/docs/assignments-api/"
+            "Vendor API - Swagger": "https://integrationservices.lyricfinancial.com/docs/vendor-api/",
+            "Assignment API - Swagger": "https://lyric-demo-server.herokuapp.com/docs/assignments-api/"
         }
     }
 }
