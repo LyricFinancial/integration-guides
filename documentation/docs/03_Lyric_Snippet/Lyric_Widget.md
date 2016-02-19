@@ -6,7 +6,7 @@ Once one of your clients is registered in the Lyric system, you can integrate th
 
 1) Create a Web Service Call that generates a JWT token
 
-The Lyric Widget makes a web service call to Lyric's APIs to get the Advance information.  In order to authenticate this call, you will need to provide a JWT token to the widget.  You can find more information on this [here](https://github.com/LyricFinancial/demo-integration-server#token-api).
+The Lyric Widget makes a web service call to Lyric's APIs to get the Advance information.  In order to authenticate this call, you will need to provide a JWT token to the widget.  You can find more information on this [here](!Demo_Integration_Service/Token_Api).
 
 2) Call your new web service and get the newly generated token.  You can store this token in local storage if you'd like so you're not creating a new token every time the page is refreshed.
 

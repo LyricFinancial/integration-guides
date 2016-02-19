@@ -2,6 +2,8 @@
 
 Javascript library to allow you to integrate with Lyric services.
 
+<button><a href="https://github.com/LyricFinancial/lyric-snippet" target="_blank" class="btn btn-secondary btn-hero">View On GitHub</a></button>
+
 ## Snippet
 
 ### How to Use - Synchronous
@@ -17,15 +19,15 @@ Javascript library to allow you to integrate with Lyric services.
 
 2) Create an instance of LyricSnippet optionally overriding terms and conditions.
 
-    lyric = new LyricSnippet("Custom Terms & Conditions")
+    	lyric = new LyricSnippet("Custom Terms & Conditions")
 
 or
 
-    lyric = new LyricSnippet(document.getElementById('custom-terms').innerHTML)
+    	lyric = new LyricSnippet(document.getElementById('custom-terms').innerHTML)
 
 3) Call confirm() function to display Terms and Conditions that the user will need to agree to before saving their data.
 
-	<button class="md-raised md-primary" onclick="lyric.confirm()">Get Advance</button>
+		<button class="md-raised md-primary" onclick="lyric.confirm()">Get Advance</button>
 
 Or call from within another javascript function after any form validation has been completed.
 

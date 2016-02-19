@@ -1,5 +1,7 @@
 # Demo Integration Server
 
+<button><a href="https://github.com/LyricFinancial/demo-integration-server" target="_blank" class="btn btn-secondary btn-hero">View On GitHub</a></button>
+
 This project is a vertx 3 web server that mimics a vendor's server.  It is set up to be flexible to
 demonstrate the various scenarios that a vendor might use to integrate with the Lyric APIs. The primary integration
 method is shown in the [Server Demo API](#server-demo-api). The Lyric API uses basic authentication and vendor API credentials
