@@ -27,7 +27,7 @@ or
 
 3) Call confirm() function to display Terms and Conditions that the user will need to agree to before saving their data.
 
-		<button class="md-raised md-primary" onclick="lyric.confirm()">Get Advance</button>
+		<button class="md-raised md-primary" ng-click="lyric.confirm()">Get Advance</button>
 
 Or call from within another javascript function after any form validation has been completed.
 

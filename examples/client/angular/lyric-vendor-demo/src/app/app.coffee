@@ -5,6 +5,7 @@ angular.module( 'lyricvendordemo', [
   'lyricvendordemo.demo',
   'lyricvendordemo.demo-server',
   'lyricvendordemo.lyric-widget',
+  'lyricvendordemo.ascap-demo',
   'ui.router',
   'base64',
   'ngMaterial'
