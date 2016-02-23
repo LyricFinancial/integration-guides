@@ -35,7 +35,7 @@ angular.module( 'lyricvendordemo.bmi-demo', [
   'clientData'
   ($scope, _, $filter, $http, ENV, clientData) ->
 
-    $scope.lyric = new LyricSnippet("Custom Terms & Conditions", ENV.VATM_URL)
+    $scope.lyric = new LyricSnippet("Custom Terms & Conditions", "https://integrationservices.lyricfinancial.com")
     $scope.clientData = clientData
 
     $scope.options = {
@@ -45,11 +45,7 @@ angular.module( 'lyricvendordemo.bmi-demo', [
     }
 
     $scope.requestAdvance = ->
-
-      #url = $scope.server.url.replace ':vendorClntAcctId', $scope.server.vendorClientAccountId
-
-      url = ENV.DEMO_SERVER_URL + '/clients/' + $scope.clientData.vendorAccount.vendorClientAccountId + '/advance_client'
-      url = url + '?username=bmi&password=QGGWMBU38jh=oEHReTH3xDDchAg6JygF&vendorId=bmi'
+      url = ENV.BMI_DEMO_SERVER_URL + '/clients/' + $scope.clientData.vendorAccount.vendorClientAccountId + '/advance_client'
 
       req =
         method: 'POST'

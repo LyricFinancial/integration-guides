@@ -77,6 +77,7 @@ module.exports = function ( grunt ) {
         constants: {
           ENV: {
             DEMO_SERVER_URL: 'http://demo.dev:8082',
+            BMI_DEMO_SERVER_URL: 'https://bmi-demo-integration-server.herokuapp.com',
             VATM_URL: 'https://demoservices.lyricfinancial.com',
             ADVANCE_URL: 'http://demo.dev:8082/clients/a/advanceStatus'
           }
@@ -89,6 +90,7 @@ module.exports = function ( grunt ) {
         constants: {
           ENV: {
             DEMO_SERVER_URL: 'https://lyric-demo-dev-server.herokuapp.com',
+            BMI_DEMO_SERVER_URL: 'https://bmi-demo-integration-server.herokuapp.com',
             VATM_URL: 'https://integrationservices.lyricfinancial.com',
             ADVANCE_URL: null
           }
@@ -101,6 +103,7 @@ module.exports = function ( grunt ) {
         constants: {
           ENV: {
             DEMO_SERVER_URL: 'https://lyric-demo-server.herokuapp.com',
+            BMI_DEMO_SERVER_URL: 'https://bmi-demo-integration-server.herokuapp.com',
             VATM_URL: 'https://demoservices.lyricfinancial.com',
             ADVANCE_URL: null
           }
@@ -113,6 +116,7 @@ module.exports = function ( grunt ) {
         constants: {
           ENV: {
             DEMO_SERVER_URL: 'https://lyric-demo-server.herokuapp.com',
+            BMI_DEMO_SERVER_URL: 'https://bmi-demo-integration-server.herokuapp.com',
             VATM_URL: 'https://integrationservices.lyricfinancial.com',
             ADVANCE_URL: null
           }
