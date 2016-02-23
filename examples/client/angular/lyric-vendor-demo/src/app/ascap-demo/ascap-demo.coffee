@@ -51,9 +51,7 @@ angular.module( 'lyricvendordemo.ascap-demo', [
       #url = $scope.server.url.replace ':vendorClntAcctId', $scope.server.vendorClientAccountId
 
       url = ENV.DEMO_SERVER_URL + "/clients/bmiTest432/advance_server"
-
-      # if $scope.server.username? && $scope.server.password? && $scope.server.vendorId?
-      #   url = url + '?username=' + $scope.server.username + '&password=' + $scope.server.password + '&vendorId=' + $scope.server.vendorId
+      url = url + '?username=ascap&password=WxjXgrzzGzrkPMv7hBFJ@PMkQX9e3e2N&vendorId=ascap'
 
       req =
         method: 'POST'

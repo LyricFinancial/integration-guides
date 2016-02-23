@@ -49,9 +49,7 @@ angular.module( 'lyricvendordemo.bmi-demo', [
       #url = $scope.server.url.replace ':vendorClntAcctId', $scope.server.vendorClientAccountId
 
       url = ENV.DEMO_SERVER_URL + '/clients/' + $scope.clientData.vendorAccount.vendorClientAccountId + '/advance_client'
-
-      # if $scope.server.username? && $scope.server.password? && $scope.server.vendorId?
-      #   url = url + '?username=' + $scope.server.username + '&password=' + $scope.server.password + '&vendorId=' + $scope.server.vendorId
+      url = url + '?username=bmi&password=QGGWMBU38jh=oEHReTH3xDDchAg6JygF&vendorId=bmi'
 
       req =
         method: 'POST'
