@@ -2,7 +2,7 @@
 
 This route calls a server, passing the data that should be sent to the Lyric API.  
 	
-	This demo calls the **/clients/:id/advance_client** endpoint.
+    This demo calls the /clients/:id/advance_client endpoint.
 
 ### Advanced Options
 

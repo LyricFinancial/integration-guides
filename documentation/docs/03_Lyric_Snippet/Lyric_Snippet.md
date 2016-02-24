@@ -1,44 +1,45 @@
-# Lyric Snippet
-
 Javascript library to allow you to integrate with Lyric services.
 
 <button><a href="https://github.com/LyricFinancial/lyric-snippet" target="_blank" class="btn btn-secondary btn-hero">View On GitHub</a></button>
 
-## Snippet
-
 ### How to Use - Synchronous
 
-1) Include js and css file in your project
+**1) Include js and css file in your project**
 
-**Using Bower**
+  Using Bower
 
-    bower install lyric-snippet --save
+      bower install lyric-snippet --save
 
-    <script src="bower_components/lyric-snippet/dist/lyric-snippet.min.js"></script>
-    <link href="bower_components/lyric-snippet/dist/lyric-snippet.css" rel="stylesheet">
+  Then add the js and css file to your index.html
 
-2) Create an instance of LyricSnippet optionally overriding terms and conditions.
+      <script src="bower_components/lyric-snippet/dist/lyric-snippet.min.js"></script>
+      <link href="bower_components/lyric-snippet/dist/lyric-snippet.css" rel="stylesheet">
 
-    	lyric = new LyricSnippet("Custom Terms & Conditions")
+**2) Create an instance of LyricSnippet optionally overriding terms and conditions.**
 
-or
+      var lyric;
+      lyric = new LyricSnippet("Custom Terms & Conditions");
 
-    	lyric = new LyricSnippet(document.getElementById('custom-terms').innerHTML)
+  or
 
-3) Call confirm() function to display Terms and Conditions that the user will need to agree to before saving their data.
+      var lyric;
+      lyric = new LyricSnippet(document.getElementById('custom-terms').innerHTML);
 
-		<button class="md-raised md-primary" ng-click="lyric.confirm()">Get Advance</button>
 
-Or call from within another javascript function after any form validation has been completed.
+**3) Call confirm() function to display Terms and Conditions that the user will need to agree to before saving their data.**
 
-4) Add event listener to listen for confirmationComplete event.  This event gets fired after user agrees to the terms and conditions.  It is within this listener that you would make your server call to save the data to the Lyric API.
+    <button class="md-raised md-primary" ng-click="lyric.confirm()">Get Advance</button>
 
-	document.addEventListener('confirmationComplete', eventHandler);
+  Or call from within another javascript function after any form validation has been completed.
 
-5) Once the Lyric API has been successfully called, call advanceRequestComplete function passing the ACCESS_TOKEN that was returned in the header of the Lyric /clients API call.  This will remove the wait indicator as well as opent the Lyric vAtm page in a new browser.
+**4) Add event listener to listen for confirmationComplete event.  This event gets fired after user agrees to the terms and conditions.  It is within this listener that you would make your server call to save the data to the Lyric API.**
 
-	lyric.advanceRequestComplete(accessToken);
+    document.addEventListener('confirmationComplete', eventHandler);
 
-6) If an error occurs, call the advanceRequestError function.
+**5) Once the Lyric API has been successfully called, call advanceRequestComplete function passing the ACCESS_TOKEN that was returned in the header of the Lyric /clients API call.  This will remove the wait indicator as well as opent the Lyric vAtm page in a new browser.**
+
+    lyric.advanceRequestComplete(accessToken);
+
+**6) If an error occurs, call the advanceRequestError function.**
 
 	lyric.advanceRequestError(error)

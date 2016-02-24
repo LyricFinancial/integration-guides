@@ -1,5 +1,3 @@
-# Demo Integration Server
-
 <button><a href="https://github.com/LyricFinancial/demo-integration-server" target="_blank" class="btn btn-secondary btn-hero">View On GitHub</a></button>
 
 This project is a vertx 3 web server that mimics a vendor's server.  It is set up to be flexible to
@@ -19,11 +17,6 @@ Use the [API Documentation](https://api.lyricfinancial.com/docs/vendor-api/) to 
 use the Lyric registration API.
 
 
-
-### Next Steps
+## Next Steps
 
 [Configure a new Demo Integration Server](Welcome.md) to work with the demo apps.
-
-
-
-Return to [Integration Guides](https://github.com/LyricFinancial/integration-guides#4-save-the-membertoken-that-gets-returned)
