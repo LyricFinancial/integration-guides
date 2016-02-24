@@ -26,7 +26,7 @@
 
 #### For API Developers
 * [Demo Integration Server](!Demo_Integration_Server)
-* [Vendor API Reference](https://api.lyricfinancial.com/docs/vendor-api/)
+* [Vendor API Reference](https://integrationservices.lyricfinancial.com/docs/vendor-api/)
 * [Assignment API Reference](https://lyric-demo-server.herokuapp.com/docs/assignments-api/)
 
 </div>
