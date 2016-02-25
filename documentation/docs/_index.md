@@ -28,6 +28,7 @@
 * [Demo Integration Server](!Demo_Integration_Server)
 * [Vendor API Reference](https://integrationservices.lyricfinancial.com/docs/vendor-api/)
 * [Assignment API Reference](https://lyric-demo-server.herokuapp.com/docs/assignments-api/)
+* [Key Generator](https://integrationservices.lyricfinancial.com/key-generator/#/keys)
 
 </div>
 

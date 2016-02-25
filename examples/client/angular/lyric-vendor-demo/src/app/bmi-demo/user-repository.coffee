@@ -9,16 +9,16 @@ angular.module("userRepository", [])
         clientData = {}
 
         if vendorClientAccountId == 'bmiTest1'
-          clientData = @createUser('KATIE', 'BATEMAN', 'KBATEMAN@EMAIL.COM', 1341, 'female', vendorClientAccountId)
+          clientData = @createUser('KATIE', 'BATEMAN', 'KBATEMAN@EMAIL.COM', 1341, 'female', vendorClientAccountId, '7bb55f34-0c21-4177-9f55-b54217d589ba')
         else if vendorClientAccountId == 'bmiTest2'
-          clientData = @createUser('JOHN', 'DOE', 'JDOE@EMAIL.COM', 2342, 'male', vendorClientAccountId)
+          clientData = @createUser('JOHN', 'DOE', 'JDOE@EMAIL.COM', 2342, 'male', vendorClientAccountId, null)
         else if vendorClientAccountId == 'bmiTest3'
-          clientData = @createUser('JANE', 'BROWN', 'JBROWN@EMAIL.COM', 2343, 'female', vendorClientAccountId)
+          clientData = @createUser('JANE', 'BROWN', 'JBROWN@EMAIL.COM', 2343, 'female', vendorClientAccountId, null)
         else if vendorClientAccountId == 'bmiTest4'
-          clientData = @createUser('MARK', 'WHITE', 'MWHITE@EMAIL.COM', 2344, 'male', vendorClientAccountId)
+          clientData = @createUser('MARK', 'WHITE', 'MWHITE@EMAIL.COM', 2344, 'male', vendorClientAccountId, null)
         return clientData
 
-      createUser: (firstName, lastName, email, unique4Digits, gender, vendorClientAccountId) ->
+      createUser: (firstName, lastName, email, unique4Digits, gender, vendorClientAccountId, memberToken) ->
         return {
             user: {
               firstName: firstName,
@@ -46,7 +46,8 @@ angular.module("userRepository", [])
               memberBusinessType: "individual"
             },
             vendorAccount: {
-              vendorClientAccountId: vendorClientAccountId
+              vendorClientAccountId: vendorClientAccountId,
+              memberToken: memberToken
             }
           }
  
