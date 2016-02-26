@@ -9,7 +9,7 @@ angular.module( 'lyricvendordemo.lyric-widget', [
   'ENV'
   ($stateProvider, ENV) ->
     $stateProvider.state 'lyric-widget',
-      url: '/lyric-widget?:memberToken',
+      url: '/lyric-widget?:vendorClientAccountId',
       views:
         "main":
           controller: 'LyricWidgetCtrl',
@@ -33,23 +33,23 @@ angular.module( 'lyricvendordemo.lyric-widget', [
           '$http'
           '$stateParams'
           (clientData, $http, $stateParams) ->
-            memberToken = $stateParams.memberToken
+            vendorClientAccountId = $stateParams.vendorClientAccountId
 
-            if !memberToken?
+            if !vendorClientAccountId?
               return new LyricWidget(null, null)
             req =
               method: 'GET'
-              url: ENV.DEMO_SERVER_URL + '/token?memberToken=' + memberToken
+              url: ENV.DEMO_SERVER_URL + '/token?vendorClientAccountId=' + vendorClientAccountId
               headers: 'Content-Type': "application/json"
 
             $http(req)
             .then (resp) ->
-              widget = new LyricWidget(memberToken, null)
+              widget = new LyricWidget(vendorClientAccountId, null)
               widget.loadData(resp.headers().token)
               .then ->
                 return widget
             .catch (error)->
-              return new LyricWidget(memberToken, null)
+              return new LyricWidget(vendorClientAccountId, null)
 
             
         ]

@@ -9,16 +9,24 @@ angular.module("userRepository", [])
         clientData = {}
 
         if vendorClientAccountId == 'bmiTest1'
-          clientData = @createUser('KATIE', 'BATEMAN', 'KBATEMAN@EMAIL.COM', 1341, 'female', vendorClientAccountId, '7bb55f34-0c21-4177-9f55-b54217d589ba')
+          clientData = @createUser('KATIE', 'BATEMAN', 'KBATEMAN@EMAIL.COM', 1341, 'female', vendorClientAccountId)
         else if vendorClientAccountId == 'bmiTest2'
-          clientData = @createUser('JOHN', 'DOE', 'JDOE@EMAIL.COM', 2342, 'male', vendorClientAccountId, null)
+          clientData = @createUser('JOHN', 'DOE', 'JDOE@EMAIL.COM', 2342, 'male', vendorClientAccountId)
         else if vendorClientAccountId == 'bmiTest3'
-          clientData = @createUser('JANE', 'BROWN', 'JBROWN@EMAIL.COM', 2343, 'female', vendorClientAccountId, null)
+          clientData = @createUser('JANE', 'BROWN', 'JBROWN@EMAIL.COM', 2343, 'female', vendorClientAccountId)
         else if vendorClientAccountId == 'bmiTest4'
-          clientData = @createUser('MARK', 'WHITE', 'MWHITE@EMAIL.COM', 2344, 'male', vendorClientAccountId, null)
+          clientData = @createUser('MARK', 'WHITE', 'MWHITE@EMAIL.COM', 2344, 'male', vendorClientAccountId)
+        else if vendorClientAccountId == 'bmiTest5'
+          clientData = @createUser('SALLY', 'JONES', 'SJONES@EMAIL.COM', 2345, 'female', vendorClientAccountId)
+        else if vendorClientAccountId == 'bmiTest6'
+          clientData = @createUser('BOB', 'SMITH', 'BSMITH@EMAIL.COM', 2346, 'male', vendorClientAccountId)
+        else if vendorClientAccountId == 'bmiTest7'
+          clientData = @createUser('RUTH', 'WALTON', 'RWALTON@EMAIL.COM', 2347, 'female', vendorClientAccountId)
+        else if vendorClientAccountId == 'bmiTest8'
+          clientData = @createUser('JEREMY', 'MADDEN', 'JMADDEN@EMAIL.COM', 2348, 'male', vendorClientAccountId)
         return clientData
 
-      createUser: (firstName, lastName, email, unique4Digits, gender, vendorClientAccountId, memberToken) ->
+      createUser: (firstName, lastName, email, unique4Digits, gender, vendorClientAccountId) ->
         return {
             user: {
               firstName: firstName,
@@ -46,8 +54,7 @@ angular.module("userRepository", [])
               memberBusinessType: "individual"
             },
             vendorAccount: {
-              vendorClientAccountId: vendorClientAccountId,
-              memberToken: memberToken
+              vendorClientAccountId: vendorClientAccountId
             }
           }
  

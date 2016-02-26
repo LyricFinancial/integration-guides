@@ -12,7 +12,7 @@ You can store this token in local storage if you'd like so you're not creating a
 
 **3) Create an instance of Lyric Widget.**  
 
-The constructor takes the memberToken and an optional advanceUrl.  By default, the advance api in the Lyric services will be used, but it can be overridden to use a different url.  Then call loadData() on it passing the newly generated token.  loadData() returns a promise so in the .then you can then get the html of the widget to add to your web page.
+The constructor takes the vendorClientAccountId and an optional advanceUrl.  By default, the advance api in the Lyric services will be used, but it can be overridden to use a different url.  Then call loadData() on it passing the newly generated token.  loadData() returns a promise so in the .then you can then get the html of the widget to add to your web page.
 
     var lyricWidget;
 

@@ -21,6 +21,32 @@ angular.module( 'lyricvendordemo.bmi-demo', [
             vendorClientAccountId = $stateParams.vendorClientAccountId
             return userRepo.lookupUser(vendorClientAccountId)
         ]
+        lyricWidget: [
+          'clientData'
+          '$http'
+          '$stateParams'
+          'ENV'
+          (clientData, $http, $stateParams, ENV) ->
+            vendorClientAccountId = $stateParams.vendorClientAccountId
+
+            if !vendorClientAccountId?
+              return new LyricWidget(null, null)
+            req =
+              method: 'GET'
+              url: ENV.BMI_DEMO_SERVER_URL + '/token?vendorClientAccountId=' + vendorClientAccountId
+              headers: 'Content-Type': "application/json"
+
+            $http(req)
+            .then (resp) ->
+              widget = new LyricWidget(vendorClientAccountId, null)
+              widget.loadData(resp.headers().token)
+              .then ->
+                return widget
+            .catch (error)->
+              return new LyricWidget(vendorClientAccountId, null)
+
+            
+        ]
     data:{ pageTitle: 'ASCAP Demo' }
 
 ])
@@ -33,7 +59,9 @@ angular.module( 'lyricvendordemo.bmi-demo', [
   '$http'
   'ENV'
   'clientData'
-  ($scope, _, $filter, $http, ENV, clientData) ->
+  'lyricWidget'
+  ($scope, _, $filter, $http, ENV, clientData, lyricWidget) ->
+    $scope.lyricWidget = lyricWidget.getWidget()
 
     $scope.lyric = new LyricSnippet("Custom Terms & Conditions", "https://integrationservices.lyricfinancial.com")
     $scope.clientData = clientData
