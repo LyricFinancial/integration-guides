@@ -5,12 +5,12 @@ The project contains the documentation for the Lyric system as well as demo proj
 This project has a dev branch as well as a master branch.  Changes should be made in dev first, and then once approved, moved to the master branch.  The master branch will produce the documentation and client apps that vendors will be using.  The documentation and apps are deployed using codeship.
 
 ### Dev
-[Documentation](http://dev-docs.lyricfinancial.com/)
-[Client Apps](http://dev-vatm-demo.lyricfinancial.com/#/demo-server)
+* [Documentation](http://dev-docs.lyricfinancial.com/)
+* [Client Apps](http://dev-vatm-demo.lyricfinancial.com/#/demo-server)
 
 ### Master
-[Documentation](http://docs.lyricfinancial.com/)
-[Client Apps](http://vatm-demo.lyricfinancial.com/#/demo-server)
+* [Documentation](http://docs.lyricfinancial.com/)
+* [Client Apps](http://vatm-demo.lyricfinancial.com/#/demo-server)
 
 ## Documentation
 
