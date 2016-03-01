@@ -153,35 +153,32 @@
         <table id="ctrlMenu_tblFinancialServices" border="0">
 
 </table>
-    </div>
-    <table>
-        <tbody><tr>
-            <td style="width: 61px">
-            </td>
-        </tr>
-        <tr>
-            <td class="help_logout" style="width: 61px">
-                <a id="ctrlMenu_urlLogOut">Log Out</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <br/>
-                <button class="btn-advance btn" ng-click="lyric.confirm()" ng-if="lyric != null">Get An Advance</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <br/>
-                <div ng-bind-html="lyricWidget"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-    </tbody></table>
+</div>
+<table>
+    <tbody><tr>
+        <td style="width: 61px">
+        </td>
+    </tr>
+    <tr>
+        <td class="help_logout" style="width: 61px">
+            <a id="ctrlMenu_urlLogOut">Log Out</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br/>
+            <div class="lyric-container">
+              <button class="btn-advance btn lyric-button" ng-click="lyric.confirm()" ng-if="lyric != null">Get An Advance</button>
+              <div ng-bind-html="lyricWidget"></div>
+        	</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            &nbsp;
+        </td>
+    </tr>
+</tbody></table>
 </div>
 
 
