@@ -1,32 +1,36 @@
 # Lyric Integration Guides 
 
-* [API Reference](https://api.lyricfinancial.com/docs/vendor-api/)
-* [Lyric Snippet](https://github.com/LyricFinancial/lyric-snippet)
-* [Demo Integration Server](https://github.com/LyricFinancial/demo-integration-server)
-* [Angular Vendor Demo (Client)](https://github.com/LyricFinancial/integration-guides/tree/master/examples/client/angular/lyric-vendor-demo)
+The project contains the documentation for the Lyric system as well as demo projects that utilize the Lyric APIs and services.  Documentation can be found [here](http://dev-docs.lyricfinancial.com/).
 
-## Getting Started
+This project has a dev branch as well as a master branch.  Changes should be made in dev first, and then once approved, moved to the master branch.  The master branch will produce the documentation and client apps that vendors will be using.  The documentation and apps are deployed using codeship.
 
-Follow these steps to integrate your system with the Lyric APIs.
+### Dev
+[Documentation](http://dev-docs.lyricfinancial.com/)
+[Client Apps](http://dev-vatm-demo.lyricfinancial.com/#/demo-server)
 
-### 1) Add the "Get Advance" button to your website.
-Follow the directions in the [Lyric Snippet](https://github.com/LyricFinancial/lyric-snippet) to update your website to include a "Get Advance" button.  This snippet will display a Terms & Conditions modal as well as the wait indicator while you make the call to your server to make the Lyric Registration API call.  Use our [Angular Demos](https://github.com/LyricFinancial/integration-guides/tree/master/examples/client/angular/lyric-vendor-demo) as a reference.
+### Master
+[Documentation](http://docs.lyricfinancial.com/)
+[Client Apps](http://vatm-demo.lyricfinancial.com/#/demo-server)
 
-### 2) Record agreement to Terms & Conditions
-If necessary, before you make the registration call to the server, make an API call that will record the acknowledgement of the Terms & Conditions.
+## Documentation
 
-### 3) Add an API to your server to make the Lyric Registration API call
-Lyric will provide you with a vendorId and a username and password to be used to authenticate with the vendor APIs.  These pieces of information should be kept securely on your server, so you will need to create a new API call that will then turn around and call the Lyric Registration API.  Use our [Demo Integration Server](https://github.com/LyricFinancial/demo-integration-server) to guide you in this process.  It demonstrates passing json as well as multipart form-data.  
+The documentation is built using [daux.io](http://daux.io/index).  At the root of the documentation folder, run grunt and a new window will open with the site.  Any changes you make to the doc files will be visible in your browser once you refresh.
 
-	  The vendorClientAccountId is the unique key for the user in your system.  We will use this key to determine uniqueness.
+    grunt
 
-### 4) Save the memberToken that gets returned
-A successful response from the Lyric Registration API will return an ACCESS_TOKEN in the header as well as a memberToken in the body.  The ACCESS_TOKEN needs to be returned in the response of your new API call.  The memberToken should be saved with your user record and used for any subsequent calls to the Lyric vendor APIs.
+## Angular Apps
 
-### 5) Add Lyric Widget to your client portal
-Once an advance has been made, you can add the Lyric Widget to your website so that clients can see their Advance Limit, Current Balance and Available Balance.  Follow the directions in the [Lyric Snippet](https://github.com/LyricFinancial/lyric-snippet#widget) to see how to add it to your page.  Use our [Lyric Widget Demo](https://github.com/LyricFinancial/integration-guides/tree/master/examples/client/angular/lyric-vendor-demo#lyric-widget-demo) as a reference.
+At the root of the lyric-vendor-demo app, you'll need to install the dependencies and build dependencies.
 
+    npm install
+    bower install
 
-## Demo Pages
+To make it so changes will show up just by refreshing your browser, run
 
-You can find the demo [here](http://lyricfinancial.github.io/integration-guides/#/demo-server) and the lyric widget demo [here](http://lyricfinancial.github.io/integration-guides/#/lyric-widget).
+    grunt watch
+
+In a new window, start the app by running
+
+    fig up dev
+
+Make changes then check them into the dev branch first.
