@@ -6,7 +6,7 @@ angular.module("userRepository", [])
     class UserRepository
 
       lookupUser: (vendorClientAccountId) ->
-        clientData = {}
+        clientData = {vendorAccount: {vendorClientAccountId: null}}
 
         if vendorClientAccountId == 'bmiTest1'
           clientData = @createUser('KATIE', 'BATEMAN', 'KBATEMAN@EMAIL.COM', 1341, 'female', vendorClientAccountId)

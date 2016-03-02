@@ -35,30 +35,28 @@ angular.module( 'lyricvendordemo.bmi-demo', [
   'clientData'
   '$stateParams'
   ($scope, _, $filter, $http, ENV, clientData, $stateParams) ->
-    vendorClientAccountId = $stateParams.vendorClientAccountId
 
-    if !vendorClientAccountId?
-      lyricWidget = new LyricWidget(null, null)
+    widget = new LyricWidget(clientData.vendorAccount.vendorClientAccountId, null)
+    $scope.lyric = new LyricSnippet("Custom Terms & Conditions", "https://integrationservices.lyricfinancial.com")
 
-    else
-      $scope.lyric = new LyricSnippet("Custom Terms & Conditions", "https://integrationservices.lyricfinancial.com")
-      widget = new LyricWidget(vendorClientAccountId, null)
+    # Display placeholder widget
+    $scope.lyricWidget = widget.getWidget()
 
+    if clientData.user?
       req =
         method: 'GET'
-        url: ENV.BMI_DEMO_SERVER_URL + '/token?vendorClientAccountId=' + vendorClientAccountId
+        url: ENV.BMI_DEMO_SERVER_URL + '/token?vendorClientAccountId=' + clientData.vendorAccount.vendorClientAccountId
         headers: 'Content-Type': "application/json"
 
+      # Get token to make loadData call
       $http(req)
       .then (resp) ->
-        
         widget.loadData(resp.headers().token)
         .then ->
+          # Update widget to include returned data
           $scope.lyricWidget = widget.getWidget()
       .catch (error)->
-        $scope.lyricWidget = widget
-
-      
+    
     $scope.clientData = clientData
 
     $scope.options = {

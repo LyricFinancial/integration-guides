@@ -168,7 +168,7 @@
         <td>
             <br/>
             <div class="lyric-container">
-              <button class="btn-advance btn lyric-button" ng-click="lyric.confirm()" ng-if="lyric != null">Get An Advance</button>
+              <button class="btn-advance btn lyric-button" ng-click="lyric.confirm()" ng-disabled="clientData.user == null">Get An Advance</button>
               <div ng-bind-html="lyricWidget"></div>
         	</div>
         </td>
