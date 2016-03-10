@@ -7,7 +7,7 @@ angular.module( 'sonydemo.assignments', [
   '$stateProvider'
   ($stateProvider) ->
     $stateProvider.state 'assignments',
-      url: '/assignments',
+      url: '/assignments?vendorClientAccountId',
       views:
         "main":
           controller: 'AssignmentsCtrl',
@@ -15,13 +15,19 @@ angular.module( 'sonydemo.assignments', [
       resolve:
           assignments: [
             '$stateParams'
-            ($stateParams) ->
+            '$http'
+            'ENV'
+            ($stateParams, $http, ENV) ->
               vendorClientAccountId = $stateParams.vendorClientAccountId
-              
-              assignments = [
-                {assignmentDate: '2016-03-02T17:12:15.135', amount: '$500'},
-                {assignmentDate: '2016-03-09T12:48:15.835', amount: '$200'}
-              ]
+
+              req =
+                method: 'GET'
+                url: ENV.SONY_DEMO_SERVER_URL + '/clients/' + vendorClientAccountId + '/assignments'
+                headers: 'Content-Type': "application/json"
+
+              $http(req)
+              .then (resp) ->
+                return resp.data
           ]
     data:{ pageTitle: 'Sony Demo' }
 

@@ -15,7 +15,7 @@ angular.module("userRepository", [])
         else if vendorClientAccountId == 'chuckSonyTest'
           clientData = @createUser('Chuck', 'Swanberg', 'eric@lyricfinancial.com', 7343, 'male', vendorClientAccountId, 'Chuckles Tunes')
         else if vendorClientAccountId == 'amySonyTest'
-          clientData = @createUser('Amy', 'Madden', 'eric@lyricfinancial.com', 7343, 'female', vendorClientAccountId, 'Madden Tunes')
+          clientData = @createUser('Amy', 'Madden', 'amadden@mad-swan.com', 7344, 'female', vendorClientAccountId, 'Madden Tunes')
 
         else if vendorClientAccountId == 'sonyTest7'
           clientData = @createUser('RUTH', 'WALTON', 'RWALTON@EMAIL.COM', 5347, 'female', vendorClientAccountId, 'XYZ Tunes')

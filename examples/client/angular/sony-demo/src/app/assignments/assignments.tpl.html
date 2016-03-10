@@ -10,7 +10,7 @@
     <tbody>
       <tr ng-repeat="assignment in assignments">
         <td>{{assignment.assignmentDate | date : 'medium'}}</td>
-        <td>{{assignment.amount}}</td>
+        <td>{{assignment.amount | currency}}</td>
       </tr>
     </tbody>
   </table>
