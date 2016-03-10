@@ -1,0 +1,23 @@
+<div class="xar-block-body" ng-if="loginObject.showPin == false" ng-include="'login/_username-form.tpl.html'"></div>
+<div class="xar-block-body" ng-if="loginObject.showPin == true" ng-include="'login/_pin-form.tpl.html'"></div>
+
+<b>
+<div class="xar-block-foot">
+</div>    
+    <form name="dampsearch" method="post">
+    <div id="home_top_r_musicsearch_hdr"><img src="/assets/images/tbl_hdr_musicsearch.gif" width="77" height="16" alt="Music Search"></div>
+    <div class="home_top_r_form_field_l"><input type="text" name="musicsearch" class="textfield"></div>
+    <div class="home_top_r_form_field_r"><input type="image" src="/assets/images/btn_go.gif" alt="Go"></div>
+    <div id="home_top_r_musicsearch_by_l"><img src="/assets/images/form_lbl_searchby.gif" width="58" height="5" alt="Search By"></div>
+    <div id="home_top_r_musicsearch_by_r">
+      <select name="category" style="width: 118px;">  
+        <option value="title">&nbsp;Song</option>
+        <option value="album">&nbsp;Album</option>
+        <option value="writer">&nbsp;Writer (Last name)</option>
+        <option value="artist">&nbsp;Artist</option>
+        <option value="keyword">&nbsp;Keyword</option>
+        <option value="lyrics">&nbsp;Lyrics</option>
+      </select>
+    <input type="hidden" name="fuzzy" value="Y"></div>
+    </form>
+  </b>

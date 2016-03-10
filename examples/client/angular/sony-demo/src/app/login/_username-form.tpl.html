@@ -1,0 +1,32 @@
+<form id="login_form" name="" method="post">
+    <div id="template_top_r_login_hdr">
+      <img src="/assets/images/tbl_hdr_login.gif" width="132" height="16" alt="Login to Your Account">
+    </div>
+
+    <span class="label">User ID</span>
+    <input type="text" name="username" id="username" ng-model="loginObject.username" size="16" value="">
+    <br>
+    <br>
+
+    <span class="label">Password</span>
+    <input type="password" id="password" name="password" ng-model="loginObject.password" size="16" autocomplete="OFF">
+    <br><br>
+
+    <a id="login_submit_btn" ng-click="goToPin()" class="btn">Login</a>
+    <a href="/statements/registration.php" class="btn">Not Registered Yet</a>
+    <a href="index.php/contact" class="btn">Contact Us</a>
+  </form>
+
+  <div style="margin-top:8px">
+    <a style="color:#fff;font-size:7pt" href="#" id="forgot_password_btn"><b>Forgot Password?</b></a>
+    <b>
+    </b>
+  </div>
+  <b>
+    <br>
+    <br>
+
+
+    <div class="msg"></div>
+
+  </b>

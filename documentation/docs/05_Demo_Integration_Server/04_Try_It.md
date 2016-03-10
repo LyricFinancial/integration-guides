@@ -9,4 +9,4 @@ This project can be forked and used to make modifications.  You can then deploy 
 instance.  Make sure to set the vendorId, username and password environment variables in heroku once
 it is deployed.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/LyricFinancial/demo-integration-server)
