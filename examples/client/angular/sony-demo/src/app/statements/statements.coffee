@@ -48,8 +48,18 @@ angular.module( 'sonydemo.statements', [
   ($scope, $http, ENV, userRepo) ->
     $scope.clientData = userRepo.clientData
 
+    terms = "<p>Sony has partnered with Lyric Financial - a secure online service that helps songwriters and publishers squash short-term cash-flow worries. Advances from Lyric Financial give you the comfort of knowing you can get the money you need, when you need it.</p>
+
+        <ul>
+          <li>Instant setup and approval - as a Sony member you're already set!</li>
+          <li>Simple fee, no subscription or hidden costs</li>
+          <li>No credit hassles, no monthly payments</li>
+        </ul>
+
+        <p>By clicking 'I Agree' you grant Sony permission to share your royalty history with Lyric Financial. You will be taken to Lyric Financial's website to complete this process.</p>"
+
     widget = new LyricWidget($scope.clientData.account.vendorAccount.vendorClientAccountId, null)
-    $scope.lyric = new LyricSnippet("Custom Terms & Conditions", "https://integrationservices.lyricfinancial.com")
+    $scope.lyric = new LyricSnippet(terms, "https://integrationservices.lyricfinancial.com")
 
     # Display placeholder widget
     $scope.lyricWidget = widget.getWidget()

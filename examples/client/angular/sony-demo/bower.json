@@ -7,7 +7,7 @@
   "dependencies": {
     "angular": "~1.4.7",
     "angular-ui-router": "~0.2.15",
-    "lyric-snippet": "~0.19.0",
+    "lyric-snippet": "~0.21.0",
     "angular-sanitize": "~1.4.9"
   },
   "resolutions": {
