@@ -12,7 +12,7 @@
       <tr ng-repeat="assignment in assignments">
         <td>{{assignment.advanceId}}</td>
         <td>{{assignment.assignmentDate | date : 'medium'}}</td>
-        <td>{{assignment.amount | currency}}</td>
+        <td>{{assignment.totalAmount | currency}}</td>
       </tr>
     </tbody>
   </table>
