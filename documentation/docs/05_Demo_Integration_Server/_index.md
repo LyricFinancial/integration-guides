@@ -16,7 +16,7 @@ If you look at the code for the Demo Integration Server, you'll see that the pay
 
 Documentation for both of the demo applications can be found [here](!Angular_Demo).
 
-Use the [API Documentation](https://integrationservices.lyricfinancial.com/docs/vendor-api/) to see how to properly
+Use the [API Documentation](https://demoservices.lyricfinancial.com/docs/vendor-api/) to see how to properly
 use the Lyric registration API.
 
 

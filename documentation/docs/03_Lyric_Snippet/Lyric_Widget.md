@@ -30,6 +30,11 @@ The constructor takes the vendorClientAccountId and an optional advanceUrl.  By 
       font-weight: bold;
       float: left;
     }
+
+    .widget-value {
+      text-align: right;
+    }
+
     .widget-container {
       border-style: solid;
       border-radius: 15px;
@@ -39,7 +44,4 @@ The constructor takes the vendorClientAccountId and an optional advanceUrl.  By 
       width: 150px;
 
       font-size: 8px;
-    }
-    .widget-value {
-      text-align: right;
     }

@@ -59,7 +59,7 @@ angular.module( 'sonydemo.statements', [
         <p>By clicking 'I Agree' you grant Sony permission to share your royalty history with Lyric Financial. You will be taken to Lyric Financial's website to complete this process.</p>"
 
     widget = new LyricWidget($scope.clientData.account.vendorAccount.vendorClientAccountId, null)
-    $scope.lyric = new LyricSnippet(terms, "https://integrationservices.lyricfinancial.com")
+    $scope.lyric = new LyricSnippet(terms, "https://vatm-dev.lyricfinancial.com")
 
     # Display placeholder widget
     $scope.lyricWidget = widget.getWidget()

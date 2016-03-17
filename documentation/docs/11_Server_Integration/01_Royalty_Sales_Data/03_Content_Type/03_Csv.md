@@ -2,7 +2,7 @@
 
 CSV data must follow predefined schemas.
 
-  - [Standard Distributor Schema](https://integrationservices.lyricfinancial.com/specs/v1/StandardDistributor.csvschema)
+  - [Standard Distributor Schema](https://demoservices.lyricfinancial.com/specs/v1/StandardDistributor.csvschema)
 
 Column order is dictated by the "schema".
 
