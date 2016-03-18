@@ -24,4 +24,4 @@ Once an advance has been made, you can add the Lyric Widget to your website so t
 
 ## Demo Pages
 
-You can find the demo [here](http://vatm-demo.lyricfinancial.com/#/demo-server) and the lyric widget demo [here](http://vatm-demo.lyricfinancial.com/#/lyric-widget).
+You can find the demo [here](http://client-demo-stage.lyricfinancial.com/#/demo-server) and the lyric widget demo [here](http://client-demo-stage.lyricfinancial.com/#/lyric-widget).

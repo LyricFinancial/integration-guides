@@ -16,7 +16,7 @@ in the Advanced Options section.
 
 ### API URL
 
-Launch the [Server Demo](http://vatm-demo.lyricfinancial.com/#/demo-server).
+Launch the [Server Demo](http://client-demo-stage.lyricfinancial.com/#/demo-server).
 
 Find your new Heroku app URL and update this advance setting and the demo apps will start working with your new demo server.
 
