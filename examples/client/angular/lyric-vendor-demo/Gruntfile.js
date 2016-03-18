@@ -76,10 +76,8 @@ module.exports = function ( grunt ) {
         },
         constants: {
           ENV: {
-            DEMO_SERVER_URL: 'http://demo.dev:8082',
-            BMI_DEMO_SERVER_URL: 'https://bmi-demo-integration-server.herokuapp.com',
-            VATM_URL: 'https://demoservices.lyricfinancial.com',
-            ADVANCE_URL: 'http://demo.dev:8082/clients/a/advanceStatus'
+            DEMO_SERVER_URL: 'https://lyric-server-demo-dev.herokuapp.com',
+            VATM_URL: 'https://vatm-dev.lyricfinancial.com'
           }
         }
       },
@@ -89,36 +87,19 @@ module.exports = function ( grunt ) {
         },
         constants: {
           ENV: {
-            DEMO_SERVER_URL: 'https://lyric-demo-dev-server.herokuapp.com',
-            BMI_DEMO_SERVER_URL: 'https://bmi-demo-integration-server.herokuapp.com',
-            VATM_URL: 'https://vatm-dev.lyricfinancial.com',
-            ADVANCE_URL: null
+            DEMO_SERVER_URL: 'https://lyric-server-demo-dev.herokuapp.com',
+            VATM_URL: 'https://vatm-dev.lyricfinancial.com'
           }
         }
       },
-      demo: {
+      stage: {
         options: {
           dest: 'src/app/config.js'
         },
         constants: {
           ENV: {
             DEMO_SERVER_URL: 'https://lyric-demo-server.herokuapp.com',
-            BMI_DEMO_SERVER_URL: 'https://bmi-demo-integration-server.herokuapp.com',
-            VATM_URL: 'https://demoservices.lyricfinancial.com',
-            ADVANCE_URL: null
-          }
-        }
-      },
-      prod: {
-        options: {
-          dest: 'src/app/config.js'
-        },
-        constants: {
-          ENV: {
-            DEMO_SERVER_URL: 'https://lyric-demo-server.herokuapp.com',
-            BMI_DEMO_SERVER_URL: 'https://bmi-demo-integration-server.herokuapp.com',
-            VATM_URL: 'https://vatm-dev.lyricfinancial.com',
-            ADVANCE_URL: null
+            VATM_URL: 'https://vatm-stage.lyricfinancial.com'
           }
         }
       }
@@ -630,9 +611,9 @@ module.exports = function ( grunt ) {
   /**
    * The default task is to build and compile.
    */
-  grunt.registerTask( 'default', [ 'clean', 'ngconstant:demo', 'build', 'compile' ] );
+  grunt.registerTask( 'default', [ 'clean', 'ngconstant:stage', 'build', 'compile' ] );
 
-  grunt.registerTask( 'demo', [ 'clean', 'ngconstant:demo', 'build', 'compile' ] );
+  grunt.registerTask( 'stage', [ 'clean', 'ngconstant:stage', 'build', 'compile' ] );
   grunt.registerTask( 'dev', [ 'clean', 'ngconstant:development', 'build', 'compile' ] );
 
   /**

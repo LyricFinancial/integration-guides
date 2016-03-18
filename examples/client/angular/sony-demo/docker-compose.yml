@@ -1,7 +1,0 @@
-dev:
-  image: divshot/superstatic
-  volumes:
-   - ./build:/data
-  ports:
-   - "8081:80"
-  command: ["--host", "0.0.0.0"]
