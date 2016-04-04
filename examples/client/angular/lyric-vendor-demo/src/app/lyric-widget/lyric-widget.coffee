@@ -32,8 +32,11 @@ angular.module( 'lyricvendordemo.lyric-widget', [
           'clientData'
           '$http'
           '$stateParams'
-          (clientData, $http, $stateParams) ->
+          'ENV'
+          (clientData, $http, $stateParams, ENV) ->
             vendorClientAccountId = $stateParams.vendorClientAccountId
+
+            url = ENV.WIDGET_SERVICES_URL + '/widgetAPI/v1/clients/' + vendorClientAccountId + '/advanceStatus'
 
             if !vendorClientAccountId?
               return new LyricWidget(null, null)
@@ -44,12 +47,12 @@ angular.module( 'lyricvendordemo.lyric-widget', [
 
             $http(req)
             .then (resp) ->
-              widget = new LyricWidget(vendorClientAccountId, null)
+              widget = new LyricWidget(vendorClientAccountId, url)
               widget.loadData(resp.headers().token)
               .then ->
                 return widget
             .catch (error)->
-              return new LyricWidget(vendorClientAccountId, null)
+              return new LyricWidget(vendorClientAccountId, url)
 
             
         ]

@@ -77,7 +77,8 @@ module.exports = function ( grunt ) {
         constants: {
           ENV: {
             DEMO_SERVER_URL: 'https://lyric-server-demo-dev.herokuapp.com',
-            VATM_URL: 'https://vatm-dev.lyricfinancial.com'
+            VATM_URL: 'https://vatm-dev.lyricfinancial.com',
+            WIDGET_SERVICES_URL: 'https://devservices.lyricfinancial.com'
           }
         }
       },
@@ -88,7 +89,8 @@ module.exports = function ( grunt ) {
         constants: {
           ENV: {
             DEMO_SERVER_URL: 'https://lyric-server-demo-dev.herokuapp.com',
-            VATM_URL: 'https://vatm-dev.lyricfinancial.com'
+            VATM_URL: 'https://vatm-dev.lyricfinancial.com',
+            WIDGET_SERVICES_URL: 'https://devservices.lyricfinancial.com'
           }
         }
       },
@@ -99,7 +101,8 @@ module.exports = function ( grunt ) {
         constants: {
           ENV: {
             DEMO_SERVER_URL: 'https://lyric-server-demo-stage.herokuapp.com',
-            VATM_URL: 'https://vatm-stage.lyricfinancial.com'
+            VATM_URL: 'https://vatm-stage.lyricfinancial.com',
+            WIDGET_SERVICES_URL: 'https://stageservices.lyricfinancial.com'
           }
         }
       }
