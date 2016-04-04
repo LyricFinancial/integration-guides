@@ -26,9 +26,9 @@
 
 #### For API Developers
 * [Demo Integration Server](!Demo_Integration_Server)
-* [Vendor API Reference](https://stageservices.lyricfinancial.com/docs/vendor-api/)
-* [Assignment API Reference](https://lyric-server-demo-stage.herokuapp.com/docs/assignments-api/)
-* [Key Generator](https://stageservices.lyricfinancial.com/key-generator/#/keys)
+* [Vendor API Reference](/secure/vendor-api/)
+* [Assignment API Reference](/secure/assignments-api/)
+* [Key Generator](/secure/key-generator/#/keys)
 * [Server Integration](!Server_Integration)
 
 </div>

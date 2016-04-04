@@ -2,7 +2,7 @@
 
 The protobuf schema file:
 
-  - [DistributionGroupingSet.proto](https://stageservices.lyricfinancial.com/specs/v1/DistributionGroupingSet.proto)
+  - [DistributionGroupingSet.proto](/specs/v1/DistributionGroupingSet.proto)
 
 The primary Protobuf message is a DistributionGrouping. This represents a group of distributions for:
 

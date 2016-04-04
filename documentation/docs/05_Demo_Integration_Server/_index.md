@@ -12,11 +12,11 @@ that is less limited. This app is good for experimenting with the vATM "flow", b
 of "real world" integrations.
 
 ## Jose Authentication
-If you look at the code for the Demo Integration Server, you'll see that the payload is being signed and then encrypted before being passed along to the Vendor API.  In the case of a pure Json request, the whole body can just be signed and encrypted.  For multipart, each part needs to be signed the encrypted and the request will remain as multipart.  More information can be found in the [Vendor API Documentation](https://stageservices.lyricfinancial.com/docs/vendor-api/).  
+If you look at the code for the Demo Integration Server, you'll see that the payload is being signed and then encrypted before being passed along to the Vendor API.  In the case of a pure Json request, the whole body can just be signed and encrypted.  For multipart, each part needs to be signed the encrypted and the request will remain as multipart.  More information can be found in the [Vendor API Documentation](/secure/vendor-api/).  
 
 Documentation for both of the demo applications can be found [here](!Angular_Demo).
 
-Use the [API Documentation](https://stageservices.lyricfinancial.com/docs/vendor-api/) to see how to properly
+Use the [API Documentation](/secure/vendor-api/) to see how to properly
 use the Lyric registration API.
 
 
