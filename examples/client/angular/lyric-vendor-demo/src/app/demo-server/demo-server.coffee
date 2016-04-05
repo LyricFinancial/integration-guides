@@ -58,8 +58,8 @@ angular.module( 'lyricvendordemo.demo-server', [
 
       url = $scope.server.url.replace ':vendorClntAcctId', $scope.server.vendorClientAccountId
 
-      if $scope.server.username? && $scope.server.password? && $scope.server.vendorId?
-        url = url + '?username=' + $scope.server.username + '&password=' + $scope.server.password + '&vendorId=' + $scope.server.vendorId
+      if $scope.server.authToken? && $scope.server.vendorId?
+        url = url + '?authToken=' + $scope.server.authToken + '&vendorId=' + $scope.server.vendorId
 
       req =
         method: 'POST'

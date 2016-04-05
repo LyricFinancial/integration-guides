@@ -106,8 +106,8 @@ angular.module( 'lyricvendordemo.demo', [
     $scope.saveForm = ->
 
       url = $scope.api.url.replace ':vendorClntAcctId', $scope.clientData.vendorAccount.vendorClientAccountId
-      if $scope.api.username? && $scope.api.password? && $scope.api.vendorId?
-        url = url + '?username=' + $scope.api.username + '&password=' + $scope.api.password + '&vendorId=' + $scope.api.vendorId
+      if $scope.api.authToken? && $scope.api.vendorId?
+        url = url + '?authToken=' + $scope.api.authToken + '&vendorId=' + $scope.api.vendorId
  
       if $scope.api.ssnRequired == false && $scope.clientData.taxInfo? && $scope.isBlank($scope.clientData.taxInfo.taxEinTinSsn)
         delete $scope.clientData.taxInfo
