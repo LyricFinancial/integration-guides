@@ -17,7 +17,7 @@ Messages will be rejected of the content SHA256 hash does not match the value in
 
 #### KeyId
 
-As shown previously you must set the "kid" header of the JWS and JWE objects. For the JWS the keyID will be created in the Lyric [key management tool](/secure/key-management/#/keys). The keyId to use for JWE's is associated with Lyric's key. For now, use "lyric-03-2016"
+As shown previously you must set the "kid" header of the JWS and JWE objects. For the JWS the keyID will be created in the Lyric [key management tool](/secure/settings/#/settings). The keyId to use for JWE's is associated with Lyric's key. For now, use "lyric-03-2016"
 
 #### Payload
 
