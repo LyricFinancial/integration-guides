@@ -36,7 +36,7 @@ angular.module( 'lyricvendordemo.lyric-widget', [
           (clientData, $http, $stateParams, ENV) ->
             vendorClientAccountId = $stateParams.vendorClientAccountId
 
-            url = ENV.WIDGET_SERVICES_URL + '/demo/widgetApi/v1/clients/' + vendorClientAccountId + '/advanceStatus'
+            url = ENV.WIDGET_SERVICES_URL + '/demo/v1/clients/' + vendorClientAccountId + '/advanceStatus'
 
             if !vendorClientAccountId?
               return new LyricWidget(null, null)
