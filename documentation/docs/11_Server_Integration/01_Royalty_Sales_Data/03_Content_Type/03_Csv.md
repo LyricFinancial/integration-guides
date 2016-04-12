@@ -8,7 +8,7 @@ Column order is dictated by the "schema".
 
 The Standard Distributor Schema is the default. To specify CSV data in a different schema, see option ***lyric-csv.schema***.
 
-    jwe.setPayload(csvData))
+    jwe.setPayload(csvData)
     jwe.setContentType("text/csv")
     jwe.setHeader("lyric-csv.schema", "MyCustomSchema")
 
