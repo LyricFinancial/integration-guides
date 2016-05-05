@@ -3,8 +3,25 @@
 CSV data must follow predefined schemas.
 
   - [Standard Distributor Schema](/specs/v1/StandardDistributor.csvschema)
+  - [Standard Publisher Schema](/specs/v1/StandardPublisher.csvschema)
 
-Column order is dictated by the "schema".
+Column order is dictated by the "schema". 
+
+#### Standard Publisher Schema
+
+- statementPeriod: ISO8601 date marking the period end date
+- transactionCategory: String
+- assetId: String, unique identifier
+- assetTitle: String, song title, etc
+- releaseDate: ISO8601 date marking asset release 
+- releaseType: String, Album, Single, etc
+- incomeTypeCategory: String, Mechanical, Print, Performance, etc
+- incomeType: String, Radio, Television, etc
+- composers: String
+- totalEarned: Number
+- payeeId: String
+
+
 
 The Standard Distributor Schema is the default. To specify CSV data in a different schema, see option ***lyric-csv.schema***.
 
