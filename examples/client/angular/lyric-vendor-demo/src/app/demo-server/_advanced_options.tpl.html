@@ -24,5 +24,46 @@
 	    <input ng-model="server.authToken" name="authToken">
 	  </md-input-container>
 	</div>
+
+	<fieldset>
+		<legend>Security/Jose Settings</legend>
+
+		<div layout="column" layout-padding>
+		  <md-input-container flex>
+		    <md-checkbox
+	          ng-model="server.securityJoseOverride"
+	          aria-label="Security Jose Override"
+	          ng-true-value=true
+	          ng-false-value=false
+	          class="md-warn md-align-top-left" flex>
+	        Override Security/Jose Settings  <br/>
+	      </md-checkbox>
+		  </md-input-container>
+
+      <md-input-container flex>
+        <md-checkbox
+          ng-disabled="!server.securityJoseOverride"
+          ng-model="server.sslOverride"
+          aria-label="SSL Override"
+          ng-true-value=true
+          ng-false-value=false
+          class="md-warn md-align-top-left" flex>
+          SSL  <br/>
+        </md-checkbox>
+      </md-input-container>
+
+      <md-input-container flex>
+        <md-checkbox
+          ng-disabled="!server.securityJoseOverride"
+          ng-model="server.joseOverride"
+          aria-label="Jose Override"
+          ng-true-value=true
+          ng-false-value=false
+          class="md-warn md-align-top-left" flex>
+          Jose  <br/>
+        </md-checkbox>
+      </md-input-container>
+    </div>
+  </fieldset>
 	
 <md-content>

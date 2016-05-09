@@ -44,8 +44,10 @@ angular.module( 'lyricvendordemo.demo-server', [
     $scope.clientData = clientData
 
     $scope.server = {
-      url: ENV.DEMO_SERVER_URL + "/clients/:vendorClntAcctId/advance_server",
+      url: ENV.DEMO_SERVER_URL + "/clients/:vendorClntAcctId/advance_server"
       vendorClientAccountId: ''
+      sslOverride: false
+      joseOverride: false
     }
 
     $scope.options = {
@@ -58,8 +60,18 @@ angular.module( 'lyricvendordemo.demo-server', [
 
       url = $scope.server.url.replace ':vendorClntAcctId', $scope.server.vendorClientAccountId
 
+      params = []
+
       if $scope.server.authToken? && $scope.server.vendorId?
-        url = url + '?authToken=' + $scope.server.authToken + '&vendorId=' + $scope.server.vendorId
+        params.push 'authToken=' + $scope.server.authToken
+        params.push 'vendorId=' + $scope.server.vendorId
+
+      if $scope.server.securityJoseOverride == true
+        params.push 'ssl=' + $scope.server.sslOverride
+        params.push 'jose=' + $scope.server.joseOverride
+
+      if params.length > 0
+        url += '?' + params.join('&')
 
       req =
         method: 'POST'

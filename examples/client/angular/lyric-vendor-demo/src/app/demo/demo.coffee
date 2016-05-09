@@ -67,6 +67,8 @@ angular.module( 'lyricvendordemo.demo', [
       contentType: 'application/json'
       royaltyEarningsContentType: 'text/csv'
       ssnRequired: true
+      sslOverride: false
+      joseOverride: false
     }
 
     $scope.genders = [{code: 'male', description: 'Male'},
@@ -106,8 +108,19 @@ angular.module( 'lyricvendordemo.demo', [
     $scope.saveForm = ->
 
       url = $scope.api.url.replace ':vendorClntAcctId', $scope.clientData.vendorAccount.vendorClientAccountId
+      
+      params = []
+
       if $scope.api.authToken? && $scope.api.vendorId?
-        url = url + '?authToken=' + $scope.api.authToken + '&vendorId=' + $scope.api.vendorId
+        params.push 'authToken=' + $scope.api.authToken
+        params.push 'vendorId=' + $scope.api.vendorId
+
+      if $scope.api.securityJoseOverride == true
+        params.push 'ssl=' + $scope.api.sslOverride
+        params.push 'jose=' + $scope.api.joseOverride
+
+      if params.length > 0
+        url += '?' + params.join('&')
  
       if $scope.api.ssnRequired == false && $scope.clientData.taxInfo? && $scope.isBlank($scope.clientData.taxInfo.taxEinTinSsn)
         delete $scope.clientData.taxInfo
