@@ -14,5 +14,5 @@ However, while in production client authentication (also known as mutual SSL) is
 
 Further instructions for working with each API are found below:
 
-- [Vendor API](!SSL/Vendor_Api) 
-- [Assignment Service](!SSL/Assignment_Service) 
+- [Vendor API](!Server_Integration/SSL/Vendor_Api) 
+- [Assignment Service](!Server_Integration/SSL/Assignment_Service) 
