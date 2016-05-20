@@ -12,6 +12,8 @@ The key management tool under Settings issues new certificates using the Lyric I
 While integrating with Lyric's services you are free to toggle SSL off, on, or on with client authentication.
 However, while in production client authentication (also known as mutual SSL) is required.
 
+![Api SSL Configs](api_ssl_configs.png)
+
 Further instructions for working with each API are found below:
 
 - [Vendor API](!Server_Integration/SSL/Vendor_Api) 

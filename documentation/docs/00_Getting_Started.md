@@ -11,7 +11,7 @@ Follow the directions in the [Lyric Snippet](!Lyric_Snippet/Lyric_Snippet) to up
 If necessary, before you make the registration call to the server, make an API call that will record the acknowledgement of the Terms & Conditions.
 
 ### 3) Add an API to your server to make the Lyric Registration API call
-In the [key management tool](/secure/settings), create a token with one of the "Lyric Api" keys.  This token should be kept securely on your server, and used as a Bearer token auth header for all requests made to the VendorApi.  Use our [Demo Integration Server](!Demo_Integration_Server) to guide you in this process.  It demonstrates passing json as well as multipart form-data.  
+In the [settings tool](/secure/settings), create a token with one of the "Lyric Api" keys.  This token should be kept securely on your server, and used as a Bearer token auth header for all requests made to the VendorApi.  Use our [Demo Integration Server](!Demo_Integration_Server) to guide you in this process.  It demonstrates passing json as well as multipart form-data.  
 
 	  The vendorClientAccountId is the unique key for the user in your system.  We will use this key to determine uniqueness.
 

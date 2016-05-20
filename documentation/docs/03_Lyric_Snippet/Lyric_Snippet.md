@@ -36,7 +36,7 @@ Javascript library to allow you to integrate with Lyric services.
 
     document.addEventListener('confirmationComplete', eventHandler);
 
-**5) Once the Lyric API has been successfully called, call advanceRequestComplete function passing the ACCESS_TOKEN that was returned in the header of the Lyric /clients API call.  This will remove the wait indicator as well as opent the Lyric vAtm page in a new browser.**
+**5) Once the Lyric API has been successfully called, call advanceRequestComplete function passing the ACCESS_TOKEN that was returned in the header of the Lyric /clients API call.  This will remove the wait indicator as well as open the Lyric vAtm page in a new browser.**
 
     lyric.advanceRequestComplete(accessToken);
 
