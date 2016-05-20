@@ -8,7 +8,7 @@ angular.module( 'lyricvendordemo.demo-server', [
   '$stateProvider'
   ($stateProvider) ->
     $stateProvider.state 'demo-server',
-      url: '/demo-server',
+      url: '/demo-server?:strategy',
       views:
         "main":
           controller: 'DemoServerCtrl',
@@ -38,8 +38,10 @@ angular.module( 'lyricvendordemo.demo-server', [
   '$http'
   'clientData'
   'ENV'
-  ($scope, $state, _, $filter, $http, clientData, ENV) ->
-    $scope.lyric = new LyricSnippet("Custom Terms & Conditions", ENV.VATM_URL)
+  '$stateParams'
+  ($scope, $state, _, $filter, $http, clientData, ENV, $stateParams) ->
+    strategy = $stateParams.strategy
+    $scope.lyric = new LyricSnippet("Custom Terms & Conditions", strategy, ENV.VATM_URL)
 
     $scope.clientData = clientData
 

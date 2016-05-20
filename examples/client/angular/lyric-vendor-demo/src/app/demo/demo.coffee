@@ -9,7 +9,7 @@ angular.module( 'lyricvendordemo.demo', [
   '$stateProvider'
   ($stateProvider) ->
     $stateProvider.state 'demo',
-      url: '/demo',
+      url: '/demo?:strategy',
       views:
         "main":
           controller: 'DemoCtrl',
@@ -27,9 +27,10 @@ angular.module( 'lyricvendordemo.demo', [
   '$base64'
   'Upload'
   'ENV'
-  ($scope, _, $filter, $http, $base64, Upload, ENV) ->
-
-    $scope.lyric = new LyricSnippet("Custom Terms & Conditions", ENV.VATM_URL)
+  '$stateParams'
+  ($scope, _, $filter, $http, $base64, Upload, ENV, $stateParams) ->
+    strategy = $stateParams.strategy
+    $scope.lyric = new LyricSnippet("Custom Terms & Conditions", strategy, ENV.VATM_URL)
 
     $scope.clientData = {
       user: {
