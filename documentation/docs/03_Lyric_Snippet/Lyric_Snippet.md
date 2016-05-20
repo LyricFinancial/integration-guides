@@ -25,6 +25,8 @@ Javascript library to allow you to integrate with Lyric services.
       var lyric;
       lyric = new LyricSnippet(document.getElementById('custom-terms').innerHTML);
 
+  You can also pass a 2nd parameter for strategy.  We currently support 2 types of strategies: **syncAutoRedirect** and **syncManualRedirect**.  syncAutoRedirect is used by default.  See step 5 for how these strategies differ. 
+
 
 **3) Call confirm() function to display Terms and Conditions that the user will need to agree to before saving their data.**
 
@@ -36,9 +38,15 @@ Javascript library to allow you to integrate with Lyric services.
 
     document.addEventListener('confirmationComplete', eventHandler);
 
-**5) Once the Lyric API has been successfully called, call advanceRequestComplete function passing the ACCESS_TOKEN that was returned in the header of the Lyric /clients API call.  This will remove the wait indicator as well as open the Lyric vAtm page in a new browser.**
+**5) Once the Lyric API has been successfully called, call advanceRequestComplete function passing the ACCESS_TOKEN that was returned in the header of the Lyric /clients API call.**
 
     lyric.advanceRequestComplete(accessToken);
+
+  If you're using the **syncAutoRedirect** strategy, then the wait inidicator will be removed and the Lyric vAtm page will automatically open in a new browser.  This strategy could be affected by pop up blockers since it opens a new web page in a new tab without direct input from the user.  You will need to be prepared to handle that if you use this strategy.
+
+  If you're using the **syncManualRedirect** strategy, the wait indicator will be removed, then a new modal will appear letting the user know that their registration was successful and they will need to click a button to go over to the vAtm page.
+
+  We are working on an **async** strategy that will send the user over to the vAtm prior to the registration call even completing.
 
 **6) If an error occurs, call the advanceRequestError function.**
 
