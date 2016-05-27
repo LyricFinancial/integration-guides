@@ -32,7 +32,7 @@ angular.module( 'lyricvendordemo.demo', [
     strategy = $stateParams.strategy
     $scope.lyric = new LyricSnippet("Custom Terms & Conditions", strategy, ENV.VATM_URL)
 
-    $scope.clientData = {
+    $scope.clientData = { userProfile: {
       user: {
         firstName: 'Paul',
         lastName: 'Williams',
@@ -61,7 +61,7 @@ angular.module( 'lyricvendordemo.demo', [
         bankAccountType: 'checking'
       }
       
-    }
+    }}
 
     $scope.api = {
       url: ENV.DEMO_SERVER_URL + "/clients/:vendorClntAcctId/advance_client"
@@ -100,7 +100,7 @@ angular.module( 'lyricvendordemo.demo', [
       if !registrationForm.$valid
         return
 
-      $scope.clientData.user.dob = $filter('date')(registrationForm.dob.$viewValue, 'yyyy-MM-dd')
+      $scope.clientData.userProfile.user.dob = $filter('date')(registrationForm.dob.$viewValue, 'yyyy-MM-dd')
 
       if registrationForm.royaltyEarningsFile?
         $scope.royaltyEarningsFile = registrationForm.royaltyEarningsFile.$viewValue
@@ -108,7 +108,7 @@ angular.module( 'lyricvendordemo.demo', [
 
     $scope.saveForm = ->
 
-      url = $scope.api.url.replace ':vendorClntAcctId', $scope.clientData.vendorAccount.vendorClientAccountId
+      url = $scope.api.url.replace ':vendorClntAcctId', $scope.clientData.userProfile.vendorAccount.vendorClientAccountId
       
       params = []
 
@@ -123,7 +123,7 @@ angular.module( 'lyricvendordemo.demo', [
       if params.length > 0
         url += '?' + params.join('&')
  
-      if $scope.api.ssnRequired == false && $scope.clientData.taxInfo? && $scope.isBlank($scope.clientData.taxInfo.taxEinTinSsn)
+      if $scope.api.ssnRequired == false && $scope.clientData.userProfile.taxInfo? && $scope.isBlank($scope.clientData.userProfile.taxInfo.taxEinTinSsn)
         delete $scope.clientData.taxInfo
 
       if $scope.api.contentType == 'multipart/form-data'
