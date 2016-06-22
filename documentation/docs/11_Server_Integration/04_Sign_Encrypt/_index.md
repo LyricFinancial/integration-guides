@@ -32,6 +32,6 @@ The data should be signed, then encrypted.
 
 #### Compression
 
-If you are sending royalty data either embedded or as form-data/multipart (text or attachment) it is highly recommended to enable compression using JWE. Lyric supports DEFLATE. This is set with the "zip" JWE header. If you are using a library for JWE, make sure it supports compression.
+If you are sending royalty data either embedded or as multipart/form-data (text or attachment) it is highly recommended to enable compression using JWE. Lyric supports DEFLATE. This is set with the "zip" JWE header. If you are using a library for JWE, make sure it supports compression.
 
 Alternatively you can attach a zip or tar archive to compress the payload.

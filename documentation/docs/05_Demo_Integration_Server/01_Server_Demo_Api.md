@@ -12,4 +12,4 @@ This API mimics taking the id from the url and using that to look the user up in
 The endpoint is **/clients/:clientId/advance_server**.  There needs to be a file on the server with the specified filename.  Right now the only file is sample.csv.
 
 ## Security
-All of the Lyric Vendor APIs expect message level security.  Learn more about it [here](!Server_Integration/Royalty_Sales_Data/Security);
+All of the Lyric Vendor APIs expect message level security.  Learn more about it [here](!Server_Integration/Sign_Encrypt);

@@ -1,6 +1,6 @@
 ### Embedding in JSON payload
 
-This is a non-"form-data/multipart" option.
+This is a non-"multipart/form-data" option.
 
 Status: In progress
 
