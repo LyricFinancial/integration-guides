@@ -19,7 +19,7 @@ Normally, these are sent using JOSE JWE headers. I.e.
 However, if JOSE is disabled we still need a way to specify these options. You can do so using content type parameters. I.e.
 
 
-    Content-Disposition: form-data; name="DistributionGroupingFileSet"; filename="sample.csv"
+    Content-Disposition: form-data; name="FinancialRecordGroupingFileSet"; filename="sample.csv"
     Content-Type: text/csv; lyric-fileset.file-id=5ec019b0-d259-418d-972a-419856215bf9; lyric-fileset.file-type=earningSummary; lyric-csv.column-separator=|
 
 However, when embedding file data into a JSON request, this becomes easier. When embedding, we use the InlineAttachment object:

@@ -36,3 +36,4 @@ These options are set on the JOSE JWE object headers. To apply defaults for all 
   - **lyric-csv.schema** - (String) Named schema to indicate CSV data in a different format.
   - **lyric-csv.column-separator** - (String) Single character to indicate the column separator used. Default is ",". I.e. ("|", or "\t").
   - **lyric-csv.use-header** - (Boolean) Indicate of CSV data includes header row. Default true.
+  - **lyric-csv.date-format-string** - (String) A java format string if passing custom date formats. Defaults to ISO8601 format.

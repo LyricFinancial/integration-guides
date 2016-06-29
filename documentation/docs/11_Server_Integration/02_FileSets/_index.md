@@ -1,8 +1,8 @@
 ## FileSet Detail
 
-Example Schema for DistributionGroupings FileSet:
+Example Schema for FinancialRecordGroupings FileSet:
 
-    "FileSetDistributionGrouping" : {
+    "FileSetFinancialRecordGrouping" : {
       "type" : "object",
       "required" : [ "details", "fileId", "fileType" ],
       "properties" : {
@@ -19,7 +19,7 @@ Example Schema for DistributionGroupings FileSet:
           "readOnly" : true,
           "uniqueItems" : true,
           "items" : {
-            "$ref" : "#/definitions/DistributionGrouping"
+            "$ref" : "#/definitions/FinancialRecordGrouping"
           },
           "maxItems" : 2147483647,
           "minItems" : 1
@@ -36,7 +36,7 @@ A FileSet has three fields, fileId, fileType, and details.
     }
 
   - fileId: Opaque identifier you can use for debugging. Error messages will specify the fileId if a problem is found. If not provided, the server will generate a unique fileId.
-  - fileType: A string which categorizes the file for server processing. There is no standard list of fileTypes. Rather, Lyric will work with each vendor to create a comment set
+  - fileType: A string which categorizes the file for server processing. There is no standard list of fileTypes. Rather, Lyric will work with each vendor to create a common set
 of fileTypes.
   - details: List of detail items
 
@@ -69,6 +69,7 @@ below.
   - **lyric-csv.schema** - (String) Named schema to indicate CSV data in a different format.
   - **lyric-csv.column-separator** - (String) Single character to indicate the column separator used. Default is ",". I.e. ("|", or "\t").
   - **lyric-csv.use-header** - (Boolean) Indicate of CSV data includes header row. Default true.
+  - **lyric-csv.date-format-string** - (String) A java format string if passing custom date formats. Defaults to ISO8601 format.
 
 ### Zip Options
 

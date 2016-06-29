@@ -6,8 +6,7 @@ swagger paramter type is "formData" and the data type is "file".
 Example field names are:
 
   - RegistrationRequest
-  - DistributionGroupingFileSet
-  - EncumbranceFileSet
+  - FinancialRecordGroupingFileSet
 
 The Swagger tools seem to have a limitation related to file types and "allowMultiple". Any Lyric FileSet fields always allow multiple, despite what is reported by Swagger.
 
@@ -31,7 +30,7 @@ Text fields are presumed to be either JOSE or JSON if JOSE is turned off. Theref
     jwe.enableDeflateCompression()
     jwe.setPayload(protoData)
 
-    http.setMultipartField("DistributionGroupingFileSet", jwe.compact())
+    http.setMultipartField("FinancialRecordGroupingFileSet", jwe.compact())
 
 This might generate HTTP that looks like:
 
@@ -40,7 +39,7 @@ This might generate HTTP that looks like:
     Content-Type: multipart/form-data; boundary=----LyricBoundaryAL0lfjW6DJtKiwkd
 
     ------LyricBoundaryAL0lfjW6DJtKiwkd
-    Content-Disposition: form-data; name="DistributionGroupingFileSet"
+    Content-Disposition: form-data; name="FinancialRecordGroupingFileSet"
     Content-Type: application/jose
 
     eyJTSUdOQVRVUkUiOiJleUpoYkdjaU9pSlNVelV4TWlJc0ltdHBaQ0k2SW5abGJtUnZja0Z3YVV0bGVTSjkuWmpSbVkyWm1PVEpqTVdRM01qWTNOek16TjJJME1ERTRNREkwWldWbE5ESTFNelF6WlRrMU9ESmxNR1EyWlRFMU5EbGpNalEyTW1RMk1EbGpZemcwWXcua25Ydm5ZX3JGZVdfNDg1MWh6UmFHTGgwYXRZQmFEdFV4WUh1SFJHSDB3bm1ESDlFU0JVMU4zZGtBLXVGOFBFZUE2QnlTNV82MWVqc3RCU3FQMmJibnlsNERldXhZNmJLQlpiRTY4TGJqNVdhelNQc3lBLS1lZXoyQ0l0UVo3RE0wbFdNb1QwNWdCTUVROUJPeWhCS0RiT2JEa041UGs3V0tldEM3MTFLVkUxNHJHOExuVzBsRFFpQ3BoMm5oZXRYR1BKVlotaGNCSS10bzloLWI3LWJCUkk3X0N1UEVicDByZnc5RDV5VERuSnBaOXVobDRwVXctdE5yZFBocXAySWJlNWxYSUg1N2tzNjduVnhiQkE3WWdGT0ZTM2s2SWczLVVpT0ZGdldwTUpwSHdnMEJXWXpJNlRvZ2dCMG9FYU5pZ0hMdlNRWWtWR0QzTWhYcDVpalhRIiwiY3R5IjoiYXBwbGljYXRpb24vanNvbiIsInppcCI6IkRFRiIsImFsZyI6IlJTQS1PQUVQLTI1NiIsImVuYyI6IkExMjhDQkMtSFMyNTYiLCJraWQiOiJseXJpY0FwaUtleSJ9.Tew7-1JR0UWyHSCp_AJBx8v_h0I6Btk1SBaIlpcXITmEbByRLC4BevvdKpY5R4Ea6IfWKJmFFui08t22cPxvsEBtebhAyFbsx4My0WomLi_GkKxY8rwY5p6RtKJxLnDrLhpH4LKn5lkCLYopolnlFRG4T6zAygQ-TQowo-1G2VsqLIfGuRzyUtLOlV0w4vwZTxbTeYN1ml3pbd7wiFslPVzkiYtN3HYHNG9rubaOSYCgZbBKQPXlvoSv_h8Juyr8KlE5SKGvQmanMBqeIPM-ny4QdveMJsllWF5L94_XS5IKxubnh4bq-QM8HyqS6YgWUOETTRxxIj56d98hetAUYw.twTj6ak8DD19RP3cvnkFng.ADGhr531ba1Zp9WCfzl3qkYdelPwNVsrtHX2LXobPTCdPn2BPJ-58LFjz61U0uViSM3a8IYAqX0jssKst_7m6C8l-9M2_XnlZnOabPCKR4yPebTPOJFKA6xC_4ITdWiF6SlDHxDmJnpACj0VdQIaOA._m34VETv-KLlShO_ao09LA
@@ -58,7 +57,7 @@ file attachment might look like:
     Content-Type: multipart/form-data; boundary=----LyricBoundaryAL0lfjW6DJtKiwkd
 
     ------LyricBoundaryAL0lfjW6DJtKiwkd
-    Content-Disposition: form-data; name="DistributionGroupingFileSet"; filename="earnings.jose"
+    Content-Disposition: form-data; name="FinancialRecordGroupingFileSet"; filename="earnings.jose"
     Content-Type: application/jose
 
     eyJTSUdOQVRVUkUiOiJleUpoYkdjaU9pSlNVelV4TWlJc0ltdHBaQ0k2SW5abGJtUnZja0Z3YVV0bGVTSjkuWmpSbVkyWm1PVEpqTVdRM01qWTNOek16TjJJME1ERTRNREkwWldWbE5ESTFNelF6WlRrMU9ESmxNR1EyWlRFMU5EbGpNalEyTW1RMk1EbGpZemcwWXcua25Ydm5ZX3JGZVdfNDg1MWh6UmFHTGgwYXRZQmFEdFV4WUh1SFJHSDB3bm1ESDlFU0JVMU4zZGtBLXVGOFBFZUE2QnlTNV82MWVqc3RCU3FQMmJibnlsNERldXhZNmJLQlpiRTY4TGJqNVdhelNQc3lBLS1lZXoyQ0l0UVo3RE0wbFdNb1QwNWdCTUVROUJPeWhCS0RiT2JEa041UGs3V0tldEM3MTFLVkUxNHJHOExuVzBsRFFpQ3BoMm5oZXRYR1BKVlotaGNCSS10bzloLWI3LWJCUkk3X0N1UEVicDByZnc5RDV5VERuSnBaOXVobDRwVXctdE5yZFBocXAySWJlNWxYSUg1N2tzNjduVnhiQkE3WWdGT0ZTM2s2SWczLVVpT0ZGdldwTUpwSHdnMEJXWXpJNlRvZ2dCMG9FYU5pZ0hMdlNRWWtWR0QzTWhYcDVpalhRIiwiY3R5IjoiYXBwbGljYXRpb24vanNvbiIsInppcCI6IkRFRiIsImFsZyI6IlJTQS1PQUVQLTI1NiIsImVuYyI6IkExMjhDQkMtSFMyNTYiLCJraWQiOiJseXJpY0FwaUtleSJ9.Tew7-1JR0UWyHSCp_AJBx8v_h0I6Btk1SBaIlpcXITmEbByRLC4BevvdKpY5R4Ea6IfWKJmFFui08t22cPxvsEBtebhAyFbsx4My0WomLi_GkKxY8rwY5p6RtKJxLnDrLhpH4LKn5lkCLYopolnlFRG4T6zAygQ-TQowo-1G2VsqLIfGuRzyUtLOlV0w4vwZTxbTeYN1ml3pbd7wiFslPVzkiYtN3HYHNG9rubaOSYCgZbBKQPXlvoSv_h8Juyr8KlE5SKGvQmanMBqeIPM-ny4QdveMJsllWF5L94_XS5IKxubnh4bq-QM8HyqS6YgWUOETTRxxIj56d98hetAUYw.twTj6ak8DD19RP3cvnkFng.ADGhr531ba1Zp9WCfzl3qkYdelPwNVsrtHX2LXobPTCdPn2BPJ-58LFjz61U0uViSM3a8IYAqX0jssKst_7m6C8l-9M2_XnlZnOabPCKR4yPebTPOJFKA6xC_4ITdWiF6SlDHxDmJnpACj0VdQIaOA._m34VETv-KLlShO_ao09LA

@@ -11,6 +11,7 @@ Start here, to understand a few basic concepts first. Then, look at specific API
   - [SSL](!Server_Integration/SSL)
   - [Sign/Encrypt](!Server_Integration/Sign_Encrypt)
   - [FileSet concepts](!Server_Integration/FileSets)
+  - [FinancialRecord concepts](!Server_Integration/FinancialRecords)
 
 ## Apis
 

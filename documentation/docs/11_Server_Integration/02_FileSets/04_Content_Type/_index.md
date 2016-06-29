@@ -29,7 +29,7 @@ When using an API that supports multipart, e.g. /clients.form, the content-type 
     POST /<api> HTTP/1.1
     Content-Type: multipart/form-data
     ...
-    Content-Disposition: form-data; name="DistributionGroupingFileSet"; filename="sample.csv"
+    Content-Disposition: form-data; name="FinancialRecordGroupingFileSet"; filename="sample.csv"
     Content-Type: application/jose
 
 
