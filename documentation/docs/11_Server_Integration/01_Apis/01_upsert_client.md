@@ -1,7 +1,7 @@
 ## Registration Request
 
 At this point, it is required to call the "registration" api (swagger path POST /clients). This API will return an ACCESS_TOKEN header which represents a vATM "session" for the
-end user. If you are using the [Lyric Snippet](!Lyric_Snippet/Lyric_Snippet), you just pass this token to the advanceRequestComplete(token) callback handler.
+end user. If you are using the [Lyric Snippet](!Lyric_Snippet), you just pass this token to the advanceRequestComplete(token) callback handler.
 
 To create a RegistrationRequest for this API, you need at a minimum:
 

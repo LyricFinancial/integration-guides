@@ -4,17 +4,6 @@ Javascript library to allow you to integrate with Lyric services.
 
 ### How to Use - Synchronous
 
-**1) Include js and css file in your project**
-
-  Using Bower
-
-      bower install lyric-snippet --save
-
-  Then add the js and css file to your index.html
-
-      <script src="bower_components/lyric-snippet/dist/lyric-snippet.min.js"></script>
-      <link href="bower_components/lyric-snippet/dist/lyric-snippet.css" rel="stylesheet">
-
 **2) Create an instance of LyricSnippet optionally overriding terms and conditions.**
 
       var lyric;
@@ -25,8 +14,7 @@ Javascript library to allow you to integrate with Lyric services.
       var lyric;
       lyric = new LyricSnippet(document.getElementById('custom-terms').innerHTML);
 
-  You can also pass a 2nd parameter for strategy.  We currently support 2 types of strategies: **syncAutoRedirect** and **syncManualRedirect**.  syncAutoRedirect is used by default.  See step 5 for how these strategies differ. 
-
+  You can also pass a 2nd parameter for strategy.  We currently support 3 types of strategies: **syncAutoRedirect**, **syncManualRedirect**, and **async**.  syncAutoRedirect is used by default. Click [here](!Lyric_Snippet/Lyric_Snippet_Async) for more info on the async strategy.
 
 **3) Call confirm() function to display Terms and Conditions that the user will need to agree to before saving their data.**
 

@@ -5,7 +5,7 @@
 Follow these steps to integrate your system with the Lyric APIs.
 
 ### 1) Add the "Get Advance" button to your website.
-Follow the directions in the [Lyric Snippet](!Lyric_Snippet/Lyric_Snippet) to update your website to include a "Get Advance" button.  This snippet will display a Terms & Conditions modal as well as the wait indicator while you make the call to your server to make the Lyric Registration API call.  Use our [Angular Demos](!Angular_Demo) as a reference.
+Follow the directions in the [Lyric Snippet](!Lyric_Snippet) to update your website to include a "Get Advance" button.  This snippet will display a Terms & Conditions modal as well as the wait indicator while you make the call to your server to make the Lyric Registration API call.  Use our [Angular Demos](!Angular_Demo) as a reference.
 
 ### 2) Record agreement to Terms & Conditions
 If necessary, before you make the registration call to the server, make an API call that will record the acknowledgement of the Terms & Conditions.
