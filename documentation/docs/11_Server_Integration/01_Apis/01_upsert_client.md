@@ -1,7 +1,6 @@
-## Registration Request
+## Client Registration
 
-At this point, it is required to call the "registration" api (swagger path POST /clients). This API will return an ACCESS_TOKEN header which represents a vATM "session" for the
-end user. If you are using the [Lyric Snippet](!Lyric_Snippet), you just pass this token to the advanceRequestComplete(token) callback handler.
+At this point, it is required to call the "registration" api (swagger path POST /clients). Visit the [api spec](/secure/vendor-api/) for full details.
 
 To create a RegistrationRequest for this API, you need at a minimum:
 
@@ -10,8 +9,59 @@ To create a RegistrationRequest for this API, you need at a minimum:
   - A unique identifier from your system (VendorClientAccountId)
   - Up to three years of earnings history (minimum 1 year)
 
-  
-//TODO: TIN Discussion
+There is a multipart alternative to the standard JSON endpoint.
+
+### Synchronous Mode
+
+This API will return an ACCESS_TOKEN header which represents a vATM "session" for the
+end user. If you are using the [Lyric Snippet](!Lyric_Snippet/Lyric_Snippet), you just pass this token to the advanceRequestComplete(token) callback handler.
+
+### Asynchronous Mode
+
+See [Lyric Snippet](!Lyric_Snippet/Lyric_Snippet) documentation for how to configure the snippet in Async Mode. You will be required to create a JWT, referred to as
+"the Async Token", on your server. This token represents an "async session" as it grants the user access to the vAtm for a period of time. You can generate the Async Token
+when the user loads your page for the first time. You'll then use this same token in the Lyric Snippet as well as on your server as a header when you make calls to the Lyric
+API's. You'll want to regenerate the Aysnc Token each time the user loads the page in order to extend the length of the session. The requirements to create an async token are:
+
+  1. Signed with your vendor_api key
+  2. issuer = "Vendor"
+  3. audience = "vatmAsyncService"
+  4. subject = "<vendorClientAccountId>"
+  5. jti = "<Globally Unique ID>"
+  6. exp = <reasonable session length to complete an advance request, recommended: Your site's session timeout + 2 hours>
+  7. Custom claims:
+      async = true
+      vendorId = "<yourVendorId>"
+
+It is crucial that you use a GLOBALLY unique id in step 5 for the jti.
+
+I.e.
+
+    POST /clients HTTP/1.1
+    Content-Type: application/jose
+    ASYNC_TOKEN: <the async token you generated>
+
+### noNewFinancialRecords Optimization
+
+If you track when you send data to the Lyric API, you can avoid sending financial data with every request. As long as Lyric already has the newest data,
+you can explicitly tell the API not to expect any data in a registration request.
+
+Set a header like this:
+
+    POST /clients HTTP/1.1
+    Content-Type: application/jose
+    noNewFinancialRecords: <anything>
+
+Just the presence of the header acts as a flag. If you aren't coding for this optimization, do not set this header at all.
+
+### Responses
+
+**201** - If you send financial data and/or specify the noNewFinancialRecords flag, expect a 201 http response
+
+**202** - If the request does not include financial data, expect a 202 http response. The body of the response will contain a message stating that processing cannot continue until financial data is sent.
+
+
+### Request Anatomy
 
 The primary RegistrationRequest is a JSON object with the following high-level schema:
 
