@@ -8,7 +8,7 @@ angular.module( 'lyricvendordemo.demo-server', [
   '$stateProvider'
   ($stateProvider) ->
     $stateProvider.state 'demo-server',
-      url: '/demo-server?:strategy',
+      url: '/demo-server?:strategy&:vendorClientAccountId',
       views:
         "main":
           controller: 'DemoServerCtrl',
@@ -40,14 +40,36 @@ angular.module( 'lyricvendordemo.demo-server', [
   'ENV'
   '$stateParams'
   ($scope, $state, _, $filter, $http, clientData, ENV, $stateParams) ->
-    strategy = $stateParams.strategy
-    $scope.lyric = new LyricSnippet("Custom Terms & Conditions", strategy, ENV.VATM_URL)
+    strategy = 'syncManualRedirect'
 
+    if $stateParams.strategy?
+      strategy = $stateParams.strategy
+
+    terms = "Custom Terms & Conditions"
     $scope.clientData = clientData
+    vendorClientAccountId = ''
+
+    if strategy == 'async'
+      vendorClientAccountId = $stateParams.vendorClientAccountId
+      $scope.asyncToken = null
+
+      req =
+        method: 'GET'
+        url: ENV.DEMO_SERVER_URL + '/asynctoken?vendorClientAccountId=' + vendorClientAccountId
+        headers: 'Content-Type': "application/json"
+
+      $http(req)
+      .then (resp) ->
+        $scope.asyncToken = resp.headers().token
+        $scope.lyric = new LyricSnippet(terms, strategy, $scope.asyncToken, ENV.VATM_URL)
+      .catch (error)->
+    else
+      $scope.lyric = new LyricSnippet(terms, strategy, null, ENV.VATM_URL)
+    
 
     $scope.server = {
       url: ENV.DEMO_SERVER_URL + "/clients/:vendorClntAcctId/advance_server"
-      vendorClientAccountId: ''
+      vendorClientAccountId: vendorClientAccountId
       sslOverride: false
       joseOverride: false
     }
@@ -66,7 +88,7 @@ angular.module( 'lyricvendordemo.demo-server', [
 
       if $scope.server.authToken? && $scope.server.vendorId?
         params.push 'authToken=' + $scope.server.authToken
-        params.push 'vendorId=' + $scope.server.vendorId
+        params.push 'vendor-id=' + $scope.server.vendorId
 
       if $scope.server.securityJoseOverride == true
         params.push 'ssl=' + $scope.server.sslOverride
@@ -78,12 +100,15 @@ angular.module( 'lyricvendordemo.demo-server', [
       req =
         method: 'POST'
         url: url
-        headers: 'Content-Type': "application/json"
+        headers: { 'Content-Type': "application/json", 'async-token' : $scope.asyncToken }
         data: {options: $scope.options}
 
       $http(req)
       .then (resp) ->
-        $scope.lyric.advanceRequestComplete(resp.headers().access_token)
+        if strategy == 'async'
+          return
+
+        $scope.lyric.advanceRequestComplete(resp.headers()["access-token"])
       .catch (error)->
         $scope.lyric.advanceRequestError(error)
 

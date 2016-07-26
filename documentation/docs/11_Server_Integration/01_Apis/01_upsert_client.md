@@ -14,11 +14,11 @@ There is a multipart alternative to the standard JSON endpoint.
 ### Synchronous Mode
 
 This API will return an ACCESS_TOKEN header which represents a vATM "session" for the
-end user. If you are using the [Lyric Snippet](!Lyric_Snippet/Lyric_Snippet), you just pass this token to the advanceRequestComplete(token) callback handler.
+end user. If you are using the [Lyric Snippet](!Lyric_Snippet/Lyric_Snippet_Sync), you just pass this token to the advanceRequestComplete(token) callback handler.
 
 ### Asynchronous Mode
 
-See [Lyric Snippet](!Lyric_Snippet/Lyric_Snippet) documentation for how to configure the snippet in Async Mode. You will be required to create a JWT, referred to as
+See [Lyric Snippet](!Lyric_Snippet/Lyric_Snippet_Async) documentation for how to configure the snippet in Async Mode. You will be required to create a JWT, referred to as
 "the Async Token", on your server. This token represents an "async session" as it grants the user access to the vAtm for a period of time. You can generate the Async Token
 when the user loads your page for the first time. You'll then use this same token in the Lyric Snippet as well as on your server as a header when you make calls to the Lyric
 API's. You'll want to regenerate the Aysnc Token each time the user loads the page in order to extend the length of the session. The requirements to create an async token are:

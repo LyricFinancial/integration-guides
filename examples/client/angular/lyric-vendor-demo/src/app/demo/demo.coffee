@@ -114,7 +114,7 @@ angular.module( 'lyricvendordemo.demo', [
 
       if $scope.api.authToken? && $scope.api.vendorId?
         params.push 'authToken=' + $scope.api.authToken
-        params.push 'vendorId=' + $scope.api.vendorId
+        params.push 'vendor-id=' + $scope.api.vendorId
 
       if $scope.api.securityJoseOverride == true
         params.push 'ssl=' + $scope.api.sslOverride
@@ -154,7 +154,7 @@ angular.module( 'lyricvendordemo.demo', [
 
       request
       .then (resp) ->
-        $scope.lyric.advanceRequestComplete(resp.headers().access_token)
+        $scope.lyric.advanceRequestComplete(resp.headers()["access-token"])
       .catch (error) ->
         $scope.lyric.advanceRequestError(error)
 
