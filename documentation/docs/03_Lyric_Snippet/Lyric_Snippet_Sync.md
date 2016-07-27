@@ -26,7 +26,7 @@ Javascript library to allow you to integrate with Lyric services.
 
     document.addEventListener('confirmationComplete', eventHandler);
 
-**5) Once the Lyric API has been successfully called, call advanceRequestComplete function passing the ACCESS_TOKEN that was returned in the header of the Lyric /clients API call.**
+**5) Once the Lyric API has been successfully called, call advanceRequestComplete function passing the access-token that was returned in the header of the Lyric /clients API call.**
 
     lyric.advanceRequestComplete(accessToken);
 

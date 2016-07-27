@@ -7,7 +7,7 @@ user. This can happen even while financial data is being prepared.
 
 ### Asynchronous Mode
 
-If you are using Async Mode, be sure to include the exact same ASYNC_TOKEN for all related API calls. For details, see [Client Registration](!Server_Integration/Apis/upsert_client).
+If you are using Async Mode, be sure to include the exact same 'async-token' for all related API calls. For details, see [Client Registration](!Server_Integration/Apis/upsert_client).
 
 ### JSON vs CSV vs Protobuf
 

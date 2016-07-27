@@ -13,8 +13,9 @@ There is a multipart alternative to the standard JSON endpoint.
 
 ### Synchronous Mode
 
-This API will return an ACCESS_TOKEN header which represents a vATM "session" for the
+This API will return an access-token header which represents a vATM "session" for the
 end user. If you are using the [Lyric Snippet](!Lyric_Snippet/Lyric_Snippet_Sync), you just pass this token to the advanceRequestComplete(token) callback handler.
+
 
 ### Asynchronous Mode
 
@@ -39,9 +40,9 @@ I.e.
 
     POST /clients HTTP/1.1
     Content-Type: application/jose
-    ASYNC_TOKEN: <the async token you generated>
+    async-token: <the async token you generated>
 
-### noNewFinancialRecords Optimization
+### no-new-financial-records Optimization
 
 If you track when you send data to the Lyric API, you can avoid sending financial data with every request. As long as Lyric already has the newest data,
 you can explicitly tell the API not to expect any data in a registration request.
@@ -50,7 +51,7 @@ Set a header like this:
 
     POST /clients HTTP/1.1
     Content-Type: application/jose
-    noNewFinancialRecords: <anything>
+    no-new-financial-records: <anything>
 
 Just the presence of the header acts as a flag. If you aren't coding for this optimization, do not set this header at all.
 

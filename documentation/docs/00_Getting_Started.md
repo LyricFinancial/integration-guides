@@ -16,7 +16,7 @@ In the [settings tool](/secure/settings), create a token with one of the "Lyric 
 	  The vendorClientAccountId is the unique key for the user in your system.  We will use this key to determine uniqueness.
 
 ### 4) Save the memberToken that gets returned
-A successful response from the Lyric Registration API will return an ACCESS_TOKEN in the header as well as a memberToken in the body.  The ACCESS_TOKEN needs to be returned in the response of your new API call.  The memberToken should be saved with your user record and used for any subsequent calls to the Lyric vendor APIs.
+A successful response from the Lyric Registration API will return an access-token in the header as well as a memberToken in the body.  The access-token needs to be returned in the response of your new API call.  The memberToken should be saved with your user record and used for any subsequent calls to the Lyric vendor APIs.
 
 ### 5) Add Lyric Widget to your client portal
 Once an advance has been made, you can add the Lyric Widget to your website so that clients can see their Advance Limit, Current Balance and Available Balance.  Follow the directions in the [Lyric Snippet](!Lyric_Snippet/Lyric_Widget) to see how to add it to your page.  Use our [Lyric Widget Demo](!Angular_Demo/Lyric_Widget_Demo) as a reference.
