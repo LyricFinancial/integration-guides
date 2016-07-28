@@ -44,7 +44,6 @@
   <md-input-container flex>
     <label>Social Security Number</label>
     <input ng-model="clientData.userProfile.taxInfo.taxEinTinSsn" name="ssn" 
-    	ng-required="api.ssnRequired"
     	ng-pattern="/^\d{3}-?\d{2}-?\d{4}$/">
     <div class="error-messages" ng-if="interacted(registrationForm.ssn)" ng-messages="registrationForm.ssn.$error">
     	<div ng-message="pattern">SSN must be in the following format: XXX-XX-XXXX</div>
@@ -52,7 +51,7 @@
 		</div>
   </md-input-container>
   <div flex>
-		<md-datepicker ng-model="dob" md-placeholder="Date of Birth" name="dob" required></md-datepicker>
+		<md-datepicker ng-model="dob" md-placeholder="Date of Birth" name="dob"></md-datepicker>
 		<div class="error-messages" ng-if="interacted(registrationForm.dob)" ng-messages="registrationForm.dob.$error">
 			<div ng-message="valid">Invalid date</div>
 			<div ng-messages-include="custom-messages"></div>
@@ -61,7 +60,7 @@
 </div>
 <div layout-gt-md="row" layout="column">
   <md-input-container flex>
-    <md-select ng-model="clientData.userProfile.user.gender" name="gender" required placeholder="Gender">
+    <md-select ng-model="clientData.userProfile.user.gender" name="gender" placeholder="Gender">
       <md-option ng-value="type.code" ng-repeat="type in genders">{{ type.description }}</md-option>
     </md-select>
     <div class="error-messages" ng-if="interacted(registrationForm.gender)" ng-messages="registrationForm.gender.$error">
@@ -69,7 +68,7 @@
     </div>
   </md-input-container>
   <md-input-container flex>
-    <md-select ng-model="clientData.userProfile.user.maritalStatus" name="maritalStatus" required placeholder="Marital Status">
+    <md-select ng-model="clientData.userProfile.user.maritalStatus" name="maritalStatus" placeholder="Marital Status">
       <md-option ng-value="type.code" ng-repeat="type in maritalStatuses">{{ type.description }}</md-option>
     </md-select>
     <div class="error-messages" ng-if="interacted(registrationForm.maritalStatus)" ng-messages="registrationForm.maritalStatus.$error">
@@ -81,14 +80,14 @@
 <div layout-gt-md="row" layout="column">
   <md-input-container flex>
     <label>Primary Phone</label>
-    <input ng-model="clientData.userProfile.user.phone" name="phone" required>
+    <input ng-model="clientData.userProfile.user.phone" name="phone">
     <div class="error-messages" ng-if="interacted(registrationForm.phone)" ng-messages="registrationForm.phone.$error">
 			<div ng-messages-include="custom-messages"></div>
 		</div>
   </md-input-container>
   <md-input-container flex>
     <label>Mobile Phone</label>
-    <input ng-model="clientData.userProfile.user.mobilePhone" name="mobilePhone" required>
+    <input ng-model="clientData.userProfile.user.mobilePhone" name="mobilePhone">
     <div class="error-messages" ng-if="interacted(registrationForm.mobilePhone)" ng-messages="registrationForm.mobilePhone.$error">
 			<div ng-messages-include="custom-messages"></div>
 		</div>
@@ -99,7 +98,7 @@
 <div layout-gt-md="row" layout="column">
   <md-input-container flex>
     <label>Street Address</label>
-    <input ng-model="clientData.userProfile.user.address1" name="address1" required>
+    <input ng-model="clientData.userProfile.user.address1" name="address1">
     <div class="error-messages" ng-if="interacted(registrationForm.address1)" ng-messages="registrationForm.address1.$error">
 			<div ng-messages-include="custom-messages"></div>
 		</div>
@@ -114,14 +113,14 @@
 <div layout-gt-md="row" layout="column">
   <md-input-container flex>
     <label>City</label>
-    <input ng-model="clientData.userProfile.user.city" name="city" required>
+    <input ng-model="clientData.userProfile.user.city" name="city">
     <div class="error-messages" ng-if="interacted(registrationForm.city)" ng-messages="registrationForm.city.$error">
 			<div ng-messages-include="custom-messages"></div>
 		</div>
   </md-input-container>
   <md-input-container flex>
     <label>State/Province</label>
-    <input ng-model="clientData.userProfile.user.state" name="state" required>
+    <input ng-model="clientData.userProfile.user.state" name="state">
     <div class="error-messages" ng-if="interacted(registrationForm.state)" ng-messages="registrationForm.state.$error">
 			<div ng-messages-include="custom-messages"></div>
 		</div>
@@ -130,7 +129,7 @@
 <div layout-gt-md="row" layout="column">
   <md-input-container flex>
     <label>Postal/Zip Code</label>
-    <input ng-model="clientData.userProfile.user.zipCode" name="zipCode" required>
+    <input ng-model="clientData.userProfile.user.zipCode" name="zipCode">
     <div class="error-messages" ng-if="interacted(registrationForm.zipCode)" ng-messages="registrationForm.zipCode.$error">
 			<div ng-messages-include="custom-messages"></div>
 		</div>

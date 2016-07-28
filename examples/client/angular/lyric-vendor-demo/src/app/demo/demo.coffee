@@ -3,13 +3,14 @@ angular.module( 'lyricvendordemo.demo', [
   'ui.bootstrap'
   'ngFileUpload'
   'angular-json-editor'
+  'commonLyricServices'
 ])
 
 .config([
   '$stateProvider'
   ($stateProvider) ->
     $stateProvider.state 'demo',
-      url: '/demo?:strategy',
+      url: '/demo?:strategy&:vendorClientAccountId',
       views:
         "main":
           controller: 'DemoCtrl',
@@ -28,37 +29,28 @@ angular.module( 'lyricvendordemo.demo', [
   'Upload'
   'ENV'
   '$stateParams'
-  ($scope, _, $filter, $http, $base64, Upload, ENV, $stateParams) ->
-    strategy = $stateParams.strategy
-    $scope.lyric = new LyricSnippet("Custom Terms & Conditions", strategy, ENV.VATM_URL)
+  'CommonLyricServices'
+  ($scope, _, $filter, $http, $base64, Upload, ENV, $stateParams, common) ->
+
+    vendorClientAccountId = $stateParams.vendorClientAccountId
+
+    common.setupLyricSnippet(vendorClientAccountId, 'Demo', ENV.VATM_URL)
+    .then (lyric) ->
+      $scope.lyric = lyric
 
     $scope.clientData = { userProfile: {
       user: {
         firstName: 'Paul',
         lastName: 'Williams',
-        address1: '327 S 87 St',
         email: ''
-        city: 'Omaha',
-        state: 'NE',
-        zipCode: '68123',
-        phone: '',
-        mobilePhone: '',
-        gender: 'male',
-        maritalStatus: 'single'
       },
       vendorAccount: {
-        vendorClientAccountId: ''
+        vendorClientAccountId: vendorClientAccountId
       },
       taxInfo: {
         taxEinTinSsn: '',
         tinType: 'ssn',
         memberBusinessType: 'individual'
-      },
-      bankInfo: {
-        bankName: 'TD Bank',
-        bankAccountNumber: '12345678',
-        bankRoutingNumber: '211274450',
-        bankAccountType: 'checking'
       }
       
     }}
@@ -67,7 +59,6 @@ angular.module( 'lyricvendordemo.demo', [
       url: ENV.DEMO_SERVER_URL + "/clients/:vendorClntAcctId/advance_client"
       contentType: 'application/json'
       royaltyEarningsContentType: 'text/csv'
-      ssnRequired: true
       sslOverride: false
       joseOverride: false
     }
@@ -100,7 +91,8 @@ angular.module( 'lyricvendordemo.demo', [
       if !registrationForm.$valid
         return
 
-      $scope.clientData.userProfile.user.dob = $filter('date')(registrationForm.dob.$viewValue, 'yyyy-MM-dd')
+      if $scope.clientData.userProfile.user.dob?
+        $scope.clientData.userProfile.user.dob = $filter('date')(registrationForm.dob.$viewValue, 'yyyy-MM-dd')
 
       if registrationForm.royaltyEarningsFile?
         $scope.royaltyEarningsFile = registrationForm.royaltyEarningsFile.$viewValue
@@ -123,8 +115,8 @@ angular.module( 'lyricvendordemo.demo', [
       if params.length > 0
         url += '?' + params.join('&')
  
-      if $scope.api.ssnRequired == false && $scope.clientData.userProfile.taxInfo? && $scope.isBlank($scope.clientData.userProfile.taxInfo.taxEinTinSsn)
-        delete $scope.clientData.taxInfo
+      if $scope.clientData.userProfile.taxInfo? && $scope.isBlank($scope.clientData.userProfile.taxInfo.taxEinTinSsn)
+        delete $scope.clientData.userProfile.taxInfo
 
       if $scope.api.contentType == 'multipart/form-data'
         request = Upload.upload(
@@ -142,18 +134,28 @@ angular.module( 'lyricvendordemo.demo', [
         # if $scope.api.royaltyEarningsContentType == 'text/csv'
         #   $scope.clientData.royaltyEarnings = $base64.encode($scope.api.csvData)
 
+        headers = {
+          'content-type': 'application/json'
+        }
+
+        if $stateParams.strategy == 'async'
+          headers = {
+            'content-type': 'application/json',
+            'async-token': common.asyncToken
+          }
+
         req =
           method: 'POST'
           url: url
-          headers: {
-            'content-type': 'application/json'
-          }
+          headers: headers
           data: $scope.clientData
 
         request = $http(req)
 
       request
       .then (resp) ->
+        if $stateParams.strategy == 'async'
+          return
         $scope.lyric.advanceRequestComplete(resp.headers()["access-token"])
       .catch (error) ->
         $scope.lyric.advanceRequestError(error)

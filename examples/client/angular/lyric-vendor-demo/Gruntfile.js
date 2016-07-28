@@ -76,7 +76,8 @@ module.exports = function ( grunt ) {
         },
         constants: {
           ENV: {
-            DEMO_SERVER_URL: 'https://lyric-server-demo-dev.herokuapp.com',
+            DEMO_SERVER_URL: 'http://lyric-server-demo-dev.herokuapp.com',
+            //DEMO_SERVER_URL: 'http://demo.dev:8082',
             VATM_URL: 'https://vatm-dev.lyricfinancial.com',
             WIDGET_SERVICES_HOST: 'https://demo-widget-dev.lyricfinancial.com'
           }
@@ -88,7 +89,7 @@ module.exports = function ( grunt ) {
         },
         constants: {
           ENV: {
-            DEMO_SERVER_URL: 'https://lyric-server-demo-dev.herokuapp.com',
+            DEMO_SERVER_URL: 'http://lyric-server-demo-dev.herokuapp.com',
             VATM_URL: 'https://vatm-dev.lyricfinancial.com',
             WIDGET_SERVICES_HOST: 'https://demo-widget-dev.lyricfinancial.com'
           }
