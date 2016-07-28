@@ -25,7 +25,9 @@ In order for the Lyric server to know that you wish to make the registration cal
 
   Or call from within another javascript function after any form validation has been completed.
 
-**4) Add event listener to listen for confirmationComplete event.  This event gets fired after user agrees to the terms and conditions and is then redirected in a new window to the Snap Platform.  It is within this listener that you would make your server call to save the data to the Lyric API.  Remember to add the asyncToken as a 'async-token' header to the registration call.**
+**4) Add event listener to listen for confirmationComplete event.**  
+
+This event gets fired after user agrees to the terms and conditions and is then redirected in a new window to the Snap Platform.  It is within this listener that you would make your server call to save the data to the Lyric API.  Remember to add the asyncToken as a 'async-token' header to the registration call.
 
     document.addEventListener('confirmationComplete', eventHandler);
 

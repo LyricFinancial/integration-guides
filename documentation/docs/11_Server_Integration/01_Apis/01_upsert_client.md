@@ -27,12 +27,14 @@ API's. You'll want to regenerate the Aysnc Token each time the user loads the pa
   1. Signed with your vendor_api key
   2. issuer = "Vendor"
   3. audience = "vatmAsyncService"
-  4. subject = "<vendorClientAccountId>"
-  5. jti = "<Globally Unique ID>"
+  4. subject = "\<vendorClientAccountId>"
+  5. jti = "\<Globally Unique ID>"
   6. exp = <reasonable session length to complete an advance request, recommended: Your site's session timeout + 2 hours>
   7. Custom claims:
+  
       async = true
-      vendorId = "<yourVendorId>"
+
+      vendorId = "\<yourVendorId>"
 
 It is crucial that you use a GLOBALLY unique id in step 5 for the jti.
 
