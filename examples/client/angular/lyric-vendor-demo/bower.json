@@ -16,7 +16,7 @@
     "ng-file-upload-shim": "~11.0.1",
     "ng-file-upload": "~11.0.1",
     "angular-messages": "~1.4.8",
-    "lyric-snippet": "~0.36.0",
+    "lyric-snippet": "~0.37.0",
     "angular-json-editor": "~0.2.1",
     "angular-sanitize": "~1.4.9"
   },
