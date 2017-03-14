@@ -23,6 +23,9 @@
         echo "<link href='$css' rel='stylesheet' type='text/css'>";
     } ?>
 
+    <link href="<?= $base_url; ?>themes/daux/css/custom.css" rel='stylesheet' type='text/css'></script>
+    <link href="<?= $base_url; ?>themes/daux/css/light-blue-theme.css" rel='stylesheet' type='text/css'></script>
+
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->

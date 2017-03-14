@@ -1,5 +1,3 @@
-
-
 ## Getting Started
 
 Follow these steps to integrate your system with the Lyric APIs.

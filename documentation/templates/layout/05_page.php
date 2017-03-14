@@ -4,7 +4,7 @@
     <a href="https://github.com/<?= $params['html']['repo']; ?>" target="_blank" id="github-ribbon" class="hidden-print"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 <?php } ?>
 <div class="container-fluid fluid-height wrapper">
-    <div class="navbar navbar-static-top hidden-print">
+    <div class="navbar navbar-static-top hidden-print lyric-header">
         <div class="container-fluid">
             <?php $this->insert('theme::partials/navbar_content', ['params' => $params]); ?>
         </div>
@@ -60,7 +60,9 @@
         </div>
         <div class="right-column <?= $params['html']['float'] ? 'float-view' : ''; ?> content-area col-sm-9">
             <div class="content-page">
-                <?= $this->section('content'); ?>
+                <section class="widget">
+                    <?= $this->section('content'); ?>
+                </section>
             </div>
         </div>
     </div>

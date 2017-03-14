@@ -1,0 +1,45 @@
+.navbar {
+	box-shadow: none !important;
+}
+
+.container {
+	width: 95% !important;
+}
+
+.navbar .container .brand {
+  font-family: "Open Sans", sans-serif !important;
+}
+
+.homepage-hero, .homepage-content.container-fluid, .navbar, .content-page, .left-column, 
+.content-page p, .content-page article:before, .content-page .page-header, .content-page h2,
+.content-page .pager, .content-page blockquote, .content-page ul, .content-page ol, 
+.content-page h3, .content-page h4 {
+	background-color: transparent !important;
+}
+
+.lyric-header a {
+  font-weight:700;
+  margin-right: 20px;
+  font-size: 18px;
+  height: 100px;
+}
+
+.nav.nav-list li.active a, .nav.nav-list li a:hover {
+	background-color: rgba(51, 51, 51, 0.3);
+}
+
+code {
+	color: white !important;
+}
+
+.hljs-addition, .hljs-aggregate, .hljs-apache .hljs-cbracket, 
+.hljs-apache .hljs-tag, .hljs-bash .hljs-variable, .hljs-constant, 
+.hljs-django .hljs-variable, .hljs-erlang_repl .hljs-function_or_atom, 
+.hljs-flow, .hljs-markdown .hljs-header, .hljs-parent, .hljs-preprocessor, 
+.hljs-ruby .hljs-symbol, .hljs-ruby .hljs-symbol .hljs-string, .hljs-rules 
+.hljs-value, .hljs-rules .hljs-value .hljs-number, .hljs-smalltalk .hljs-class, 
+.hljs-stream, .hljs-string, .hljs-tag .hljs-value, .hljs-template_tag, 
+.hljs-tex .hljs-command, .hljs-tex .hljs-special, .hljs-title {
+	color: #3ecd74 !important;
+}
+

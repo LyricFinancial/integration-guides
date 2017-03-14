@@ -1,4 +1,4 @@
-# Lyric Integration Guides 
+# Lyric Integration Guides
 
 <hr/>
 <h3>Documentation</h3>

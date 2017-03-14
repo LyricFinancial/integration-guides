@@ -1,4 +1,6 @@
-<a class="brand navbar-brand pull-left" href="<?= $params['base_page'] . $params['index']->getUri(); ?>"><?= $params['title']; ?></a>
+<a class="brand navbar-brand pull-left" href="<?= $params['base_page'] . $params['index']->getUri(); ?>">
+	<img src="<?= $base_url; ?>new-logo.png" alt="home" width="auto" height="80"/>
+</a>
 
 <a class="brand navbar-brand pull-right" href="#" onclick="logout()">Logout</a>
 <a class="brand navbar-brand pull-right" href="http://client-demo-stage.lyricfinancial.com/#/demo-server" target='_blank'>Demos</a>
