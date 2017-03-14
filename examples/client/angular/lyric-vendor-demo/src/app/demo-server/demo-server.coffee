@@ -68,7 +68,7 @@ angular.module( 'lyricvendordemo.demo-server', [
     
 
     $scope.server = {
-      url: ENV.DEMO_SERVER_URL + "/clients/:vendorClntAcctId/advance_server"
+      url: ENV.DEMO_SERVER_URL + "/clients/:vendorClntAcctId/advance"
       vendorClientAccountId: vendorClientAccountId
       sslOverride: false
       joseOverride: false
@@ -101,7 +101,7 @@ angular.module( 'lyricvendordemo.demo-server', [
         method: 'POST'
         url: url
         headers: { 'Content-Type': "application/json", 'async-token' : $scope.asyncToken }
-        data: {options: $scope.options}
+        data: {options: $scope.options, vendorId: "demo"}
 
       $http(req)
       .then (resp) ->
