@@ -82,15 +82,6 @@ angular.module( 'lyricdemo.publisher', [
 
     vendorClientAccountId = $stateParams.vendorClientAccountId
     
-    widgetUrl = "https://" + vendorId + "-widget-" + ENV.ENV + ".lyricfinancial.com"
-    widget = new LyricWidget(vendorClientAccountId, widgetUrl)
-    $scope.lyricWidget = widget.getWidget()
-
-    common.setupLyricWidget(vendorClientAccountId, widget, vendorId)
-    .then (widget) ->
-      $scope.lyricWidget = widget.getWidget()
-
-    
     vatmUrl = "https://vatm-" + ENV.ENV + ".lyricfinancial.com"
     common.setupLyricSnippet(vendorClientAccountId, 'Demo Publisher', vatmUrl)
     .then (lyric) ->
