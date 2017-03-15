@@ -1,0 +1,83 @@
+/**
+ * This is the main application stylesheet. It should include or import all
+ * stylesheets used throughout the application as this is the only stylesheet in
+ * the Grunt configuration that is automatically processed.
+ */
+
+
+/**
+ * First, we include the Twitter Bootstrap LESS files. Only the ones used in the
+ * project should be imported as the rest are just wasting space.
+ */
+
+
+
+
+/**
+ * This is our main variables file. We must include it last so we can overwrite any variable
+ * definitions in our imported stylesheets.
+ */
+
+@import 'variables.less';
+
+
+.lyric-container {
+	margin-top: 15px !important;
+}
+
+.vendor-name-header {
+	color: white;
+	font-size: 30px;
+	float: left;
+	padding: 20px 0px;
+}
+
+.widget-container {
+  border-style: none !important;
+  
+
+  div {
+    font-size: 8px;
+  }
+}
+
+.lyric-container{
+  background-color: #fff;
+  float: left;
+}
+
+.btn-advance {
+  background-color: #ed1b23;
+  color: #fff;
+}
+
+.widget-label {
+  width: 110px;
+}
+
+.widget-value {
+  width: 25px;
+  float: left;
+}
+
+.lyric-container {
+	border-style: solid;
+  border-radius: 15px;
+  border-color: #d01e1e;
+  border-width: 1px;
+  padding: 10px;
+}
+
+.lyric-button {
+  width: 100%;
+}
+
+/**
+ * Now that all app-wide styles have been applied, we can load the styles for
+ * all the submodules and components we are using. 
+ *
+ * TODO: In a later version of this boilerplate, I'd like to automate this.
+ */
+
+@import '../less/master.less';
+@import '../less/release_view_checklist.less';

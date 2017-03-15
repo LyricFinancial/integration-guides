@@ -1,0 +1,43 @@
+<div class="clear"></div>
+<table class="transaction-report" id="sales-table">
+  <thead>
+    <tr>
+      <th>Statement Date</th>
+      <th>Opening Balance</th>
+      <th>Payment</th>
+      <th>Advances</th>
+      <th>Other Charges</th>
+      <th>Adjustment Amount</th>
+      <th>Song Earnings</th>
+      <th>Close Balance</th>
+    </tr>
+  </thead>
+  <tbody ng-repeat="fileRecord in fileRecords">
+    <tr class="transaction even">
+      <td>{{fileRecord.statementDate | sonydate}}</td>
+      <td>{{fileRecord.openingBalanceAmount | currency}}</td>
+      <td>{{fileRecord.paymentAmount | currency}}</td>
+      <td>{{fileRecord.advanceAmount | currency}}</td>
+      <td>{{fileRecord.otherChargesAmount | currency}}</td>
+      <td>{{fileRecord.adjustmentsAmount | currency}}</td>
+      <td>{{fileRecord.domesticEarningsAmount + fileRecord.foreignEarningsAmount | currency}}</td>
+      <td>{{fileRecord.closingBalanceAmount | currency}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<style>
+table span.transaction-headline{
+  text-align: center;
+}
+.transaction-report td{
+  text-align: center !IMPORTANT;
+  padding: 0px !IMPORTANT;
+}
+</style>
+
+<div class="transactions_pagination">
+  <div class="pagination"><span class="previous_page disabled"></span> <a class="next_page" rel="next"></a></div>
+  <div class="page_numbers">Displaying Person transaction <b>1&nbsp;-&nbsp;{{fileRecords.length}}</b> of <b>{{data.fileRecords.length}}</b> in total</div>
+</div>

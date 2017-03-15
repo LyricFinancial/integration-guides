@@ -1,0 +1,18 @@
+{
+  "name": "lyric-vendor-demo",
+  "version": "0.0.1",
+  "devDependencies": {
+    "angular-mocks": "~1.4.7"
+  },
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+    "lyric-snippet": "~0.40.0",
+    "angular-sanitize": "~1.4.9",
+    "underscore": "^1.8.3",
+    "angular-cookies": "^1.5.3"
+  },
+  "resolutions": {
+    "angular": "~1.4.7"
+  }
+}

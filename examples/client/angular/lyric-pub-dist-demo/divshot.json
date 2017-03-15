@@ -1,0 +1,17 @@
+{
+  "name": "lyricdemo",
+  "clean_urls": true,
+  "error_page": "error.html",
+  "root": "./build",
+  "routes": {
+    "**": "index.html"
+  },
+  
+
+  "headers": {
+    "/assets/fonts*/**": {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+ <div id="header" style="width:100%" ng-include="'common/_header.tpl.html'"></div>
+
+
+<div class="container_16">
+  <section class="grid_16">
+    <header>
+      <h1>Balance History <small>(from {{lastRecordDate | date : 'MMMM yyyy'}} to {{firstRecordDate | date : 'MMMM yyyy'}})</small></h1>
+      <p class="currency-info">All amounts in USD.</p>
+    </header>
+
+    <div style="clear: both;">
+      <section id="transaction_list" class="grid_12 alpha" ng-include="'distributor/_table.tpl.html'"></section>
+
+      <aside class="grid_4 omega">
+        <section id="transaction-filters">
+          <form accept-charset="UTF-8" method="get">
+            <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
+
+            <div id="transaction-file-options">
+              <div>
+                <label for="frequency_in_days">Frequency</label>
+                <select id="frequency_in_days" name="frequency_in_days" ng-model="fileOptions.frequencyInDays" ng-options="option.value as option.name for option in data.frequencyOptions">
+                </select>
+              </div>
+              <div>
+                <label for="number_of_periods"># Periods</label>
+
+                <input ng-model="fileOptions.numberOfPeriods" name="number_of_periods" type="number"/>
+              </div>
+              <div>
+                <label for="records_per_period">Records Per Period</label>
+
+                <input ng-model="fileOptions.numberOfRecordsPerPeriod" name="records_per_period" type="number"/>
+              </div>
+            </div>
+          </form>
+        </section>
+
+        <div class="lyric-container">
+          <button class="btn-advance btn lyric-button" ng-click="lyric.confirm()">Get An Advance</button>
+          <div ng-bind-html="lyricWidget"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</div>
+
+<div class="clear" style="height: 20px;"></div>

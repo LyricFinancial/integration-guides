@@ -1,0 +1,11 @@
+.DS_Store
+documentation/build/*
+
+*.sw*
+*~
+build/
+bin/
+node_modules/
+vendor/
+
+src/app/config.js

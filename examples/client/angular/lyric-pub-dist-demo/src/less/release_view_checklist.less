@@ -1,0 +1,41 @@
+.checklist { list-style: none; padding-top: 5px }
+.checklist .live_tag, .checklist .sent_tag, .checklist .rejected_tag, .checklist .down_tag, .checklist .incomplete_tag, .checklist .ready_tag { background-image: none; height: auto; line-height: inherit; padding-top: 0; position: relative; text-align: inherit; width: auto; }
+ 
+.rv_step { background-image: url(/images/release_view/rv_dash.png); background-position: 7px 13px; background-repeat: no-repeat; font-size: 13px; margin-bottom: 10px; padding-left: 25px; }
+    .rv_step a { display: block; padding: 5px; text-decoration: none; }
+    .rv_step strong { color: #000; font-size: 1.07692308em; } /* 14px / 13px = 1.07692308 */
+    .rv_step .hide { float: right; }
+.rv_step:hover a:link { background-color: #eff6f9 }
+    .rv_step:hover .hide { display: inline }
+.rv_step .red { color: #ff0000 }
+.rv_step.checked { background-image: url(/images/release_view/rv_check.png); background-position: 5px 5px; }
+
+.live_tag, .sent_tag, .rejected_tag, .down_tag, .incomplete_tag, .ready_tag { display: block; margin-bottom: 10px; position: relative; }
+
+.itunes_preview {
+  background: #FFFFFF; /* Old browsers */
+  background: -moz-linear-gradient(top, #FFFFFF 0%, #E5E5E5 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#E5E5E5)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #FFFFFF 0%,#E5E5E5 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #FFFFFF 0%,#E5E5E5 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #FFFFFF 0%,#E5E5E5 100%); /* IE10+ */
+  background: linear-gradient(top, #FFFFFF 0%,#E5E5E5 100%); /* W3C */
+  border: 1px solid #CCCCCC;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: inset 1px 2px 1px rgba(255,255,255,0.3);
+  -webkit-box-shadow: inset 1px 2px 1px rgba(255,255,255,0.3);
+  box-shadow: inset 1px 2px 1px rgba(255,255,255,0.3);
+  float: left;
+  margin: 0 0 10px 10px;
+}
+.itunes_preview:active {
+  background: -moz-linear-gradient(bottom, #FFFFFF 0%, #E5E5E5 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0%,#FFFFFF), color-stop(100%,#E5E5E5)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(bottom, #FFFFFF 0%,#E5E5E5 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(bottom, #FFFFFF 0%,#E5E5E5 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(bottom, #FFFFFF 0%,#E5E5E5 100%); /* IE10+ */
+  background: linear-gradient(bottom, #FFFFFF 0%,#E5E5E5 100%); /* W3C */
+}
+.itunes_preview a { background-image: url(/images/release_view/itunes_icon.png); background-position: 10px center; background-repeat: no-repeat; color: #000000; float: left; font-size: 13px; font-style: italic; padding: 20px 10px 20px 55px; text-align: center; text-decoration: none; width: 215px; }

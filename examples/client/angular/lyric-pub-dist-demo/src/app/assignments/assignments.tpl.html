@@ -1,0 +1,19 @@
+<div class="assignments-container">
+  <h1>Assignments</h1>
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: left; width: 150px;">Advance Id</th>
+        <th style="text-align: left; width: 250px;">Assignment Date:</th>
+        <th>Amount:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="assignment in assignments">
+        <td>{{assignment.advanceId}}</td>
+        <td>{{assignment.assignmentDate | date : 'medium'}}</td>
+        <td>{{assignment.totalAmount | currency}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
