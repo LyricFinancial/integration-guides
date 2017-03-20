@@ -10,7 +10,9 @@
     "lyric-snippet": "~0.40.0",
     "angular-sanitize": "~1.4.9",
     "underscore": "^1.8.3",
-    "angular-cookies": "1.6.2"
+    "angular-cookies": "1.6.2",
+    "satellizer": "^0.15.5",
+    "angular-lock": "^2.0.1"
   },
   "resolutions": {
     "angular": "~1.4.7"

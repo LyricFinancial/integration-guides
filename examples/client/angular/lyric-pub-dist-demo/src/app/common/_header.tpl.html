@@ -3,12 +3,9 @@
     <div class="row">
       <div class="twelve columns">
         <div class="vendor-name-header">
-          <h1>{{vendorType | capitalize}} Demo</h1>
+          <h1>{{vendorType | capitalize}} Demo <a href ng-if="vendorType=='distributor'" ui-sref='publisher'>(Switch to Publisher)</a><a href ng-if="vendorType=='publisher'" ui-sref='distributor'>(Switch to Distributor)</a></h1> 
         </div>
           <nav class="site_controls">
-<!--             <div class="vendor-name-header">
-              <h1>Distributor Demo</h1>
-            </div> -->
             <menu class="notifications seen">
               <a href="/notifications/dropdown" class="notifications_link" data-remote="true" data-type="html"><i class="fa fa-bell fa-lg fa-2x"></i> <div class="notifications_count">0</div></a>
               <section class="notifications_dropdown hidden">
@@ -24,18 +21,12 @@
             <a href="/my_account/list_transactions">Balance: {{closingBalance | currency}}</a>
 
             <menu class="menu">
-              <a href="#" tabindex="0" title="kevin day"><i class="fa fa-user"></i> {{clientData.firstName}} {{clientData.lastName}}</a>
+              <a href tabindex="0" title="kevin day"><i class="fa fa-user"></i> {{clientData.firstName}} {{clientData.lastName}}</a>
               <menu class="options">
-                <a href="/people/852257/edit">Account Settings</a>
-                <a href="/payment_preferences">Payment Preferences</a>
-                  <a href="/stored_bank_accounts">Bank Account</a>
-                <a href="/subscriptions">Subscriptions</a>
-                <a href="/history">Order History</a>
+                <a href>Account Settings</a>
+                <a href>Order History</a>
                 <div class="hr"></div>
-                <a href="/my_account/list_transactions">Balance History</a>
-                  <a href="/my_account/withdraw">Withdraw Money</a>
-                <div class="hr"></div>
-                <a href="/logout">Log Out</a>
+                <a href ng-click="logout()">Log Out</a>
               </menu>
             </menu>
             <menu class="admin_controls">

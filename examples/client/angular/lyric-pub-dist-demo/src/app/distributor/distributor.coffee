@@ -16,12 +16,31 @@ angular.module( 'lyricdemo.distributor', [
           controller: 'DistributorCtrl',
           templateUrl: 'distributor/distributor.tpl.html'
       resolve:
+        authenticate: [
+          '$auth'
+          '$q'
+          '$state'
+          '$timeout'
+          ($auth, $q, $state, $timeout) ->
+            defer = $q.defer()
+
+            $timeout ->
+              if $auth.isAuthenticated()
+                defer.resolve()
+                return
+
+              $state.go 'login'
+              defer.reject()
+
+            return defer.promise
+        ]
         init: [
+          'authenticate'
           '$stateParams'
           '$state'
           '$q'
           'SharedDataService'
-          ($stateParams, $state, $q, data) ->
+          (authenticate, $stateParams, $state, $q, data) ->
             defer = $q.defer()
 
             vendorClientAccountId = $stateParams.vendorClientAccountId
@@ -36,7 +55,6 @@ angular.module( 'lyricdemo.distributor', [
     data:{ pageTitle: 'Lyric Demo' }
 
 ])
-
 
 .controller( 'DistributorCtrl', [
   '$scope'

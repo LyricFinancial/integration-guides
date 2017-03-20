@@ -16,12 +16,31 @@ angular.module( 'lyricdemo.publisher', [
           controller: 'PublisherCtrl',
           templateUrl: 'publisher/publisher.tpl.html'
       resolve:
+        authenticate: [
+          '$auth'
+          '$q'
+          '$state'
+          '$timeout'
+          ($auth, $q, $state, $timeout) ->
+            defer = $q.defer()
+
+            $timeout ->
+              if $auth.isAuthenticated()
+                defer.resolve()
+                return
+
+              $state.go 'login'
+              defer.reject()
+
+            return defer.promise
+        ]
         init: [
+          'authenticate'
           '$stateParams'
           '$state'
           '$q'
           'SharedDataService'
-          ($stateParams, $state, $q, data) ->
+          (authenticate, $stateParams, $state, $q, data) ->
             defer = $q.defer()
 
             vendorClientAccountId = $stateParams.vendorClientAccountId
@@ -47,10 +66,13 @@ angular.module( 'lyricdemo.publisher', [
   'SharedDataService'
   '_'
   '$cookies'
-  ($scope, $http, ENV, $stateParams, common, data, _, $cookies) ->
+  '$state'
+  ($scope, $http, ENV, $stateParams, common, data, _, $cookies, $state) ->
     vendorId = 'demopublisher'
     $scope.vendorType = 'publisher'
     $scope.clientData = data.clientData
+
+    $scope.selectedKnownFile = $stateParams.vendorClientAccountId + '-' + $stateParams.masterClientId
 
     $scope.data = data
     if data.clientData == null
@@ -65,6 +87,12 @@ angular.module( 'lyricdemo.publisher', [
 
     $scope.$watchGroup ['fileOptions.frequencyInDays', 'fileOptions.numberOfPeriods'], (newValue, oldValue) ->
       $scope.reloadFileRecords()
+
+    $scope.selectedKnownFileChanged = (value) ->
+      paramParts = value.split('-')
+      $state.go 'publisher',
+        'vendorClientAccountId': paramParts[0]
+        'masterClientId': paramParts[1]
 
     $scope.reloadFileRecords = ->
       $cookies.put('publisherFileOptions', JSON.stringify($scope.fileOptions))

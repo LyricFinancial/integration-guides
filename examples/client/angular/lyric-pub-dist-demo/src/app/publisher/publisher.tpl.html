@@ -17,6 +17,11 @@
             <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
 
             <div id="transaction-file-options">
+              <div>
+                <label for="known_files">Known Files in S3</label>
+                <select id="known_files" name="known_files" ng-model="selectedKnownFile" ng-change="selectedKnownFileChanged(selectedKnownFile)" ng-options="option.value as option.name for option in data.knownFiles">
+                </select>
+              </div>
 
               <div>
                 <label for="frequency_in_days">Frequency</label>
@@ -28,6 +33,7 @@
 
                 <input ng-model="fileOptions.numberOfPeriods" name="number_of_periods" type="number"/>
               </div>
+              
               
             </div>
           </form>

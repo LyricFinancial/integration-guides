@@ -19,6 +19,25 @@ angular.module("sharedDataService", [
           {name: 'Annual', value: 365}
         ]
 
+        @knownFiles = [
+          {name: '233102-57852 2VA', value: '233102-57852'},
+          {name: '1011094-57852 2VA', value: '1011094-57852'},
+          {name: '233101-57853 2VA', value: '233101-57853'},
+          {name: '1011095-57853 2VA', value: '1011095-57853'},
+          {name: '106161-56711 2VA', value: '106161-56711'},
+          {name: '97970-56711 2VA + Dup VA', value: '97970-56711'},
+          {name: '97970-60972 Dup VA', value: '97970-60972'},
+          {name: '103452-9973', value: '103452-9973'},
+          {name: '1543343-1381559', value: '1543343-1381559'},
+          {name: '111703-39991', value: '111703-39991'},
+          {name: '112702-18310', value: '112702-18310'},
+          {name: '114122-19639', value: '114122-19639'},
+          {name: '114784-20268', value: '114784-20268'},
+          {name: '114962-20431', value: '114962-20431'},
+          {name: '119005-23896', value: '119005-23896'},
+          {name: '119127-23993', value: '119127-23993'}
+        ]
+
       setClientData: (vendorClientAccountId, masterClientId) ->
 
         if vendorClientAccountId == 'eliLyricTest'

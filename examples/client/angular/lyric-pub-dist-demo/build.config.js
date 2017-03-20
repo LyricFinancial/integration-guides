@@ -67,7 +67,12 @@ module.exports = {
       'vendor/angular-ui-router/release/angular-ui-router.js',
       'vendor/angular-sanitize/angular-sanitize.js',
       'vendor/underscore/underscore.js',
-      'vendor/angular-cookies/angular-cookies.js'
+      'vendor/angular-cookies/angular-cookies.js',
+      'vendor/satellizer/dist/satellizer.js',
+      'vendor/auth0-lock/build/lock.js',
+      'vendor/auth0.js/build/auth0.js',
+      'vendor/angular-lock/dist/angular-lock.js'
+
     ],
     css: [
       'vendor/lyric-snippet/dist/lyric-snippet.css'
