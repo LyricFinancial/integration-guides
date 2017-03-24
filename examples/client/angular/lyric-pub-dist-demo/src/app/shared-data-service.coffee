@@ -5,12 +5,16 @@ angular.module("sharedDataService", [
   "$q"
   "$http"
   "ENV"
-  ($q, $http, ENV) ->
+  '$cookies'
+  ($q, $http, ENV, $cookies) ->
     class SharedDataService
 
       constructor: () ->
         @fileRecords = null
         @clientData = null
+
+        @distributorDefaultFileOptions = {frequencyInDays: 30, numberOfPeriods: 14, numberOfRecordsPerPeriod: 6, schemas: ['TunecoreDistributionSample']}
+        @publisherDefaultFileOptions = {frequencyInDays: 182, numberOfPeriods: 2, schemas: ['SonyatvStatementSummary', 'SonyatvEarningsSummary', 'SonyatvSongSummary', 'SonyatvFinancialTransactions']}
 
         @frequencyOptions = [
           {name: 'Monthly', value: 30},
@@ -105,6 +109,14 @@ angular.module("sharedDataService", [
           defer.reject(error)
 
         return defer.promise
+
+      getFileDataOptions: (cookieName, defaultFileOptions) ->
+        fileOptionsCookie = $cookies.get(cookieName)
+
+        if fileOptionsCookie?
+          return JSON.parse(fileOptionsCookie)
+        else
+          return defaultFileOptions
 
 
     return new SharedDataService()

@@ -47,10 +47,7 @@ angular.module( 'lyricdemo.login', [
     options = {
       allowSignUp: false
       allowedConnections: ['LyricAdmin']
-      rememberLastLogin: false
-      auth: {
-        sso: false
-      }
+      rememberLastLogin: true
     }
 
     lock.show(options)

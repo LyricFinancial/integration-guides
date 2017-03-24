@@ -15,11 +15,23 @@
     <script type="text/javascript" src="<%= file %>"></script><% }); %>
 
   </head>
-  <body>
-    <div id="xc-outer-wrapper" style="width:100%">
+  <body layout="row">
+    <div layout="column" flex class='lyric-body'>
+      <!-- <div id="header" style="width:100%" ng-include="'common/_header.tpl.html'"></div> -->
+      <md-content layout="column" flex class='lyric-content'>
+      <!--   <div flex flex-xs="10"></div> -->
+        <div flex="none">
+          <div class="container" ui-view="main"></div>
+        </div>
+        <div flex></div>
+        <footer id="footer" class="footer" flex="none" ng-include="'common/_footer.tpl.html'"></footer>
+      </md-content>
+
+    </div>
+    <!-- <div id="xc-outer-wrapper" style="width:100%">
       
       <div class="container" ui-view="main"></div>
       <div id="footer" style="width:100%" ng-include="'common/_footer.tpl.html'"></div>
-    </div>
+    </div> -->
   </body>
 </html>

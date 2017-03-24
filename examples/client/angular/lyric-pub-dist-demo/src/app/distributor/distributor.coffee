@@ -68,17 +68,16 @@ angular.module( 'lyricdemo.distributor', [
   ($scope, $http, ENV, $stateParams, common, data, _, $cookies) ->
     vendorId = "demodistributor"
     $scope.vendorType = 'distributor'
+    vendorClientAccountId = $stateParams.vendorClientAccountId
+    masterClientId = $stateParams.masterClientId
+
+    $scope.setPreviousState($scope.vendorType, vendorClientAccountId, masterClientId)
 
     $scope.data = data
     if data.clientData == null
       alert('no user record')
 
-    fileOptionsCookie = $cookies.get('distributorFileOptions')
-
-    if fileOptionsCookie?
-      $scope.fileOptions = JSON.parse(fileOptionsCookie)
-    else
-      $scope.fileOptions = {frequencyInDays: 30, numberOfPeriods: 14, numberOfRecordsPerPeriod: 6, schemas: ['TunecoreDistributionSample']}
+    $scope.fileOptions = data.getFileDataOptions('distributorFileOptions', data.distributorDefaultFileOptions)
 
     $scope.$watchGroup ['fileOptions.frequencyInDays', 'fileOptions.numberOfPeriods', 'fileOptions.numberOfRecordsPerPeriod'], (newValue, oldValue) ->
       $scope.reloadFileRecords()
@@ -87,10 +86,13 @@ angular.module( 'lyricdemo.distributor', [
       $cookies.put('distributorFileOptions', JSON.stringify($scope.fileOptions))
       data.getFileRecords(vendorClientAccountId, $scope.fileOptions)
       .then ->
-        $scope.fileRecords = _(data.fileRecords).first 15
+        sortedFileRecords = _.sortBy(data.fileRecords, (fileRecord) ->
+          return fileRecord.salesPeriod
+        ).reverse()
+        $scope.fileRecords = _(sortedFileRecords).first 15
 
-        firstRecord = _(data.fileRecords).first()
-        lastRecord = _(data.fileRecords).last()
+        firstRecord = _(sortedFileRecords).first()
+        lastRecord = _(sortedFileRecords).last()
 
         $scope.firstRecordDate = new Date(firstRecord.salesPeriod)
         $scope.lastRecordDate = new Date(lastRecord.salesPeriod)
@@ -104,12 +106,6 @@ angular.module( 'lyricdemo.distributor', [
     common.setupLyricSnippet(vendorClientAccountId, 'Demo Distributor', vatmUrl)
     .then (lyric) ->
       $scope.lyric = lyric
-
-    $scope.options = {
-      contentType: "application/json"
-      royaltyEarningsContentType: "text/csv"
-      filename: ""
-    }
 
     $scope.requestAdvance = ->
       data.registerUser(vendorClientAccountId, $scope.clientData, $scope.fileOptions, vendorId)

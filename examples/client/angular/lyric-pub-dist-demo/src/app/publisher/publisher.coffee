@@ -71,19 +71,23 @@ angular.module( 'lyricdemo.publisher', [
     vendorId = 'demopublisher'
     $scope.vendorType = 'publisher'
     $scope.clientData = data.clientData
+    vendorClientAccountId = $stateParams.vendorClientAccountId
+    masterClientId = $stateParams.masterClientId
 
-    $scope.selectedKnownFile = $stateParams.vendorClientAccountId + '-' + $stateParams.masterClientId
+    selectedKnownFile = vendorClientAccountId
+
+    $scope.setPreviousState($scope.vendorType, vendorClientAccountId, masterClientId)
+
+    if masterClientId?
+      selectedKnownFile += '-' + masterClientId
+
+    $scope.selectedKnownFile = selectedKnownFile
 
     $scope.data = data
     if data.clientData == null
       alert('no user record')
 
-    fileOptionsCookie = $cookies.get('publisherFileOptions')
-
-    if fileOptionsCookie?
-      $scope.fileOptions = JSON.parse(fileOptionsCookie)
-    else
-      $scope.fileOptions = {frequencyInDays: 182, numberOfPeriods: 2, schemas: ['SonyatvStatementSummary', 'SonyatvEarningsSummary', 'SonyatvSongSummary', 'SonyatvFinancialTransactions']}
+    $scope.fileOptions = data.getFileDataOptions('publisherFileOptions', data.publisherDefaultFileOptions)
 
     $scope.$watchGroup ['fileOptions.frequencyInDays', 'fileOptions.numberOfPeriods'], (newValue, oldValue) ->
       $scope.reloadFileRecords()
@@ -114,12 +118,6 @@ angular.module( 'lyricdemo.publisher', [
     common.setupLyricSnippet(vendorClientAccountId, 'Demo Publisher', vatmUrl)
     .then (lyric) ->
       $scope.lyric = lyric
-
-    $scope.options = {
-      contentType: "application/json"
-      royaltyEarningsContentType: "text/csv"
-      filename: ""
-    }
 
     $scope.requestAdvance = ->
       data.registerUser(vendorClientAccountId, $scope.clientData, $scope.fileOptions, vendorId)

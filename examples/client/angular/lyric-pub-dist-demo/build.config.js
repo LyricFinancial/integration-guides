@@ -71,11 +71,16 @@ module.exports = {
       'vendor/satellizer/dist/satellizer.js',
       'vendor/auth0-lock/build/lock.js',
       'vendor/auth0.js/build/auth0.js',
-      'vendor/angular-lock/dist/angular-lock.js'
+      'vendor/angular-lock/dist/angular-lock.js',
+      'vendor/angular-animate/angular-animate.js',
+      'vendor/angular-aria/angular-aria.js',
+      'vendor/angular-material/angular-material.js'
 
     ],
     css: [
-      'vendor/lyric-snippet/dist/lyric-snippet.css'
+      'vendor/lyric-snippet/dist/lyric-snippet.css',
+      'vendor/angular-material/angular-material.min.css',
+      'vendor/angular-material-icons/angular-material-icons.css'
     ],
     assets: [
     ]

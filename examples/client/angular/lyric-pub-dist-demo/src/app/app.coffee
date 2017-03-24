@@ -9,6 +9,7 @@ angular.module( 'lyricdemo', [
   'ui.router'
   'satellizer'
   'auth0.lock'
+  'ngMaterial'
 ])
 
 .factory '_', ->
@@ -42,33 +43,67 @@ angular.module( 'lyricdemo', [
         _idTokenVerification: false
         autofocus: true
         closable: false
+        auth:
+          redirect: false
+          sso: false
 ])
 
 .run([
   'lock'
   '$state'
   '$auth'
-  (lock, $state, $auth) ->
+  '$cookies'
+  (lock, $state, $auth, $cookies) ->
     lock.interceptHash()
     lock.on 'authenticated', (authResult) ->
+      lock.hide()
       $auth.setToken(authResult.idToken)
-      $state.go 'publisher'
+      state = 'publisher'
+      params = {vendorClientAccountId: '119005',masterClientId: '23896'}
+      previousState = $cookies.get('previousState')
+
+      if previousState?
+        previousStateJson = JSON.parse(previousState)
+
+        state = previousStateJson.state
+        params = previousStateJson.params[state]
+
+      $state.go state, params
 ])
 
 .controller( 'AppCtrl', [
   '$scope'
   '$state'
   '$auth'
-  ($scope, $state, $auth) ->
-
-    $scope.isAuthenticated = ->
-      return $state.current.name != 'login'
-
-    $scope.isAssignments = ->
-      return $state.current.name == 'assignments'
+  '$cookies'
+  ($scope, $state, $auth, $cookies) ->
 
     $scope.logout = ->
       $auth.logout()
       $state.go 'login'
+
+    $scope.switchVendorType = (vendorType)->
+      previousState = JSON.parse($cookies.get('previousState'))
+      vendorTypeParams = previousState.params[vendorType]
+
+      $state.go vendorType, vendorTypeParams
+
+    $scope.setPreviousState = (vendorType, vendorClientAccountId, masterClientId) ->
+      previousState = $cookies.get('previousState')
+
+      if previousState?
+        previousStateJson = JSON.parse(previousState)
+      else
+        previousStateJson = {params: {distributor: {vendorClientAccountId: 'eliLyricTest'}, publisher: {}}}
+
+      previousStateJson.state = vendorType
+      previousStateJson.params[vendorType].vendorClientAccountId = vendorClientAccountId
+
+      if masterClientId?
+        previousStateJson.params[vendorType].masterClientId = masterClientId
+      else
+        previousStateJson.params[vendorType].masterClientId = null
+
+      $cookies.put('previousState', JSON.stringify(previousStateJson))
 
 ])

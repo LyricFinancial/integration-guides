@@ -5,16 +5,21 @@
     "angular-mocks": "~1.4.7"
   },
   "dependencies": {
-    "angular": "~1.4.7",
-    "angular-ui-router": "~0.2.15",
+    "angular": "1.5.11",
+    "angular-animate": "1.5.8",
+    "angular-aria": "1.5.8",
+    "angular-ui-router": "~0.3.1",
     "lyric-snippet": "~0.40.0",
     "angular-sanitize": "~1.4.9",
     "underscore": "^1.8.3",
     "angular-cookies": "1.6.2",
     "satellizer": "^0.15.5",
-    "angular-lock": "^2.0.1"
+    "angular-lock": "^2.0.1",
+    "angular-aria": "1.5.8",
+    "angular-material": "1.1.1"
   },
   "resolutions": {
-    "angular": "~1.4.7"
+    "angular": "1.5.11",
+    "angular-animate": "1.5.8"
   }
 }

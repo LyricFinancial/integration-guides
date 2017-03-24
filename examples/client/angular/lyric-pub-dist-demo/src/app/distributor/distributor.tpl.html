@@ -4,40 +4,45 @@
 <div class="container_16">
   <section class="grid_16">
     <header>
-      <h1>Balance History <small>(from {{lastRecordDate | date : 'MMMM yyyy'}} to {{firstRecordDate | date : 'MMMM yyyy'}})</small></h1>
+      <div layout="row">
+        <h1>Balance History <small>(from {{lastRecordDate | date : 'MMMM yyyy'}} to {{firstRecordDate | date : 'MMMM yyyy'}})</small></h1>
+        <button class="btn-advance btn" ng-click="lyric.confirm()">Get An Advance</button>
+      </div>
       <p class="currency-info">All amounts in USD.</p>
     </header>
 
     <div style="clear: both;">
-      <section id="transaction_list" class="grid_12 alpha" ng-include="'distributor/_table.tpl.html'"></section>
+      <section id="transaction_list" ng-include="'distributor/_table.tpl.html'"></section>
+      <br>
+      <a ng-click="showOptions=true" href ng-show="!showOptions">Show Options</a>
+      <a ng-click="showOptions=false" href ng-show="showOptions">Hide Options</a>
+      <br>
+      <section id="transaction-filters" ng-if="showOptions">
+        <form accept-charset="UTF-8" method="get">
+          <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
 
-      <aside class="grid_4 omega">
-        <section id="transaction-filters">
-          <form accept-charset="UTF-8" method="get">
-            <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
-
-            <div id="transaction-file-options">
-              <div>
-                <label for="frequency_in_days">Frequency</label>
-                <select id="frequency_in_days" name="frequency_in_days" ng-model="fileOptions.frequencyInDays" ng-options="option.value as option.name for option in data.frequencyOptions">
-                </select>
-              </div>
-              <div>
-                <label for="number_of_periods"># Periods</label>
-
-                <input ng-model="fileOptions.numberOfPeriods" name="number_of_periods" type="number"/>
-              </div>
-              <div>
-                <label for="records_per_period">Records Per Period</label>
-
-                <input ng-model="fileOptions.numberOfRecordsPerPeriod" name="records_per_period" type="number"/>
-              </div>
+          <div id="transaction-file-options">
+            <div>
+              <label for="frequency_in_days">Frequency</label>
+              <select id="frequency_in_days" name="frequency_in_days" ng-model="fileOptions.frequencyInDays" ng-options="option.value as option.name for option in data.frequencyOptions">
+              </select>
             </div>
-          </form>
-        </section>
+            <div>
+              <label for="number_of_periods"># Periods</label>
 
-        <button class="btn-advance btn lyric-button" ng-click="lyric.confirm()">Get An Advance</button>
-      </aside>
+              <input ng-model="fileOptions.numberOfPeriods" name="number_of_periods" type="number"/>
+            </div>
+            <div>
+              <label for="records_per_period">Records Per Period</label>
+
+              <input ng-model="fileOptions.numberOfRecordsPerPeriod" name="records_per_period" type="number"/>
+            </div>
+          </div>
+        </form>
+      </section>
+
+        
+
     </div>
   </section>
 </div>
