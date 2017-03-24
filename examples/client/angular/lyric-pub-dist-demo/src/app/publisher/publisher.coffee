@@ -109,8 +109,8 @@ angular.module( 'lyricdemo.publisher', [
 
         $scope.closingBalance = firstRecord.closingBalanceAmount
 
-        $scope.firstRecordDate = new Date(firstRecord.statementDate)
-        $scope.lastRecordDate = new Date(lastRecord.statementDate)
+        $scope.firstRecordDate = new Date(firstRecord.statementDate.split(" ")[0])
+        $scope.lastRecordDate = new Date(lastRecord.statementDate.split(" ")[0])
 
     vendorClientAccountId = $stateParams.vendorClientAccountId
     

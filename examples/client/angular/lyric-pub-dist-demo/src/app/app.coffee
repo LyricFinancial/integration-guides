@@ -24,7 +24,7 @@ angular.module( 'lyricdemo', [
   
   ($filter) ->
     (input) ->
-      date = new Date(input)
+      date = new Date(input.split(" ")[0])
       input = $filter('date')(date, 'MMM yyyy')
 ])
 
