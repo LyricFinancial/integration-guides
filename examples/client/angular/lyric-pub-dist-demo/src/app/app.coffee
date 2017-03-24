@@ -48,7 +48,7 @@ angular.module( 'lyricdemo', [
         closable: false
         auth:
           redirect: false
-          #sso: false
+          sso: false
 ])
 
 .run([
