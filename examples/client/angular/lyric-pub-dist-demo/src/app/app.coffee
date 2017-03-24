@@ -33,8 +33,11 @@ angular.module( 'lyricdemo', [
   '$urlRouterProvider'
   '$httpProvider'
   'lockProvider'
-  ($stateProvider, $urlRouterProvider, $httpProvider, lockProvider) ->
+  '$authProvider'
+  ($stateProvider, $urlRouterProvider, $httpProvider, lockProvider, $authProvider) ->
     $urlRouterProvider.otherwise( '/publisher' )
+
+    $authProvider.storageType = 'sessionStorage'
 
     lockProvider.init
       clientID: 'mXBdeZrKlRYX0TvSRu4nhphUaRQ35Y7z'
