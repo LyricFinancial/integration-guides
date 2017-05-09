@@ -3,16 +3,17 @@ This API demonstrates how the vendor will need to generate an async token that c
 **Java Example**
 
     JwtClaims claims = new JwtClaims();
-    claims.setIssuer("demo");  // set to your vendorId
-    claims.setAudience("vatmApi"); // to whom the token is intended to be sent
+    claims.setIssuer("Vendor");  // set to your vendorId
+    claims.setAudience("vatmAsyncService"); // to whom the token is intended to be sent
     claims.setExpirationTimeMinutesInTheFuture(60); // time when the token will expire (10 minutes from now)
     claims.setJwtId(UUID.randomUUID().toString());; // a unique identifier for the token
     claims.setIssuedAtToNow();  // when the token was issued/created (now)
     claims.setNotBeforeMinutesInThePast(2); // time before which the token is not yet valid (2 minutes ago)
-    claims.setSubject("clientABC"); // vendorClientAccountId
+    claims.setSubject(UUID.randomUUID().toString());
 
-    claims.setClaim("vendorId", "demo"); // set to your vendorId
+    claims.setClaim("vendorId", "<your-vendor-id>"); // set to your vendorId
     claims.setClaim("async", true);
+    claims.setClaim("vendorClientAccountId", <vendorClientAccountId>);
 
 
     // A JWT is a JWS and/or a JWE with JSON claims as the payload.

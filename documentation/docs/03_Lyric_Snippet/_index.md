@@ -16,5 +16,3 @@
 To learn how to use the synchronous strategies, click [here](!Lyric_Snippet/Lyric_Snippet_Sync).
 
 To learn how to use the async strategy, click [here](!Lyric_Snippet/Lyric_Snippet_Async).
-
-To use the Lyric Widget, click [here](!Lyric_Snippet/Lyric_Widget).

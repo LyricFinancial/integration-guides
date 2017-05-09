@@ -1,1 +1,0 @@
-If the multipart content type is chosen, then the data will be passed to the server as multipart/form-data.  A file can be uploaded for Royalty Earnings and that will get included in the multipart payload.

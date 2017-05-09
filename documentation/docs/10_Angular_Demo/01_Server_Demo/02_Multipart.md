@@ -1,1 +1,0 @@
-If the multipart content type is chosen, the server will construct the data for the Lyric registration API as multipart/form-data.  Then there is an option for the content type of the Royalty Earnings.  csv or zip are chosen, then it will look on the server for a file with the specified filename.
