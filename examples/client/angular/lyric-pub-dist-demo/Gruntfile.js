@@ -103,8 +103,8 @@ module.exports = function (grunt) {
                 constants: {
                     ENV: {
                         ENV: 'sandbox',
-                        //DEMO_SERVER_URL: 'http://lyric-server-demo-stage.herokuapp.com'
-                        DEMO_SERVER_URL: 'http://snap-sandbox-demo-server.lyricfinancial.com'
+                        DEMO_SERVER_URL: 'http://lyric-server-demo-stage.herokuapp.com'
+                        //DEMO_SERVER_URL: 'http://snap-sandbox-demo-server.lyricfinancial.com'
                     }
                 }
             }
