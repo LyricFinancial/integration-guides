@@ -14,10 +14,12 @@
   },
   //"enginesStrict": true,
   //"engines": {
-    //"node": "6.11.2",
-   // "npm": "2.11.1"
+  //"node": "6.11.2",
+  // "npm": "2.11.1"
   //},
-  "dependencies": {},
+  "dependencies": {
+    "bower": "^1.4.1"
+  },
   "devDependencies": {
     "bower": "^1.4.1",
     "coffeelint": "^1",
