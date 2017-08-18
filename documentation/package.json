@@ -12,9 +12,5 @@
     "gulp-plumber": "^1.0.1",
     "gulp-postcss": "^6.0.0",
     "gulp-rename": "^1.2.2"
-  },
-  "engines": {
-    "node": "6.11.2",
-    "npm": "2.11.1"
   }
 }
