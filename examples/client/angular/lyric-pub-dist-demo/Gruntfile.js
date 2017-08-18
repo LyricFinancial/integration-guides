@@ -79,7 +79,7 @@ module.exports = function (grunt) {
                         ENV: 'dev',
                         DEMO_SERVER_URL: 'http://lyric-server-demo-dev.herokuapp.com'
                         // DEMO_SERVER_URL: 'https://lyric-tc-demo.herokuapp.com'
-                        DEMO_SERVER_URL: 'http://snap-dev-demo-server.lyricfinancial.com'
+                        //DEMO_SERVER_URL: 'http://snap-dev-demo-server.lyricfinancial.com'
                     }
                 }
             },
