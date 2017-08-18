@@ -12,9 +12,7 @@
     "type": "git",
     "url": "git@github.com:ngbp/ngbp.git"
   },
-  "dependencies": {
-    "bower": "^1.8.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "bower": "^1.8.0",
     "coffeelint": "^1",
