@@ -12,16 +12,9 @@
     "type": "git",
     "url": "git@github.com:ngbp/ngbp.git"
   },
-  //"enginesStrict": true,
-  //"engines": {
-  //"node": "6.11.2",
-  // "npm": "2.11.1"
-  //},
-  "dependencies": {
-    "bower": "^1.4.1"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "bower": "^1.4.1",
+    "bower": "^1.8.0",
     "coffeelint": "^1",
     "grunt": "~0.4.1",
     "grunt-bump": "0.0.6",
