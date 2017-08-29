@@ -10,3 +10,5 @@ When it's time for funds to be repayed to Lyric, disbursements can be made to th
 - transactionId: String
 - memberAccountToken: String
 - vendorClientAccountId: String
+- masterClientId: String (optional)
+- paymentSource: String (optional)
