@@ -53,7 +53,7 @@ angular.module("sharedDataService", [
         else if vendorClientAccountId == 'amyLyricTest'
           @clientData = {email: 'amadden@mad-swan.com', firstName: 'Amy', lastName: 'Madden', masterClientId: masterClientId}
         else
-          @clientData =  {email: vendorClientAccountId + '@email.com', firstName: 'Test', lastName: 'User', masterClientId: masterClientId}
+          @clientData =  {email: vendorClientAccountId + '@example.com', firstName: 'Test', lastName: 'User', masterClientId: masterClientId}
 
         return @clientData
 

@@ -9,21 +9,21 @@ angular.module("userRepository", [])
         clientData = {vendorAccount: {vendorClientAccountId: null}}
 
         if vendorClientAccountId == 'bmiTest1'
-          clientData = @createUser('KATIE', 'BATEMAN', 'KBATEMAN@EMAIL.COM', 1341, 'female', vendorClientAccountId)
+          clientData = @createUser('KATIE', 'BATEMAN', 'KBATEMAN@EXAMPLE.COM', 1341, 'female', vendorClientAccountId)
         else if vendorClientAccountId == 'bmiTest2'
-          clientData = @createUser('JOHN', 'DOE', 'JDOE@EMAIL.COM', 2342, 'male', vendorClientAccountId)
+          clientData = @createUser('JOHN', 'DOE', 'JDOE@EXAMPLE.COM', 2342, 'male', vendorClientAccountId)
         else if vendorClientAccountId == 'bmiTest3'
-          clientData = @createUser('JANE', 'BROWN', 'JBROWN@EMAIL.COM', 2343, 'female', vendorClientAccountId)
+          clientData = @createUser('JANE', 'BROWN', 'JBROWN@EXAMPLE.COM', 2343, 'female', vendorClientAccountId)
         else if vendorClientAccountId == 'bmiTest4'
-          clientData = @createUser('MARK', 'WHITE', 'MWHITE@EMAIL.COM', 2344, 'male', vendorClientAccountId)
+          clientData = @createUser('MARK', 'WHITE', 'MWHITE@EXAMPLE.COM', 2344, 'male', vendorClientAccountId)
         else if vendorClientAccountId == 'bmiTest5'
-          clientData = @createUser('SALLY', 'JONES', 'SJONES@EMAIL.COM', 2345, 'female', vendorClientAccountId)
+          clientData = @createUser('SALLY', 'JONES', 'SJONES@EXAMPLE.COM', 2345, 'female', vendorClientAccountId)
         else if vendorClientAccountId == 'bmiTest6'
-          clientData = @createUser('BOB', 'SMITH', 'BSMITH@EMAIL.COM', 2346, 'male', vendorClientAccountId)
+          clientData = @createUser('BOB', 'SMITH', 'BSMITH@EXAMPLE.COM', 2346, 'male', vendorClientAccountId)
         else if vendorClientAccountId == 'bmiTest7'
-          clientData = @createUser('RUTH', 'WALTON', 'RWALTON@EMAIL.COM', 2347, 'female', vendorClientAccountId)
+          clientData = @createUser('RUTH', 'WALTON', 'RWALTON@EXAMPLE.COM', 2347, 'female', vendorClientAccountId)
         else if vendorClientAccountId == 'bmiTest8'
-          clientData = @createUser('JEREMY', 'MADDEN', 'JMADDEN@EMAIL.COM', 2348, 'male', vendorClientAccountId)
+          clientData = @createUser('JEREMY', 'MADDEN', 'JMADDEN@EXAMPLE.COM', 2348, 'male', vendorClientAccountId)
         return clientData
 
       createUser: (firstName, lastName, email, unique4Digits, gender, vendorClientAccountId) ->
