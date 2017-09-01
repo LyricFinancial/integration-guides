@@ -77,8 +77,7 @@ module.exports = function ( grunt ) {
         constants: {
           ENV: {
             // DEMO_SERVER_URL: 'http://demo.dev:8082',
-            DEMO_SERVER_URL: 'http://lyric-server-demo-dev.herokuapp.com',
-            //DEMO_SERVER_URL: 'http://snap-dev-demo-server.lyricfinancial.com',
+            DEMO_SERVER_URL: 'http://snap-dev-demo-server.lyricfinancial.com',
             VATM_URL: 'https://vatm-dev.lyricfinancial.com',
             WIDGET_SERVICES_HOST: 'https://demo-widget-dev.lyricfinancial.com'
           }
@@ -90,8 +89,7 @@ module.exports = function ( grunt ) {
         },
         constants: {
           ENV: {
-            DEMO_SERVER_URL: 'http://lyric-server-demo-dev.herokuapp.com', 
-            //DEMO_SERVER_URL: 'http://snap-dev-demo-server.lyricfinancial.com',
+            DEMO_SERVER_URL: 'http://snap-dev-demo-server.lyricfinancial.com',
             VATM_URL: 'https://vatm-dev.lyricfinancial.com',
             WIDGET_SERVICES_HOST: 'https://demo-widget-dev.lyricfinancial.com'
           }
@@ -103,8 +101,7 @@ module.exports = function ( grunt ) {
         },
         constants: {
           ENV: {
-            DEMO_SERVER_URL: 'https://lyric-server-demo-stage.herokuapp.com', 
-            //DEMO_SERVER_URL: 'http://snap-sandbox-demo-server.lyricfinancial.com',
+            DEMO_SERVER_URL: 'http://snap-sandbox-demo-server.lyricfinancial.com',
             VATM_URL: 'https://vatm-sandbox.lyricfinancial.com',
             WIDGET_SERVICES_HOST: 'https://demo-widget-sandbox.lyricfinancial.com'
           }
