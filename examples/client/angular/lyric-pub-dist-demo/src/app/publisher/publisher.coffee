@@ -10,7 +10,7 @@ angular.module( 'lyricdemo.publisher', [
   '$stateProvider'
   ($stateProvider) ->
     $stateProvider.state 'publisher',
-      url: '/publisher?vendorClientAccountId&:masterClientId&:strategy',
+      url: '/publisher?vendorClientAccountId&:masterClientId&:strategy&:vendorId',
       views:
         "main":
           controller: 'PublisherCtrl',
@@ -69,6 +69,10 @@ angular.module( 'lyricdemo.publisher', [
   '$state'
   ($scope, $http, ENV, $stateParams, common, data, _, $cookies, $state) ->
     vendorId = 'demopublisher'
+
+    if $stateParams.vendorId?
+      vendorId = $stateParams.vendorId
+
     $scope.vendorType = 'publisher'
     $scope.clientData = data.clientData
     vendorClientAccountId = $stateParams.vendorClientAccountId
@@ -97,6 +101,7 @@ angular.module( 'lyricdemo.publisher', [
       $state.go 'publisher',
         'vendorClientAccountId': paramParts[0]
         'masterClientId': paramParts[1]
+        'vendorId': vendorId
 
     $scope.reloadFileRecords = ->
       $cookies.put('publisherFileOptions', JSON.stringify($scope.fileOptions))

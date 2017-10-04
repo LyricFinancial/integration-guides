@@ -16,6 +16,8 @@ angular.module("sharedDataService", [
         @distributorDefaultFileOptions = {frequencyInDays: 30, numberOfPeriods: 14, numberOfRecordsPerPeriod: 6, schemas: ['TunecoreDistributionSample']}
         @publisherDefaultFileOptions = {frequencyInDays: 182, numberOfPeriods: 2, schemas: ['SonyatvStatementSummary', 'SonyatvEarningsSummary', 'SonyatvSongSummary', 'SonyatvFinancialTransactions']}
 
+        @useKnownFile = true
+        
         @frequencyOptions = [
           {name: 'Monthly', value: 30},
           {name: 'Quarterly', value: 91},
