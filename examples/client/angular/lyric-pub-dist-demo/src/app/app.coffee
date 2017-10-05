@@ -10,6 +10,7 @@ angular.module( 'lyricdemo', [
   'satellizer'
   'auth0.lock'
   'ngMaterial'
+  'picardy.fontawesome'
 ])
 
 .factory '_', ->
@@ -85,6 +86,8 @@ angular.module( 'lyricdemo', [
   '$auth'
   '$cookies'
   ($scope, $state, $auth, $cookies) ->
+
+    $scope.$state = $state
 
     $scope.logout = ->
       $auth.logout()

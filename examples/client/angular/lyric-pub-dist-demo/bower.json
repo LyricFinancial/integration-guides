@@ -16,7 +16,8 @@
     "satellizer": "^0.15.5",
     "angular-lock": "^2.0.1",
     "angular-aria": "1.5.8",
-    "angular-material": "1.1.1"
+    "angular-material": "1.1.1",
+    "angular-fontawesome": "^1.0.0"
   },
   "resolutions": {
     "angular": "1.5.11",

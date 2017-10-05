@@ -74,7 +74,8 @@ module.exports = {
       'vendor/angular-lock/dist/angular-lock.js',
       'vendor/angular-animate/angular-animate.js',
       'vendor/angular-aria/angular-aria.js',
-      'vendor/angular-material/angular-material.js'
+      'vendor/angular-material/angular-material.js',
+      'vendor/angular-fontawesome/dist/angular-fontawesome.js'
 
     ],
     css: [
