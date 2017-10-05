@@ -8,6 +8,8 @@
     <!-- font awesome from BootstrapCDN -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,‌​100italic,300,300ita‌​lic,400italic,500,50‌​0italic,700,700itali‌​c,900italic,900' rel='stylesheet' type='text/css'>
+
     <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
     <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
 
@@ -17,21 +19,16 @@
   </head>
   <body layout="row">
     <div layout="column" flex class='lyric-body'>
-      <!-- <div id="header" style="width:100%" ng-include="'common/_header.tpl.html'"></div> -->
       <md-content layout="column" flex class='lyric-content'>
-      <!--   <div flex flex-xs="10"></div> -->
-        <div flex="none">
-          <div class="container" ui-view="main"></div>
+     <!--    <div flex flex-xs="10"></div> -->
+        <div flex layout="column">
+          <div class="container" ui-view="main" flex layout="column"></div>
         </div>
-        <div flex></div>
+<!--         <div flex class='filler'></div> -->
         <footer id="footer" class="footer" flex="none" ng-include="'common/_footer.tpl.html'"></footer>
       </md-content>
 
     </div>
-    <!-- <div id="xc-outer-wrapper" style="width:100%">
-      
-      <div class="container" ui-view="main"></div>
-      <div id="footer" style="width:100%" ng-include="'common/_footer.tpl.html'"></div>
-    </div> -->
+
   </body>
 </html>

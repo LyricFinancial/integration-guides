@@ -2,10 +2,10 @@
   <section class="hd-top">
     <div class="row">
       <div class="twelve columns">
-        <div class="vendor-name-header">
-          <h1>{{vendorType | capitalize}} Demo <a href ng-show="vendorType=='distributor'" href ng-click="switchVendorType('publisher')">(Switch to Publisher)</a><a href ng-show="vendorType=='publisher'" href ng-click="switchVendorType('distributor')">(Switch to Distributor)</a></h1> 
+        <div class="vendor-name-header" >
+          <h1 layout="row" layout-align="center end"><img src="assets/images/logo-no-financial.png" style="width:76;height:50px" ><span ng-if="vendorType=='publisher'">Music Publishing</span><span ng-if="vendorType=='distributor'">Digital Distributor</span></h1> 
         </div>
-          <nav class="site_controls">
+          <nav class="site_controls" ng-if="isAuthenticated">
             <a href="/my_account/list_transactions" ng-hide="closingBalance==null">Balance: {{closingBalance | currency}}</a>
 
             <menu class="menu">
@@ -15,6 +15,8 @@
                 <a href>Order History</a>
                 <div class="hr"></div>
                 <a href ng-click="logout()">Log Out</a>
+                <a href ng-show="vendorType=='distributor'" ng-click="switchVendorType('publisher')">Switch</a>
+                <a href ng-show="vendorType=='publisher'" ng-click="switchVendorType('distributor')">Switch</a>
               </menu>
             </menu>
           </nav>

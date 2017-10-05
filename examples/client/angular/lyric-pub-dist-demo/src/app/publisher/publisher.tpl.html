@@ -1,60 +1,61 @@
- <div id="header" style="width:100%" ng-include="'common/_header.tpl.html'"></div>
-<!-- <div flex> -->
+<div flex layout="column" class='publisher-body'>
+  <div id="header" style="width:100%" ng-include="'common/_header.tpl.html'"></div>
+  <!-- <div flex> -->
 
-<div class="container_16">
-  <section class="grid_16">
-    <header>
-      <div layout="row">
-        <h1>Balance History <small>(from {{lastRecordDate | date : 'MMMM yyyy'}} to {{firstRecordDate | date : 'MMMM yyyy'}})</small></h1>
-        <button class="btn-advance btn" ng-click="lyric.confirm()">Get An Advance</button>
+  <div class="container_16 statement-container">
+    <section class="grid_16">
+      <header>
+        <div layout="row">
+          <h1>Balance History <small>(from {{lastRecordDate | date : 'MMMM yyyy'}} to {{firstRecordDate | date : 'MMMM yyyy'}})</small></h1>
+          <button class="btn-advance btn" ng-click="lyric.confirm()">Get An Advance</button>
+        </div>
+
+        <p class="currency-info">All amounts in USD.</p>
+      </header>
+
+      <div style="clear: both;">
+        <section id="transaction_list"  ng-include="'publisher/_table.tpl.html'"></section>
+        <br>
+        <a ng-click="showOptions=true" href ng-show="!showOptions" class='lyric-link'>Show Options</a>
+        <a ng-click="showOptions=false" href ng-show="showOptions" class='lyric-link'>Hide Options</a>
+        <br>
+        <section id="transaction-filters" ng-if="showOptions">
+          <form accept-charset="UTF-8" method="get">
+            <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
+
+
+            <div id="transaction-file-options">
+              <div>
+                <input id="use_known_files" name="use_known_files" type="checkbox" ng-model="data.useKnownFile" value="true">
+                <label for="use_known_files">Use Known File</label>
+              </div>
+              <div ng-if="data.useKnownFile==true">
+                <label for="known_files">Known Files in S3</label>
+                <select id="known_files" name="known_files" ng-model="selectedKnownFile" ng-change="selectedKnownFileChanged(selectedKnownFile)" ng-options="option.value as option.name for option in data.knownFiles">
+                </select>
+              </div>
+
+              <div ng-if="data.useKnownFile!=true">
+                <label for="frequency_in_days">Frequency</label>
+                <select id="frequency_in_days" name="frequency_in_days" ng-model="fileOptions.frequencyInDays" ng-options="option.value as option.name for option in data.frequencyOptions">
+                </select>
+              </div>
+              <div ng-if="data.useKnownFile!=true">
+                <label for="number_of_periods"># Periods</label>
+
+                <input ng-model="fileOptions.numberOfPeriods" name="number_of_periods" type="number"/>
+              </div>
+              <div ng-if="data.useKnownFile!=true">
+                <i>Update the vendorClientAccountId and masterClientId in the url to random ids.</i>
+              </div>
+              
+            </div>
+          </form>
+        </section>
+
       </div>
-
-      <p class="currency-info">All amounts in USD.</p>
-    </header>
-
-    <div style="clear: both;">
-      <section id="transaction_list"  ng-include="'publisher/_table.tpl.html'"></section>
-      <br>
-      <a ng-click="showOptions=true" href ng-show="!showOptions">Show Options</a>
-      <a ng-click="showOptions=false" href ng-show="showOptions">Hide Options</a>
-      <br>
-      <section id="transaction-filters" ng-if="showOptions">
-        <form accept-charset="UTF-8" method="get">
-          <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
-
-
-          <div id="transaction-file-options">
-            <div>
-              <input id="use_known_files" name="use_known_files" type="checkbox" ng-model="data.useKnownFile" value="true">
-              <label for="use_known_files">Use Known File</label>
-            </div>
-            <div ng-if="data.useKnownFile==true">
-              <label for="known_files">Known Files in S3</label>
-              <select id="known_files" name="known_files" ng-model="selectedKnownFile" ng-change="selectedKnownFileChanged(selectedKnownFile)" ng-options="option.value as option.name for option in data.knownFiles">
-              </select>
-            </div>
-
-            <div ng-if="data.useKnownFile!=true">
-              <label for="frequency_in_days">Frequency</label>
-              <select id="frequency_in_days" name="frequency_in_days" ng-model="fileOptions.frequencyInDays" ng-options="option.value as option.name for option in data.frequencyOptions">
-              </select>
-            </div>
-            <div ng-if="data.useKnownFile!=true">
-              <label for="number_of_periods"># Periods</label>
-
-              <input ng-model="fileOptions.numberOfPeriods" name="number_of_periods" type="number"/>
-            </div>
-            <div ng-if="data.useKnownFile!=true">
-              <i>Update the vendorClientAccountId and masterClientId in the url to random ids.</i>
-            </div>
-            
-          </div>
-        </form>
-      </section>
-
-    </div>
-  </section>
- </div>
-
-<!--
-<div class="clear" style="height: 20px;"></div> -->
+    </section>
+   </div>
+</div>
+  <!--
+  <div class="clear" style="height: 20px;"></div> -->

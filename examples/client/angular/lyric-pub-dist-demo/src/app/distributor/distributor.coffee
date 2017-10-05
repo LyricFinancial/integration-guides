@@ -65,7 +65,9 @@ angular.module( 'lyricdemo.distributor', [
   'SharedDataService'
   '_'
   '$cookies'
-  ($scope, $http, ENV, $stateParams, common, data, _, $cookies) ->
+  '$auth'
+  ($scope, $http, ENV, $stateParams, common, data, _, $cookies, $auth) ->
+    $scope.isAuthenticated = $auth.isAuthenticated()
     vendorId = "demodistributor"
     $scope.vendorType = 'distributor'
     vendorClientAccountId = $stateParams.vendorClientAccountId

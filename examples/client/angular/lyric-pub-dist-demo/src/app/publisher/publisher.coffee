@@ -67,7 +67,10 @@ angular.module( 'lyricdemo.publisher', [
   '_'
   '$cookies'
   '$state'
-  ($scope, $http, ENV, $stateParams, common, data, _, $cookies, $state) ->
+  '$auth'
+  ($scope, $http, ENV, $stateParams, common, data, _, $cookies, $state, $auth) ->
+    $scope.isAuthenticated = $auth.isAuthenticated()
+
     vendorId = 'demopublisher'
 
     if $stateParams.vendorId?

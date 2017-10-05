@@ -44,6 +44,11 @@ angular.module( 'lyricdemo', [
       domain: 'lyricfinancial.auth0.com'
       options:
         _idTokenVerification: false
+        container: 'login-container'
+        languageDictionary:
+          title: ""
+        theme:
+          logo: '../assets/images/logo-red.png'
         autofocus: true
         closable: false
         auth:

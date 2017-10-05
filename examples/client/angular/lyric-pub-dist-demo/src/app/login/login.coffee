@@ -43,9 +43,11 @@ angular.module( 'lyricdemo.login', [
   'lock'
   '$auth'
   ($scope, lock, $auth) ->
-
+    $scope.isAuthenticated = $auth.isAuthenticated()
+    
     options = {
       allowSignUp: false
+      iconUrl: '../assets/login-logo.png'
       allowedConnections: ['LyricAdmin']
       rememberLastLogin: true
     }
