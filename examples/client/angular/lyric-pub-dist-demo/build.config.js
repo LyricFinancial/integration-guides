@@ -75,7 +75,8 @@ module.exports = {
       'vendor/angular-animate/angular-animate.js',
       'vendor/angular-aria/angular-aria.js',
       'vendor/angular-material/angular-material.js',
-      'vendor/angular-fontawesome/dist/angular-fontawesome.js'
+      'vendor/angular-fontawesome/dist/angular-fontawesome.js',
+      'vendor/angular-jwt/dist/angular-jwt.js'
 
     ],
     css: [

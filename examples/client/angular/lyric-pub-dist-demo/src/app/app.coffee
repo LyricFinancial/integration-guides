@@ -1,5 +1,6 @@
 angular.module( 'lyricdemo', [
   'config'
+  'angular-jwt'
   'templates-app',
   'templates-common'
   'lyricdemo.login'
@@ -55,6 +56,8 @@ angular.module( 'lyricdemo', [
         auth:
           redirect: false
           sso: false
+          params:
+            scope: 'openid email'
 ])
 
 .run([
@@ -62,11 +65,22 @@ angular.module( 'lyricdemo', [
   '$state'
   '$auth'
   '$cookies'
-  (lock, $state, $auth, $cookies) ->
+  'jwtHelper'
+  (lock, $state, $auth, $cookies, jwtHelper) ->
     lock.interceptHash()
-    lock.on 'authenticated', (authResult) ->
+    lock.on 'authenticated', (authResult, profile) ->
       lock.hide()
       $auth.setToken(authResult.idToken)
+
+      decodedResult = jwtHelper.decodeToken(authResult.idToken)
+
+      if decodedResult.email == 'jumpball@example.com'
+        $state.go 'distributor', {vendorClientAccountId: 'jb1234'}
+        return
+      else if decodedResult.email == 'eztunes@example.com'
+        $state.go 'distributor', {vendorClientAccountId: 'ezt1234'}
+        return
+
       state = 'publisher'
       params = {vendorClientAccountId: '119005',masterClientId: '23896'}
       previousState = $cookies.get('previousState')

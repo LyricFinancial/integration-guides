@@ -46,7 +46,12 @@ angular.module("sharedDataService", [
 
       setClientData: (vCAId, masterClientId) ->
 
-        if vCAId == 'eliLyricTest' || vCAId == '111703' || vCAId == '233102'
+        if vCAId == 'jb1234'
+          @clientData = {email: 'jumpball@example.com', firstName: 'Jump', lastName: 'Ball Music Group'}
+        else if vCAId == 'ezt1234'
+          @clientData = {email: 'eztunes@example.com', firstName: 'EZ', lastName: 'Tunes'}
+
+        else if vCAId == 'eliLyricTest' || vCAId == '111703' || vCAId == '233102'
           @clientData = {email: 'eli_paypal@lyricfinancial.com', firstName: 'Eli', lastName: 'Ball', masterClientId: masterClientId}
         else if vCAId == 'ericLyricTest' || vCAId == '112702' || vCAId == '1011094'
           @clientData = {email: 'eric@lyricfinancial.com', firstName: 'Eric', lastName: 'Reuthe', masterClientId: masterClientId}

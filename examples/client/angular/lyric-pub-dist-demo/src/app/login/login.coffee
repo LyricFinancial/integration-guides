@@ -48,7 +48,7 @@ angular.module( 'lyricdemo.login', [
     options = {
       allowSignUp: false
       iconUrl: '../assets/login-logo.png'
-      allowedConnections: ['LyricAdmin']
+      allowedConnections: ['DemoApp']
       rememberLastLogin: true
     }
 
