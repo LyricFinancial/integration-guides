@@ -105,7 +105,7 @@ angular.module( 'lyricdemo.distributor', [
     vendorClientAccountId = $stateParams.vendorClientAccountId
     
     vatmUrl = "https://vatm-" + ENV.ENV + ".lyricfinancial.com"
-    common.setupLyricSnippet(vendorClientAccountId, 'Lyric Digital Distributor', vatmUrl)
+    common.setupLyricSnippet(vendorClientAccountId, 'Lyric Music Distribution', vatmUrl)
     .then (lyric) ->
       $scope.lyric = lyric
 

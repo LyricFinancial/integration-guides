@@ -3,7 +3,7 @@
     <div class="row">
       <div class="twelve columns">
         <div class="vendor-name-header" >
-          <h1 layout="row" layout-align="center end"><img src="assets/images/logo-no-financial.png" style="width:76;height:50px" ><span ng-if="vendorType=='publisher'">Music Publishing</span><span ng-if="vendorType=='distributor'">Digital Distributor</span></h1> 
+          <h1 layout="row" layout-align="center end"><img src="assets/images/logo-no-financial.png" style="width:76;height:50px" ><span ng-if="vendorType=='publisher'">Music Publishing</span><span ng-if="vendorType=='distributor'">Music Distribution</span></h1> 
         </div>
           <nav class="site_controls" ng-if="isAuthenticated">
             <a href="/my_account/list_transactions" ng-hide="closingBalance==null">Balance: {{closingBalance | currency}}</a>
