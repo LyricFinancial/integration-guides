@@ -74,11 +74,11 @@ angular.module( 'lyricdemo', [
 
       decodedResult = jwtHelper.decodeToken(authResult.idToken)
 
-      if decodedResult.email == 'jumpball-music@example.com'
-        $state.go 'distributor', {vendorClientAccountId: 'jb12345'}
+      if decodedResult.email == 'jump-ball@example.com'
+        $state.go 'distributor', {vendorClientAccountId: 'jb123456'}
         return
-      else if decodedResult.email == 'eztunes-music@example.com'
-        $state.go 'distributor', {vendorClientAccountId: 'ezt12345'}
+      else if decodedResult.email == 'ez-tunes@example.com'
+        $state.go 'distributor', {vendorClientAccountId: 'ezt123456'}
         return
 
       state = 'publisher'
