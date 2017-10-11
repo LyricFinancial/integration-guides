@@ -10,7 +10,7 @@ angular.module( 'lyricdemo.distributor', [
   '$stateProvider'
   ($stateProvider) ->
     $stateProvider.state 'distributor',
-      url: '/distributor?vendorClientAccountId&:masterClientId&:strategy',
+      url: '/distributor?vendorClientAccountId&:masterClientId&:strategy&:showOptions',
       views:
         "main":
           controller: 'DistributorCtrl',
@@ -72,6 +72,7 @@ angular.module( 'lyricdemo.distributor', [
     $scope.vendorType = 'distributor'
     vendorClientAccountId = $stateParams.vendorClientAccountId
     masterClientId = $stateParams.masterClientId
+    $scope.showOptions = $stateParams.showOptions
 
     $scope.setPreviousState($scope.vendorType, vendorClientAccountId, masterClientId)
 
@@ -105,7 +106,7 @@ angular.module( 'lyricdemo.distributor', [
     vendorClientAccountId = $stateParams.vendorClientAccountId
     
     vatmUrl = "https://vatm-" + ENV.ENV + ".lyricfinancial.com"
-    common.setupLyricSnippet(vendorClientAccountId, 'Lyric Music Distribution', vatmUrl)
+    common.setupLyricSnippet(vendorClientAccountId, 'Global Music Distribution', vatmUrl)
     .then (lyric) ->
       $scope.lyric = lyric
 

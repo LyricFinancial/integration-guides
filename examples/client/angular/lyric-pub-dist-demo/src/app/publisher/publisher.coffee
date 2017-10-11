@@ -10,7 +10,7 @@ angular.module( 'lyricdemo.publisher', [
   '$stateProvider'
   ($stateProvider) ->
     $stateProvider.state 'publisher',
-      url: '/publisher?vendorClientAccountId&:masterClientId&:strategy&:vendorId',
+      url: '/publisher?vendorClientAccountId&:masterClientId&:strategy&:vendorId&:showOptions',
       views:
         "main":
           controller: 'PublisherCtrl',
@@ -70,6 +70,7 @@ angular.module( 'lyricdemo.publisher', [
   '$auth'
   ($scope, $http, ENV, $stateParams, common, data, _, $cookies, $state, $auth) ->
     $scope.isAuthenticated = $auth.isAuthenticated()
+    $scope.showOptions = $stateParams.showOptions
 
     vendorId = 'demopublisher'
 
@@ -123,7 +124,7 @@ angular.module( 'lyricdemo.publisher', [
     vendorClientAccountId = $stateParams.vendorClientAccountId
     
     vatmUrl = "https://vatm-" + ENV.ENV + ".lyricfinancial.com"
-    common.setupLyricSnippet(vendorClientAccountId, 'Demo Publisher', vatmUrl)
+    common.setupLyricSnippet(vendorClientAccountId, 'Global Music Publishing', vatmUrl)
     .then (lyric) ->
       $scope.lyric = lyric
 

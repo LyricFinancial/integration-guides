@@ -16,9 +16,6 @@
       <div style="clear: both;">
         <section id="transaction_list"  ng-include="'publisher/_table.tpl.html'"></section>
         <br>
-        <a ng-click="showOptions=true" href ng-show="!showOptions" class='lyric-link'>Show Options</a>
-        <a ng-click="showOptions=false" href ng-show="showOptions" class='lyric-link'>Hide Options</a>
-        <br>
         <section id="transaction-filters" ng-if="showOptions">
           <form accept-charset="UTF-8" method="get">
             <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
