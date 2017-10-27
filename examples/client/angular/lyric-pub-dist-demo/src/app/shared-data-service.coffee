@@ -47,9 +47,9 @@ angular.module("sharedDataService", [
       setClientData: (vCAId, masterClientId) ->
 
         if vCAId == 'jb123456'
-          @clientData = {email: 'jump-ball@example.com', firstName: 'Jump', lastName: 'Ball Music Group'}
+          @clientData = {email: 'jump-ball@example.com', firstName: 'Jump', lastName: 'Ball Music Group', secureCellPhone: ''}
         else if vCAId == 'ezt123456'
-          @clientData = {email: 'ez-tunes@example.com', firstName: 'EZ', lastName: 'Tunes'}
+          @clientData = {email: 'ez-tunes@example.com', firstName: 'EZ', lastName: 'Tunes', secureCellPhone: ''}
         else if vCAId == 'eliLyricTest' || vCAId == '111703' || vCAId == '233102'
           @clientData = {email: 'eli_paypal@lyricfinancial.com', firstName: 'Eli', lastName: 'Ball', masterClientId: masterClientId}
         else if vCAId == 'ericLyricTest' || vCAId == '112702' || vCAId == '1011094'
@@ -57,7 +57,7 @@ angular.module("sharedDataService", [
         else if vCAId == 'chuckLyricTest' || vCAId == '114122' || vCAId == '233101'
           @clientData = {email: 'cswanberg@mad-swan.com', firstName: 'Chuck', lastName: 'Swanberg', masterClientId: masterClientId}
         else if vCAId == 'amyLyricTest' || vCAId == '114784' || vCAId == '106161'
-          @clientData = {email: 'amadden@mad-swan.com', firstName: 'Amy', lastName: 'Madden', masterClientId: masterClientId}
+          @clientData = {email: 'amadden@mad-swan.com', firstName: 'Amy', lastName: 'Madden', masterClientId: masterClientId, secureCellPhone: '12077491513'}
         else
           @clientData =  {email: vCAId + '@example.com', firstName: 'Test', lastName: 'User', masterClientId: masterClientId}
 
