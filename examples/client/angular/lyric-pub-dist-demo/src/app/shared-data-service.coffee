@@ -50,6 +50,8 @@ angular.module("sharedDataService", [
           @clientData = {email: 'jump-ball@example.com', firstName: 'Jump', lastName: 'Ball Music Group', secureCellPhone: ''}
         else if vCAId == 'ezt123456'
           @clientData = {email: 'ez-tunes@example.com', firstName: 'EZ', lastName: 'Tunes', secureCellPhone: ''}
+        else if vCAId == 'fb123456'
+          @clientData = {email: 'fresh-beats@example.com', firstName: 'Fresh Beats', lastName: 'Music Group', secureCellPhone: ''}
         else if vCAId == 'eliLyricTest' || vCAId == '111703' || vCAId == '233102'
           @clientData = {email: 'eli_paypal@lyricfinancial.com', firstName: 'Eli', lastName: 'Ball', masterClientId: masterClientId}
         else if vCAId == 'ericLyricTest' || vCAId == '112702' || vCAId == '1011094'

@@ -80,6 +80,9 @@ angular.module( 'lyricdemo', [
       else if decodedResult.email == 'ez-tunes@example.com'
         $state.go 'distributor', {vendorClientAccountId: 'ezt123456'}
         return
+      else if decodedResult.email == 'fresh-beats@example.com'
+        $state.go 'distributor', {vendorClientAccountId: 'fb123456'}
+        return
 
       state = 'publisher'
       params = {vendorClientAccountId: '119005',masterClientId: '23896'}
