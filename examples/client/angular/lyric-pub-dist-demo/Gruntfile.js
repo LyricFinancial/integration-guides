@@ -77,7 +77,8 @@ module.exports = function (grunt) {
                 constants: {
                     ENV: {
                         ENV: 'dev',
-                        DEMO_SERVER_URL: 'http://snap-dev-demo-server.lyricfinancial.com'
+                        DEMO_SERVER_URL: 'http://snap-dev-demo-server.lyricfinancial.com',
+                        STATEMENT_URL: 'https://statement-dev.lyricfinancial.com'
                     }
                 }
             },
@@ -88,7 +89,8 @@ module.exports = function (grunt) {
                 constants: {
                     ENV: {
                         ENV: 'dev',
-                        DEMO_SERVER_URL: 'http://snap-dev-demo-server.lyricfinancial.com'
+                        DEMO_SERVER_URL: 'http://snap-dev-demo-server.lyricfinancial.com',
+                        STATEMENT_URL: 'https://statement-dev.lyricfinancial.com'
                     }
                 }
             },
@@ -99,7 +101,8 @@ module.exports = function (grunt) {
                 constants: {
                     ENV: {
                         ENV: 'sandbox',
-                        DEMO_SERVER_URL: 'http://snap-sandbox-demo-server.lyricfinancial.com'
+                        DEMO_SERVER_URL: 'http://snap-sandbox-demo-server.lyricfinancial.com',
+                        STATEMENT_URL: 'https://statement-sandbox.lyricfinancial.com'
                     }
                 }
             }

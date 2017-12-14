@@ -10,6 +10,7 @@
           <button class="btn-advance btn" ng-click="lyric.confirm()">Get An Advance</button>
         </div>
         <p class="currency-info">All amounts in USD.</p>
+        <a ng-if="token!=null" href="{{statementUrl}}/statement?access_token={{token}}" target="_blank">View Account Statement</a>
       </header>
 
       <div style="clear: both;">

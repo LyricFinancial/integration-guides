@@ -10,6 +10,9 @@ angular.module("sharedDataService", [
     class SharedDataService
 
       constructor: () ->
+        @strategy = null
+        @asyncToken = null
+
         @fileRecords = null
         @clientData = null
 
@@ -82,6 +85,19 @@ angular.module("sharedDataService", [
         .then (resp) =>
           @fileRecords = resp.data
           return @fileRecords
+
+      getStatementToken: (vendorClientAccountId, vendorId) ->
+
+        req =
+          method: 'GET'
+          url: ENV.DEMO_SERVER_URL + '/statementtoken?vendorClientAccountId=' + vendorClientAccountId + '&vendorId=' + vendorId
+          headers: {
+            'content-type': 'application/json'
+          }
+
+        $http(req)
+        .then (resp) =>
+          return resp.headers().token
 
       registerUser: (vendorClientAccountId, clientData, fileOptions, vendorId) ->
         defer = $q.defer()

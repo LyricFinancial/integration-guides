@@ -74,6 +74,12 @@ angular.module( 'lyricdemo.distributor', [
     masterClientId = $stateParams.masterClientId
     $scope.showOptions = $stateParams.showOptions
 
+    data.getStatementToken(vendorClientAccountId, vendorId)
+    .then (token) ->
+      $scope.token = token
+      
+    $scope.statementUrl = ENV.STATEMENT_URL
+
     $scope.setPreviousState($scope.vendorType, vendorClientAccountId, masterClientId)
 
     $scope.data = data

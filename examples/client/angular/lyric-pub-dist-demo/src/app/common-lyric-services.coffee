@@ -1,10 +1,11 @@
-angular.module("commonLyricServices", [])
+angular.module("commonLyricServices", ['sharedDataService'])
 .factory "CommonLyricServices", [
   "$q"
   '$http'
   '$stateParams'
   'ENV'
-  ($q, $http, $stateParams, ENV) ->
+  'SharedDataService'
+  ($q, $http, $stateParams, ENV, data) ->
 
     class CommonLyricServices
 
@@ -37,12 +38,12 @@ angular.module("commonLyricServices", [])
         <p>By clicking 'I Agree' you grant " + vendorName + " permission to share your royalty history with Lyric Financial. You will be taken to Lyric Financial's website to complete this process.</p>"
 
         defer = $q.defer()
-        @strategy = 'syncManualRedirect'
+        data.strategy = 'syncManualRedirect'
 
         if $stateParams.strategy?
-          @strategy = $stateParams.strategy
+          data.strategy = $stateParams.strategy
 
-        if @strategy == 'async'
+        if data.strategy == 'async'
       
           req =
             method: 'GET'
@@ -51,12 +52,12 @@ angular.module("commonLyricServices", [])
 
           $http(req)
           .then (resp) =>
-            @asyncToken = resp.headers().token
-            lyric = new LyricSnippet(terms, @strategy, @asyncToken, vatmUrl)
+            data.asyncToken = resp.headers().token
+            lyric = new LyricSnippet(terms, data.strategy, data.asyncToken, vatmUrl)
             defer.resolve(lyric)
           .catch (error)->
         else
-          lyric = new LyricSnippet(terms, @strategy, null, vatmUrl)
+          lyric = new LyricSnippet(terms, data.strategy, null, vatmUrl)
           defer.resolve(lyric)
 
         return defer.promise

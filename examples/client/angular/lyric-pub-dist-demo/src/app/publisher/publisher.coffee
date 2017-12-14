@@ -82,6 +82,12 @@ angular.module( 'lyricdemo.publisher', [
     vendorClientAccountId = $stateParams.vendorClientAccountId
     masterClientId = $stateParams.masterClientId
 
+    data.getStatementToken(vendorClientAccountId, vendorId)
+    .then (token) ->
+      $scope.token = token
+      
+    $scope.statementUrl = ENV.STATEMENT_URL
+
     selectedKnownFile = vendorClientAccountId
 
     $scope.setPreviousState($scope.vendorType, vendorClientAccountId, masterClientId)
