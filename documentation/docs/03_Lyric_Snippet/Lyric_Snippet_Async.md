@@ -6,7 +6,7 @@ Javascript library to allow you to integrate with Lyric services.
 
 **1) On your server, generate a JWT token to be used as an asyncToken.**
 
-In order for the Lyric server to know that you wish to make the registration call asynchronously, you need to generate a JWT token that will be passed when creating the LyricSnippet instance as well as passed as a header on the registration call. You can find more information on this [here](!Code_Samples/Async_Token_Api).
+In order for the Lyric server to know that you wish to make the registration call asynchronously, you need to generate a JWT token that will be passed when creating the LyricSnippet instance as well as passed as a header on the registration call. You can find more information on this [here](!Code_Samples/Java/Async_Token_Generation).
 
 **2) For the async strategy, the instance of LyricSnippet needs to be created with 3 params.  Optional override of Terms and Conditions, 'async' as strategy, and the asyncToken.**
 
