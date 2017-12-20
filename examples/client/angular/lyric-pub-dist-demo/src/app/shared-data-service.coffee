@@ -130,6 +130,10 @@ angular.module("sharedDataService", [
             return
           defer.resolve(resp.headers()["access-token"])
         .catch (error)->
+          if resp.headers()["access-token"]?
+            defer.resolve(resp.headers()["access-token"])
+            return
+            
           defer.reject(error)
 
         return defer.promise
