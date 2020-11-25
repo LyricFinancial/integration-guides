@@ -4,6 +4,11 @@ The project contains the documentation for the Lyric system as well as demo proj
 
 This project has a dev branch as well as a master branch.  Changes should be made in dev first, and then once approved, moved to the master branch.  The master branch will produce the documentation and client apps that vendors will be using.  The documentation and apps are deployed using codeship.
 
+### GitPod
+* Once the pod is running cd to 'documentation'
+* Then execute './serve'. This will start the php web server.
+* Then select the 'Open Browser' button to view the content
+
 ### Dev
 * [Documentation](http://dev-docs.lyricfinancial.com/)
 * [Client Apps](http://dev-vatm-demo.lyricfinancial.com/#/demo-server)
