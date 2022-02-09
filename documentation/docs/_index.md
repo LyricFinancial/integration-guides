@@ -25,7 +25,6 @@
 #### For API Developers
 * [Code Samples](!Code_Samples)
 * [Vendor API Reference](/secure/vendor-api/)
-* [Assignment API Reference](/secure/assignments-api/)
 * [Key Generator](/secure/settings/#/settings)
 * [Server Integration](!Server_Integration)
 
