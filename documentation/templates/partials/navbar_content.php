@@ -3,7 +3,6 @@
 </a>
 
 <a class="brand navbar-brand pull-right" href="#" onclick="logout()">Logout</a>
-<a class="brand navbar-brand pull-right" href="/secure/assignments-api/">Assignment API</a>
 <a class="brand navbar-brand pull-right" href="http://18.207.204.223:8080">Partner API</a>
 <a class="brand navbar-brand pull-right" href="/secure/docs/Getting_Started.html">Documentation</a>
 
