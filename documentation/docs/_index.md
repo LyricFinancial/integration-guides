@@ -24,7 +24,7 @@
 
 #### For API Developers
 * [Code Samples](!Code_Samples)
-* [Vendor API Reference](http://172.31.65.41:8080)
+* [Vendor API Reference](http://18.207.204.223:8080)
 * [Assignment API Reference](/secure/assignments-api/)
 * [Key Generator](/secure/settings/#/settings)
 * [Server Integration](!Server_Integration)

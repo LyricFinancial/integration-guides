@@ -1,8 +1,8 @@
 # Server Integration Guide
 
-When a client requests a vATM advance the partner's server will share client data with Lyric. Lyric uses this data to calculate advance limits.
+When a client requests a vATM advance the 's server will share client data with Lyric. Lyric uses this data to calculate advance limits.
 
-Lyric's primary [Vendor API](/secure/vendor-api/) uses JSON via REST endpoints with JOSE message security. Usually, partners use Lyric's Registration API which sends Lyric name, phone, and address. You can also send royalty/sales and distribution data in this same API call or as a separate call. Lyric requires projects an advance limit using up to three years of earnings data. At least one year of data is required. There are several methods of sending this data.
+Lyric's primary [Vendor API](/secure/vendor-api/) uses JSON via REST endpoints with JOSE message security. Usually, s use Lyric's Registration API which sends Lyric name, phone, and address. You can also send royalty/sales and distribution data in this same API call or as a separate call. Lyric requires projects an advance limit using up to three years of earnings data. At least one year of data is required. There are several methods of sending this data.
 
 ## Concepts
 
