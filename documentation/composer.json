@@ -14,7 +14,7 @@
     "require": {
         "php": ">=5.4",
         "league/plates": "~3.1",
-        "guzzlehttp/guzzle": "~5.3",
+        "guzzlehttp/guzzle": "~6.5",
         "league/commonmark": "^0.13",
         "symfony/console": "~2.7",
         "symfony/finder": "~2.7",
